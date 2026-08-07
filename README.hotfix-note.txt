@@ -1,1 +1,0 @@
-Dashboard hotfix v2 is loaded by the design-system bundle only on Plant Dashboard.dc.html. It adds persistent EN translation, the 40-day HRT example, and a visible horizontal-scroll hint/bar for traceability. The validated Home/Jotform repair remains in the bundle and is unchanged in intent.
