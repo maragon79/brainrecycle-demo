@@ -1,2 +1,56 @@
 /* brainrecycle base — tokens live in tokens/*.css */
 :root{ color-scheme: light; }
+
+/* Home móvil: cabecera persistente. Se aplica solo cuando existe .hero-mobile. */
+@media (max-width:760px){
+  body:has(.hero-mobile) #dc-root,
+  body:has(.hero-mobile) #dc-root > .sc-host{
+    transform:none!important;
+    -webkit-transform:none!important;
+    filter:none!important;
+    perspective:none!important;
+    contain:none!important;
+    overflow:visible!important;
+  }
+
+  body:has(.hero-mobile) #dc-root{
+    padding-top:72px!important;
+  }
+
+  body:has(.hero-mobile) header{
+    position:fixed!important;
+    top:0!important;
+    left:0!important;
+    right:0!important;
+    width:100%!important;
+    height:72px!important;
+    min-height:72px!important;
+    z-index:2147483000!important;
+    background:#2c483d!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+    transform:translate3d(0,0,0)!important;
+    -webkit-transform:translate3d(0,0,0)!important;
+    box-shadow:0 1px 0 rgba(255,255,255,.08),0 5px 18px rgba(0,0,0,.16)!important;
+  }
+
+  body:has(.hero-mobile) header > div{
+    height:72px!important;
+    min-height:72px!important;
+    max-height:72px!important;
+    top:0!important;
+    transform:none!important;
+    -webkit-transform:none!important;
+  }
+
+  body:has(.hero-mobile) .mobile-menu-panel{
+    position:fixed!important;
+    top:72px!important;
+    left:0!important;
+    right:0!important;
+    bottom:0!important;
+    height:calc(100dvh - 72px)!important;
+    max-height:calc(100dvh - 72px)!important;
+    z-index:2147483002!important;
+  }
+}
