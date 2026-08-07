@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+
+<style id="brainrecycle-mobile-responsive-v59">
+/* BrainRecycle private area — comprehensive mobile reflow */
+@media (max-width:760px){
+  html,body,x-dc{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
+  body{background:var(--surface-background)!important}
+
+  /* App shell / content */
+  x-dc .dash-shell{width:100%!important;max-width:100%!important;min-height:100dvh!important;overflow:visible!important}
+  x-dc .dash-main{width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;overflow:visible!important}
+  x-dc .dash-main>div[style*="flex:1;overflow-y:auto"]{overflow:visible!important;min-width:0!important}
+
+  /* Header: clear, white mobile menu */
+  x-dc .dash-mobile-menu-btn{display:flex!important;width:44px!important;height:44px!important;flex:0 0 44px!important;align-items:center!important;justify-content:center!important;color:#fff!important;background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:10px!important;padding:0!important;cursor:pointer!important}
+  x-dc .dash-mobile-menu-btn i{font-size:27px!important;color:#fff!important;line-height:1!important}
+  x-dc .dash-main>header{height:60px!important;min-height:60px!important;padding:0 12px!important;gap:10px!important}
+  x-dc .dash-main>header img{height:24px!important;width:auto!important;max-width:145px!important}
+  x-dc .dash-main>header nav{display:none!important}
+  x-dc .dash-main>header>button:last-child{min-width:0!important;max-width:190px!important;height:42px!important;padding:0 12px!important;font-size:14px!important}
+
+  /* Demo strip: data notice only, never a fake action */
+  x-dc .dash-demo-strip{min-height:38px!important;padding:7px 12px!important;gap:8px!important}
+  x-dc .dash-demo-strip .br-demo-video-btn{display:none!important}
+  x-dc .dash-demo-strip .demo-long{display:none!important}
+  x-dc .dash-demo-strip p{font-size:12px!important;white-space:normal!important}
+
+  /* Drawer: controlled logo and independent vertical scroll */
+  x-dc .dash-sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(88vw,360px)!important;min-width:0!important;height:100dvh!important;max-height:100dvh!important;z-index:4000!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;box-shadow:18px 0 48px rgba(0,0,0,.35)!important}
+  x-dc .dash-mobile-drawer-head{display:flex!important;height:58px!important;min-height:58px!important;flex:0 0 58px!important;align-items:center!important;justify-content:space-between!important;padding:0 14px!important;border-bottom:1px solid rgba(255,255,255,.08)!important;overflow:hidden!important}
+  x-dc .dash-mobile-drawer-head img{display:block!important;height:26px!important;max-height:26px!important;width:auto!important;max-width:145px!important;object-fit:contain!important}
+  x-dc .dash-sidebar>div:first-child img{height:26px!important;max-height:26px!important;width:auto!important;max-width:145px!important;object-fit:contain!important}
+  x-dc .dash-sidebar>div:nth-of-type(2){padding:10px 12px!important;flex:0 0 auto!important}
+  x-dc .dash-sidebar>div:nth-of-type(3){padding:8px!important;flex:0 0 auto!important}
+  x-dc .dash-sidebar>nav{display:flex!important;flex-direction:column!important;gap:3px!important;padding:8px 8px 14px!important;overflow:visible!important;flex:0 0 auto!important}
+  x-dc .dash-sidebar>nav button{width:100%!important;min-height:44px!important;padding:10px!important;font-size:14px!important;line-height:1.25!important;white-space:normal!important;flex:0 0 auto!important}
+  x-dc .dash-sidebar>div:last-child{display:block!important;flex:0 0 auto!important;margin-top:0!important}
+  x-dc .br-dash-close{color:#fff!important}
+
+  /* Universal content spacing */
+  x-dc .dash-main [style*="padding:32px"]{padding:18px 14px!important}
+  x-dc .dash-main [style*="padding:28px"]{padding:16px 14px!important}
+  x-dc .dash-main [style*="padding:24px"]{padding:16px 14px!important}
+  x-dc .dash-main [style*="padding:20px"]{padding:14px!important}
+  x-dc .dash-main [style*="gap:24px"]{gap:16px!important}
+  x-dc .dash-main [style*="gap:20px"]{gap:14px!important}
+
+  /* Every desktop grid in private area becomes one column */
+  x-dc .dash-main [style*="grid-template-columns:repeat(4,1fr)"],
+  x-dc .dash-main [style*="grid-template-columns:repeat(3,1fr)"],
+  x-dc .dash-main [style*="grid-template-columns:1fr 1fr"],
+  x-dc .dash-main [style*="grid-template-columns:1.3fr 1fr"],
+  x-dc .dash-main [style*="grid-template-columns:1.4fr 1fr"],
+  x-dc .dash-main [style*="grid-template-columns:1.6fr 1fr"]{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    min-width:0!important;
+  }
+  x-dc .dash-main [style*="display:grid"]>*{min-width:0!important;max-width:100%!important}
+
+  /* Generic cards */
+  x-dc .dash-main [style*="background:var(--surface-raised)"]{max-width:100%!important;min-width:0!important}
+  x-dc .dash-main [style*="border-radius:var(--radius-sm)"]{max-width:100%!important;min-width:0!important}
+
+  /* Headings and action rows */
+  x-dc .dash-main [style*="font-size:30px"]{font-size:24px!important;line-height:1.12!important}
+  x-dc .dash-main [style*="font-size:28px"]{font-size:23px!important;line-height:1.15!important}
+  x-dc .dash-main [style*="font-size:26px"]{font-size:22px!important;line-height:1.18!important}
+  x-dc .dash-main [style*="justify-content:space-between"]{column-gap:10px!important;row-gap:10px!important}
+  x-dc .dash-main button{max-width:100%!important}
+
+  /* Tabs: keep usable without squeezing text */
+  x-dc .dash-main [style*="display:inline-flex"][style*="width:fit-content"]{display:flex!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important}
+  x-dc .dash-main [style*="display:inline-flex"][style*="width:fit-content"]::-webkit-scrollbar{display:none!important}
+  x-dc .dash-main [style*="display:inline-flex"][style*="width:fit-content"] button{flex:0 0 auto!important;white-space:nowrap!important}
+
+  /* Tables: controlled horizontal viewport rather than clipping whole page */
+  x-dc .dash-main table{width:max-content!important;min-width:620px!important;max-width:none!important;border-collapse:collapse!important}
+  x-dc .dash-main table th,x-dc .dash-main table td{white-space:normal!important;vertical-align:top!important}
+  x-dc .dash-main div:has(> table){width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important}
+
+  /* Timelines / horizontal process rows */
+  x-dc .dash-main [style*="display:flex"][style*="overflow-x:auto"]{max-width:100%!important;-webkit-overflow-scrolling:touch!important;scroll-snap-type:x proximity!important}
+  x-dc .dash-main [style*="display:flex"][style*="overflow-x:auto"]>div{scroll-snap-align:start}
+
+  /* Map + route / mixed visual modules */
+  x-dc .dash-main img,x-dc .dash-main svg,x-dc .dash-main video,x-dc .dash-main iframe{max-width:100%!important;height:auto!important}
+  x-dc .dash-main [style*="background-image"]{max-width:100%!important;min-width:0!important}
+
+  /* Prevent fixed desktop widths from forcing off-screen content */
+  x-dc .dash-main [style*="width:480px"],x-dc .dash-main [style*="width:520px"],x-dc .dash-main [style*="width:560px"],x-dc .dash-main [style*="width:600px"],x-dc .dash-main [style*="width:640px"],x-dc .dash-main [style*="width:680px"],x-dc .dash-main [style*="width:720px"]{width:100%!important;max-width:100%!important}
+  x-dc .dash-main [style*="max-width:480px"]{max-width:100%!important}
+
+  /* Long values, emails, regulatory text */
+  x-dc .dash-main td,x-dc .dash-main p,x-dc .dash-main span,x-dc .dash-main div{overflow-wrap:anywhere}
+  x-dc .dash-main [style*="font-family:var(--font-mono)"]{word-break:break-word!important}
+}
+
+/* Slightly wider phones / small tablets */
+@media (min-width:761px) and (max-width:980px){
+  x-dc .dash-main [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  x-dc .dash-main [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  x-dc .dash-main [style*="grid-template-columns:1.6fr 1fr"],
+  x-dc .dash-main [style*="grid-template-columns:1.4fr 1fr"],
+  x-dc .dash-main [style*="grid-template-columns:1.3fr 1fr"]{grid-template-columns:minmax(0,1fr)!important}
+}
+</style>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/colors.css">
+<link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/typography.css">
+<link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/effects.css">
+<link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/styles.css">
+<script src="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/_ds_bundle.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.34.0/dist/tabler-icons.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--surface-background);font-family:var(--font-body);color:var(--text-primary)}
+a{color:var(--color-forest)}
+a:hover{color:var(--color-primary-hover)}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--border-default);border-radius:9999px}
+button{font:inherit}
+</style>
+</helmet>
+<div style="height:100vh;width:100%;display:flex;overflow:hidden;background:var(--surface-background)">
+
+<aside style="width:240px;min-width:240px;height:100%;background:var(--surface-dark);display:flex;flex-direction:column;flex-shrink:0">
+
+<div style="padding:16px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative">
+<button onClick="{{ togglePlantMenu }}" style="width:100%;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-xs);padding:10px 12px;cursor:pointer;text-align:left" style-hover="background:rgba(255,255,255,0.12)">
+<i class="ti ti-building-factory-2" style="font-size:18px;color:var(--color-sage);flex-shrink:0"></i>
+<div style="flex:1;min-width:0">
+<div style="font-size:10px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;font-family:var(--font-mono)">Planta de biometano</div>
+<div style="font-size:14px;font-weight:600;font-family:var(--font-display);color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ plantName }}</div>
+</div>
+<i class="ti ti-chevron-down" style="font-size:16px;color:rgba(255,255,255,0.5);flex-shrink:0"></i>
+</button>
+<sc-if value="{{ plantMenuOpen }}" hint-placeholder-val="{{ false }}">
+<div onClick="{{ togglePlantMenu }}" style="position:fixed;inset:0;z-index:15"></div>
+<div style="position:absolute;top:100%;left:16px;right:16px;margin-top:4px;background:#354f45;border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-xs);box-shadow:var(--shadow-lg);z-index:20;overflow:hidden">
+<sc-for list="{{ plants }}" as="p" hint-placeholder-count="3">
+<button onClick="{{ p.select }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;background:transparent;border:none;cursor:pointer;color:#fff;font-family:var(--font-body);font-size:13px" style-hover="background:rgba(255,255,255,0.08)">
+<span>{{ p.name }}</span>
+<sc-if value="{{ p.active }}" hint-placeholder-val="{{ false }}"><i class="ti ti-check" style="font-size:14px;color:var(--color-sage)"></i></sc-if>
+</button>
+</sc-for>
+</div>
+</sc-if>
+</div>
+
+<nav style="flex:1;padding:12px 8px;display:flex;flex-direction:column;gap:2px;overflow-y:auto">
+<sc-for list="{{ navItems }}" as="item" hint-placeholder-count="6">
+<sc-if value="{{ item.active }}" hint-placeholder-val="{{ false }}">
+<button onClick="{{ item.onClick }}" style="display:flex;align-items:center;gap:10px;padding:8px 12px 8px 10px;border-radius:var(--radius-xs);border:none;border-left:2px solid var(--color-sage);background:rgba(204,230,177,0.12);color:var(--color-sage);font-size:15px;font-weight:500;cursor:pointer;text-align:left">
+<i class="ti {{ item.icon }}" style="font-size:18px;flex-shrink:0"></i>{{ item.label }}
+</button>
+</sc-if>
+<sc-if value="{{ item.notActive }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ item.onClick }}" style="display:flex;align-items:center;gap:10px;padding:8px 12px 8px 12px;border-radius:var(--radius-xs);border:none;border-left:2px solid transparent;background:transparent;color:rgba(255,255,255,0.55);font-size:15px;font-weight:400;cursor:pointer;text-align:left" style-hover="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85)">
+<i class="ti {{ item.icon }}" style="font-size:18px;flex-shrink:0"></i>{{ item.label }}
+</button>
+</sc-if>
+</sc-for>
+</nav>
+
+<div style="padding:8px;border-top:1px solid rgba(255,255,255,0.08)">
+<button onClick="{{ logoutClick }}" style="width:100%;display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:var(--radius-xs);border:none;background:transparent;color:rgba(255,255,255,0.55);font-size:15px;cursor:pointer;text-align:left" style-hover="background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.85)">
+<i class="ti ti-logout" style="font-size:18px;flex-shrink:0"></i>Cerrar sesión
+</button>
+</div>
+</aside>
+
+<main style="flex:1;height:100%;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+
+<header style="height:56px;flex-shrink:0;background:var(--color-deep);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:24px">
+<div style="display:flex;align-items:center;gap:28px;min-width:0">
+<a href="Brain Recycle Home.dc.html" style="display:flex;align-items:center;flex-shrink:0">
+<img src="assets/logo-light.png" alt="brainrecycle" style="height:20px;width:auto;display:block">
+</a>
+<nav style="display:flex;align-items:center;gap:18px;min-width:0;overflow:hidden">
+<a href="Brain Recycle Home.dc.html#espacio-de-datos" style="font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;white-space:nowrap" style-hover="color:var(--color-sage)">El espacio de datos</a>
+<a href="Brain Recycle Home.dc.html#servicios" style="font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;white-space:nowrap" style-hover="color:var(--color-sage)">Servicios</a>
+<a href="Brain Recycle Home.dc.html#adherirse" style="font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;white-space:nowrap" style-hover="color:var(--color-sage)">Cómo adherirse</a>
+<a href="Brain Recycle Home.dc.html#gobernanza" style="font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;white-space:nowrap" style-hover="color:var(--color-sage)">Gobernanza</a>
+</nav>
+</div>
+<button onClick="{{ goHome }}" style="display:flex;align-items:center;gap:6px;background:transparent;border:1px solid rgba(255,255,255,0.18);border-radius:var(--radius-xs);padding:7px 16px;color:rgba(255,255,255,0.85);font-family:var(--font-body);font-size:13px;font-weight:500;cursor:pointer;flex-shrink:0" style-hover="background:rgba(255,255,255,0.09)">
+<i class="ti ti-logout" style="font-size:15px"></i>Cerrar sesión
+</button>
+</header>
+
+<div style="flex-shrink:0;background:var(--color-warning-surface);border-bottom:1px solid var(--color-warning);display:flex;align-items:center;gap:10px;padding:9px 28px">
+<i class="ti ti-flask" style="font-size:16px;color:var(--color-warning);flex-shrink:0"></i>
+<p style="font-size:13px;color:var(--text-primary);line-height:1.5;margin:0"><span style="font-weight:600">Entorno de demostración.</span> Los datos de esta planta son ficticios y sirven para ilustrar el funcionamiento del espacio de datos.</p>
+</div>
+
+<div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;min-width:0">
+
+<sc-if value="{{ isPanel }}" hint-placeholder-val="{{ true }}">
+<div style="padding:32px;display:flex;flex-direction:column;gap:28px">
+
+<div>
+<div style="font-family:var(--font-display);font-weight:700;font-size:30px;color:var(--text-primary);letter-spacing:-0.02em">Buenos días. Este es el estado de tu planta.</div>
+<div style="font-size:15px;color:var(--text-secondary);margin-top:6px">Planta de biometano {{ plantName }} · Adherida al espacio de datos</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<sc-for list="{{ kpis }}" as="k" hint-placeholder-count="6">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:20px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:8px">
+<i class="ti {{ k.icon }}" style="font-size:18px;color:var(--color-forest)"></i>
+<span style="font-size:13px;color:var(--text-secondary);font-weight:500">{{ k.label }}</span>
+</div>
+<sc-if value="{{ k.valueSuccess }}" hint-placeholder-val="{{ false }}"><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--color-success);letter-spacing:-0.02em">{{ k.value }}</div></sc-if>
+<sc-if value="{{ k.valueDefault }}" hint-placeholder-val="{{ true }}"><div style="font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--text-primary);letter-spacing:-0.02em">{{ k.value }}</div></sc-if>
+<sc-if value="{{ k.estadoWarning }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-family:var(--font-mono);color:var(--color-warning)"><span style="width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0"></span>{{ k.estado }}</div></sc-if>
+<sc-if value="{{ k.estadoSuccess }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-family:var(--font-mono);color:var(--color-success)"><span style="width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0"></span>{{ k.estado }}</div></sc-if>
+<sc-if value="{{ k.estadoInfo }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:6px;font-size:12px;font-family:var(--font-mono);color:var(--color-info)"><span style="width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0"></span>{{ k.estado }}</div></sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--text-primary)">Alertas</div>
+<sc-if value="{{ hasAlerts }}" hint-placeholder-val="{{ true }}">
+<sc-for list="{{ alerts }}" as="a" hint-placeholder-count="3">
+<div style="display:flex;gap:14px;padding:16px;background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs)">
+<sc-if value="{{ a.severitySuccess }}" hint-placeholder-val="{{ false }}"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-success-surface);color:var(--color-success);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti {{ a.icon }}" style="font-size:18px"></i></div></sc-if>
+<sc-if value="{{ a.severityError }}" hint-placeholder-val="{{ false }}"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-error-surface);color:var(--color-error);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti {{ a.icon }}" style="font-size:18px"></i></div></sc-if>
+<sc-if value="{{ a.severityWarning }}" hint-placeholder-val="{{ false }}"><div style="width:36px;height:36px;border-radius:50%;background:var(--color-warning-surface);color:var(--color-warning);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti {{ a.icon }}" style="font-size:18px"></i></div></sc-if>
+<div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
+<div style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text-primary)">{{ a.title }}</div>
+<div style="font-size:14px;color:var(--text-secondary);line-height:1.5">{{ a.body }}</div>
+<button onClick="{{ a.onLink }}" style="align-self:flex-start;margin-top:4px;display:inline-flex;align-items:center;gap:4px;background:none;border:none;padding:0;font-family:var(--font-body);font-size:13px;font-weight:600;color:var(--color-forest);cursor:pointer" style-hover="color:var(--color-primary-hover)">
+{{ a.linkLabel }}<i class="ti ti-arrow-right" style="font-size:14px"></i>
+</button>
+</div>
+</div>
+</sc-for>
+</sc-if>
+<sc-if value="{{ hasNoAlerts }}" hint-placeholder-val="{{ false }}">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:24px;text-align:center;color:var(--text-secondary);font-size:14px">Todo en orden. Tu planta opera dentro de los parámetros esperados.</div>
+</sc-if>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:20px;display:flex;flex-direction:column">
+<div style="font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--text-primary);margin-bottom:6px">Actividad reciente</div>
+<sc-for list="{{ activity }}" as="ev" hint-placeholder-count="4">
+<div style="display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border-subtle)">
+<div style="width:32px;height:32px;border-radius:50%;background:var(--color-neutral-100);color:var(--color-forest);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti {{ ev.icon }}" style="font-size:16px"></i></div>
+<div style="flex:1;min-width:0">
+<div style="font-size:14px;color:var(--text-primary);font-weight:500">{{ ev.title }}</div>
+<div style="font-size:13px;color:var(--text-muted)">{{ ev.meta }}</div>
+</div>
+<div style="font-size:12px;font-family:var(--font-mono);color:var(--text-muted);white-space:nowrap;flex-shrink:0">{{ ev.time }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isCasos }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px;display:flex;flex-direction:column;gap:24px">
+<div>
+<div style="font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--text-primary);letter-spacing:-0.02em">Tus casos de uso</div>
+<div style="font-size:15px;color:var(--text-secondary);margin-top:6px">Los servicios que tienes activos y los que puedes incorporar.</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<sc-for list="{{ casos }}" as="c" hint-placeholder-count="7">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:24px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;justify-content:space-between">
+<div style="width:40px;height:40px;background:var(--color-primary-subtle);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center">
+<i class="ti {{ c.icon }}" style="font-size:19px;color:var(--color-forest)"></i>
+</div>
+<sc-if value="{{ c.statusActivo }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:9999px;background:var(--color-success-surface);color:var(--color-success)">Activo</span></sc-if>
+<sc-if value="{{ c.statusDesarrollo }}" hint-placeholder-val="{{ false }}"><span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:9999px;background:var(--color-info-surface);color:var(--color-info)">En desarrollo</span></sc-if>
+<sc-if value="{{ c.statusDisponible }}" hint-placeholder-val="{{ true }}"><span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:9999px;background:var(--color-neutral-100);color:var(--text-secondary)">Disponible</span></sc-if>
+</div>
+<div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary);line-height:1.3">{{ c.title }}</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6;flex:1">{{ c.desc }}</div>
+<sc-if value="{{ c.statusDisponible }}" hint-placeholder-val="{{ true }}">
+<button onClick="{{ c.activate }}" style="align-self:flex-start;display:inline-flex;align-items:center;gap:6px;height:34px;padding:0 14px;background:var(--color-primary);color:#fff;border:1px solid var(--color-primary);border-radius:var(--radius-xs);font-family:var(--font-display);font-weight:600;font-size:13px;cursor:pointer" style-hover="background:var(--color-primary-hover);border-color:var(--color-primary-hover)">Quiero activar este caso de uso</button>
+</sc-if>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isTrazabilidad }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px;display:flex;flex-direction:column;gap:24px">
+<div style="font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--text-primary);letter-spacing:-0.02em">La cadena completa de tu residuo</div>
+
+<div style="position:relative;max-width:480px">
+<i class="ti ti-search" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text-muted)"></i>
+<input type="text" placeholder="Buscar por lote, productor, transportista o parcela" style="width:100%;height:38px;padding:0 14px 0 36px;border:1px solid var(--border-default);border-radius:var(--radius-xs);font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--surface-raised);outline:none">
+</div>
+
+<div style="display:inline-flex;gap:4px;background:var(--color-neutral-100);border-radius:var(--radius-xs);padding:3px;width:fit-content">
+<sc-if value="{{ trazaViewTimeline }}" hint-placeholder-val="{{ true }}"><button onClick="{{ setTrazaViewTimeline }}" style="padding:7px 14px;border:none;border-radius:4px;background:var(--surface-raised);color:var(--text-primary);font-size:13px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-xs)">Línea de vida del lote</button></sc-if>
+<sc-if value="{{ trazaViewTimelineOff }}" hint-placeholder-val="{{ false }}"><button onClick="{{ setTrazaViewTimeline }}" style="padding:7px 14px;border:none;border-radius:4px;background:transparent;color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer">Línea de vida del lote</button></sc-if>
+<sc-if value="{{ trazaViewMapa }}" hint-placeholder-val="{{ false }}"><button onClick="{{ setTrazaViewMapa }}" style="padding:7px 14px;border:none;border-radius:4px;background:var(--surface-raised);color:var(--text-primary);font-size:13px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-xs)">Mapa de parcelas</button></sc-if>
+<sc-if value="{{ trazaViewMapaOff }}" hint-placeholder-val="{{ true }}"><button onClick="{{ setTrazaViewMapa }}" style="padding:7px 14px;border:none;border-radius:4px;background:transparent;color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer">Mapa de parcelas</button></sc-if>
+<sc-if value="{{ trazaViewRuta }}" hint-placeholder-val="{{ false }}"><button onClick="{{ setTrazaViewRuta }}" style="padding:7px 14px;border:none;border-radius:4px;background:var(--surface-raised);color:var(--text-primary);font-size:13px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-xs)">Ruta de aplicación</button></sc-if>
+<sc-if value="{{ trazaViewRutaOff }}" hint-placeholder-val="{{ true }}"><button onClick="{{ setTrazaViewRuta }}" style="padding:7px 14px;border:none;border-radius:4px;background:transparent;color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer">Ruta de aplicación</button></sc-if>
+</div>
+
+<sc-if value="{{ trazaViewTimeline }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;align-items:flex-start;overflow-x:auto;padding-bottom:8px">
+<sc-for list="{{ trazaNodes }}" as="n" hint-placeholder-count="7">
+<div style="display:flex;align-items:center;flex-shrink:0">
+<button onClick="{{ n.select }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:4px;width:104px">
+<sc-if value="{{ n.active }}" hint-placeholder-val="{{ false }}"><div style="width:44px;height:44px;border-radius:50%;background:var(--color-forest);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti {{ n.icon }}" style="font-size:20px"></i></div></sc-if>
+<sc-if value="{{ n.inactive }}" hint-placeholder-val="{{ true }}"><div style="width:44px;height:44px;border-radius:50%;background:var(--color-primary-subtle);color:var(--color-forest);display:flex;align-items:center;justify-content:center;flex-shrink:0"><i class="ti {{ n.icon }}" style="font-size:20px"></i></div></sc-if>
+<span style="font-size:12px;color:var(--text-secondary);font-weight:500;text-align:center;line-height:1.3">{{ n.label }}</span>
+</button>
+<sc-if value="{{ n.hasNext }}" hint-placeholder-val="{{ true }}"><div style="width:24px;height:1px;background:var(--border-default);flex-shrink:0;margin-top:22px"></div></sc-if>
+</div>
+</sc-for>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:24px;display:flex;gap:28px;align-items:center">
+<x-import component-from-global-scope="BrainRecycleDesignSystem_4ef5a7.TrustBadge" level="{{ activeNodeTrust }}" size="lg" hint-size="64px,84px"></x-import>
+<div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Fecha</div><div style="font-size:14px;color:var(--text-primary)">{{ activeNodeFecha }}</div></div>
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Actor</div><div style="font-size:14px;color:var(--text-primary)">{{ activeNodeActor }}</div></div>
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Volumen</div><div style="font-size:14px;font-family:var(--font-mono);color:var(--text-primary)">{{ activeNodeVolumen }}</div></div>
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Documento asociado</div><div style="font-size:13px;font-family:var(--font-mono);color:var(--color-forest)">{{ activeNodeDoc }}</div></div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ trazaViewMapa }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" id="mapa-parcelas" shape="rounded" radius="16" placeholder="Mapa de parcelas — arrastra una imagen del mapa" style="width:100%;height:360px;display:block" hint-size="100%,360px"></x-import>
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{ parcelas }}" as="pc" hint-placeholder-count="3">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:16px;display:flex;flex-direction:column;gap:4px">
+<div style="display:flex;align-items:center;gap:8px"><i class="ti ti-map-pin" style="font-size:15px;color:var(--color-forest)"></i><span style="font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--text-primary)">{{ pc.id }}</span></div>
+<div style="font-size:13px;color:var(--text-secondary)">{{ pc.cultivo }} · {{ pc.estado }}</div>
+<div style="font-size:12px;color:var(--text-muted)">Última aplicación: {{ pc.ultimaAplicacion }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ trazaViewRuta }}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
+<x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ruta-aplicacion" shape="rounded" radius="16" placeholder="Ruta de aplicación — arrastra una imagen del recorrido" style="width:100%;height:360px;display:block" hint-size="100%,360px"></x-import>
+<div style="display:flex;flex-direction:column">
+<sc-for list="{{ ruta }}" as="r" hint-placeholder-count="2">
+<div style="display:flex;gap:12px;padding:14px 0;border-bottom:1px solid var(--border-subtle)">
+<div style="width:26px;height:26px;border-radius:50%;background:var(--color-primary-subtle);color:var(--color-forest);display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;flex-shrink:0">{{ r.order }}</div>
+<div><div style="font-size:14px;font-weight:500;color:var(--text-primary)">{{ r.label }}</div><div style="font-size:13px;color:var(--text-muted)">{{ r.detail }}</div></div>
+</div>
+</sc-for>
+</div>
+</div>
+</sc-if>
+
+</div>
+</sc-if>
+
+<sc-if value="{{ isCompliance }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--text-primary);letter-spacing:-0.02em">Cumplimiento normativo, verificado antes de actuar</div>
+<div style="display:flex;align-items:center;gap:8px;background:var(--color-success-surface);border-radius:9999px;padding:6px 14px 6px 10px;flex-shrink:0">
+<span style="width:8px;height:8px;border-radius:50%;background:var(--color-success)"></span>
+<span style="font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--color-success);text-transform:uppercase;letter-spacing:0.05em">Estado general: verde</span>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Parcela</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Cultivo</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Estado fenológico</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Periodo</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Verificación</th>
+<th style="padding:10px 16px;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)"></th>
+</tr></thead>
+<tbody>
+<sc-for list="{{ complianceRows }}" as="row" hint-placeholder-count="4">
+<tr>
+<td style="padding:12px 16px;font-size:14px;font-family:var(--font-mono);color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">{{ row.parcela }}</td>
+<td style="padding:12px 16px;font-size:14px;color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">{{ row.cultivo }}</td>
+<td style="padding:12px 16px;font-size:14px;color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">{{ row.estado }}</td>
+<td style="padding:12px 16px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ row.periodo }}</td>
+<td style="padding:12px 16px;border-bottom:1px solid var(--border-subtle)">
+<sc-if value="{{ row.permitida }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:9999px;background:var(--color-success-surface);color:var(--color-success)"><i class="ti ti-circle-check" style="font-size:13px"></i>Permitida</span></sc-if>
+<sc-if value="{{ row.condicionada }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:9999px;background:var(--color-warning-surface);color:var(--color-warning)"><i class="ti ti-alert-triangle" style="font-size:13px"></i>Condicionada</span></sc-if>
+<sc-if value="{{ row.noPermitida }}" hint-placeholder-val="{{ false }}"><span style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:500;padding:3px 9px;border-radius:9999px;background:var(--color-error-surface);color:var(--color-error)"><i class="ti ti-circle-x" style="font-size:13px"></i>No permitida</span></sc-if>
+</td>
+<td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--border-subtle);white-space:nowrap">
+<button onClick="{{ row.onAction }}" style="background:none;border:none;padding:0;font-size:13px;font-weight:600;color:var(--color-forest);cursor:pointer" style-hover="color:var(--color-primary-hover)">{{ row.action }}</button>
+</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:20px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Normativa aplicable</div>
+<div style="font-size:14px;color:var(--text-primary);line-height:1.5">Real Decreto 506/2013, sobre productos fertilizantes.</div>
+<div style="font-size:12px;color:var(--text-muted)">Última actualización: 03 jun 2026</div>
+<div style="font-size:12px;color:var(--text-muted)">Fuente: BOE — Boletín Oficial del Estado</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isCertificados }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div>
+<div style="font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--text-primary);letter-spacing:-0.02em">Tus certificados acreditados</div>
+<div style="font-size:15px;color:var(--text-secondary);margin-top:6px">Emitidos por Kiwa España sobre la trazabilidad de tu espacio de datos.</div>
+</div>
+<button style="display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 16px;background:var(--color-primary);color:#fff;border:1px solid var(--color-primary);border-radius:var(--radius-xs);font-family:var(--font-display);font-weight:600;font-size:14px;cursor:pointer;flex-shrink:0" style-hover="background:var(--color-primary-hover);border-color:var(--color-primary-hover)"><i class="ti ti-plus" style="font-size:14px"></i>Solicitar nuevo certificado</button>
+</div>
+
+<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);overflow-x:auto">
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Certificado</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Alcance</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Estado</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Emisión</th>
+<th style="padding:10px 16px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Vigencia</th>
+<th style="padding:10px 16px;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)"></th>
+</tr></thead>
+<tbody>
+<sc-for list="{{ certificados }}" as="cert" hint-placeholder-count="4">
+<tr>
+<td style="padding:12px 16px;font-size:14px;font-weight:500;color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">{{ cert.nombre }}</td>
+<td style="padding:12px 16px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ cert.alcance }}</td>
+<td style="padding:12px 16px;border-bottom:1px solid var(--border-subtle)">
+<sc-if value="{{ cert.vigente }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:500;padding:3px 9px;border-radius:9999px;background:var(--color-success-surface);color:var(--color-success)">Vigente</span></sc-if>
+<sc-if value="{{ cert.tramite }}" hint-placeholder-val="{{ false }}"><span style="font-size:12px;font-weight:500;padding:3px 9px;border-radius:9999px;background:var(--color-warning-surface);color:var(--color-warning)">En trámite</span></sc-if>
+</td>
+<td style="padding:12px 16px;font-size:13px;font-family:var(--font-mono);color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ cert.emision }}</td>
+<td style="padding:12px 16px;font-size:13px;font-family:var(--font-mono);color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ cert.vigencia }}</td>
+<td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--border-subtle);white-space:nowrap">
+<sc-if value="{{ cert.hasTwoActions }}" hint-placeholder-val="{{ false }}">
+<button style="background:none;border:none;padding:0;margin-right:14px;font-size:13px;font-weight:600;color:var(--color-forest);cursor:pointer" style-hover="color:var(--color-primary-hover)">{{ cert.action1 }}</button>
+<button style="background:none;border:none;padding:0;font-size:13px;font-weight:600;color:var(--color-forest);cursor:pointer" style-hover="color:var(--color-primary-hover)">{{ cert.action2 }}</button>
+</sc-if>
+<sc-if value="{{ cert.hasOneAction }}" hint-placeholder-val="{{ false }}">
+<button style="background:none;border:none;padding:0;font-size:13px;font-weight:600;color:var(--color-forest);cursor:pointer" style-hover="color:var(--color-primary-hover)">{{ cert.action1 }}</button>
+</sc-if>
+</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:20px;display:flex;flex-direction:column;gap:12px">
+<div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Activos monetizables</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<span style="font-size:12px;font-weight:500;padding:4px 10px;border-radius:9999px;background:var(--color-sage);color:var(--color-deep)">Garantías de origen</span>
+<span style="font-size:12px;font-weight:500;padding:4px 10px;border-radius:9999px;background:var(--color-sage);color:var(--color-deep)">Créditos de carbono</span>
+<span style="font-size:12px;font-weight:500;padding:4px 10px;border-radius:9999px;background:var(--color-sage);color:var(--color-deep)">Circularidad de nutrientes</span>
+</div>
+<div style="font-size:13px;color:var(--text-secondary);line-height:1.6">Estos certificados son la base de los activos que tu planta puede monetizar.</div>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ isOrganizacion }}" hint-placeholder-val="{{ false }}">
+<div style="padding:32px;display:flex;flex-direction:column;gap:24px">
+<div style="font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--text-primary);letter-spacing:-0.02em">Mi organización</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:22px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:8px"><i class="ti ti-building" style="font-size:17px;color:var(--color-forest)"></i><span style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Datos de la empresa</span></div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Razón social</div><div style="font-size:14px;color:var(--text-primary)">Vega del Henares Bioenergía S.L.</div></div>
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">CIF</div><div style="font-size:14px;font-family:var(--font-mono);color:var(--text-primary)">B-12345678</div></div>
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Dirección</div><div style="font-size:14px;color:var(--text-primary)">Ctra. N-320, km 42 · Guadalajara</div></div>
+<div><div style="font-size:11px;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:3px">Sector</div><div style="font-size:14px;color:var(--text-primary)">Producción de biometano</div></div>
+</div>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:22px;display:flex;flex-direction:column;gap:14px">
+<div style="display:flex;align-items:center;gap:8px"><i class="ti ti-database" style="font-size:17px;color:var(--color-forest)"></i><span style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Conexión al espacio de datos</span></div>
+<div style="display:flex;align-items:center;gap:10px">
+<span style="width:8px;height:8px;border-radius:50%;background:var(--color-success)"></span>
+<span style="font-family:var(--font-display);font-weight:700;font-size:20px;color:var(--text-primary)">Activa</span>
+</div>
+<div style="font-size:13px;color:var(--text-muted);font-family:var(--font-mono)">Última sincronización: hace 4 min</div>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:22px;display:flex;flex-direction:column;gap:12px">
+<div style="display:flex;align-items:center;gap:8px"><i class="ti ti-building-factory-2" style="font-size:17px;color:var(--color-forest)"></i><span style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Plantas adheridas</span></div>
+<sc-for list="{{ plantasAdheridas }}" as="pa" hint-placeholder-count="3">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border-subtle)">
+<span style="font-size:14px;color:var(--text-primary)">{{ pa.name }}</span>
+<span style="font-size:11px;font-weight:500;padding:2px 8px;border-radius:9999px;background:var(--color-success-surface);color:var(--color-success)">Activa</span>
+</div>
+</sc-for>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:22px;display:flex;flex-direction:column;gap:10px">
+<div style="display:flex;align-items:center;gap:8px"><i class="ti ti-puzzle" style="font-size:17px;color:var(--color-forest)"></i><span style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Servicios contratados</span></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ serviciosContratados }}" as="sv" hint-placeholder-count="3">
+<span style="font-size:12px;font-weight:500;padding:4px 10px;border-radius:9999px;background:var(--color-primary-subtle);color:var(--color-forest)">{{ sv.title }}</span>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);overflow-x:auto">
+<div style="padding:16px 22px;border-bottom:1px solid var(--border-subtle);display:flex;align-items:center;gap:8px"><i class="ti ti-users" style="font-size:17px;color:var(--color-forest)"></i><span style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Usuarios y permisos</span></div>
+<table style="width:100%;border-collapse:collapse">
+<thead><tr>
+<th style="padding:10px 22px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Usuario</th>
+<th style="padding:10px 22px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Email</th>
+<th style="padding:10px 22px;text-align:left;font-size:11px;font-weight:600;color:var(--text-muted);letter-spacing:0.06em;text-transform:uppercase;border-bottom:1px solid var(--border-subtle);background:var(--color-neutral-50)">Rol</th>
+</tr></thead>
+<tbody>
+<sc-for list="{{ usuarios }}" as="u" hint-placeholder-count="3">
+<tr>
+<td style="padding:12px 22px;font-size:14px;color:var(--text-primary);border-bottom:1px solid var(--border-subtle)">{{ u.nombre }}</td>
+<td style="padding:12px 22px;font-size:13px;font-family:var(--font-mono);color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ u.email }}</td>
+<td style="padding:12px 22px;font-size:13px;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)">{{ u.rol }}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+</div>
+
+<div style="background:var(--surface-raised);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);box-shadow:var(--shadow-xs);padding:22px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+<div style="display:flex;align-items:center;gap:10px">
+<i class="ti ti-headset" style="font-size:20px;color:var(--color-forest)"></i>
+<div>
+<div style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary)">Soporte</div>
+<div style="font-size:13px;color:var(--text-secondary);margin-top:2px">soporte@brainrecycle.es · +34 900 123 456</div>
+</div>
+</div>
+<button style="height:36px;padding:0 16px;background:var(--color-white);color:var(--color-forest);border:1px solid var(--border-default);border-radius:var(--radius-xs);font-family:var(--font-display);font-weight:600;font-size:13px;cursor:pointer" style-hover="background:var(--color-primary-subtle);border-color:var(--color-forest)">Contactar soporte</button>
+</div>
+
+</div>
+</sc-if>
+
+</div>
+</main>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;initialSection&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;panel&quot;,&quot;options&quot;:[&quot;panel&quot;,&quot;casos&quot;,&quot;trazabilidad&quot;,&quot;compliance&quot;,&quot;certificados&quot;,&quot;organizacion&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;alertsEmpty&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = {
+    activeNav: this.props.initialSection || 'panel',
+    plantMenuOpen: false,
+    selectedPlant: 0,
+    trazaActiveNode: 'productor',
+    trazaView: 'timeline',
+  };
+
+  plantNames = ['Vega del Henares', 'Ribera del Duero', 'Costa del Sol'];
+
+  navDefs = [
+    { id: 'panel', label: 'Panel', icon: 'ti-layout-dashboard' },
+    { id: 'casos', label: 'Mis casos de uso', icon: 'ti-puzzle' },
+    { id: 'trazabilidad', label: 'Trazabilidad', icon: 'ti-route' },
+    { id: 'compliance', label: 'Compliance', icon: 'ti-shield-check' },
+    { id: 'certificados', label: 'Certificados', icon: 'ti-certificate' },
+    { id: 'organizacion', label: 'Mi organización', icon: 'ti-building' },
+  ];
+
+  kpiDefs = [
+    { icon: 'ti-gauge', label: 'Rendimiento actual', value: '94% vs teórico', valueSuccess: false, estado: 'Desviación −6%', tone: 'warning' },
+    { icon: 'ti-leaf', label: 'Huella de carbono', value: '0,43 tCO₂e/MWh', valueSuccess: false, estado: 'Cálculo activo', tone: 'info' },
+    { icon: 'ti-recycle', label: 'Residuos trazados', value: '1.284 lotes', valueSuccess: false, estado: '100% trazabilidad', tone: 'success' },
+    { icon: 'ti-shield-check', label: 'Estado de compliance', value: 'Verde', valueSuccess: true, estado: '2 aplicaciones pendientes', tone: 'warning' },
+    { icon: 'ti-certificate', label: 'Certificados', value: '3 vigentes', valueSuccess: false, estado: '1 en trámite', tone: 'warning' },
+    { icon: 'ti-database', label: 'Conexión al espacio de datos', value: 'Activa', valueSuccess: true, estado: 'Sync hace 4 min', tone: 'success' },
+  ];
+
+  alertDefs = [
+    { severity: 'success', icon: 'ti-trending-up', title: 'Alerta booster', body: 'Rendimiento por encima del teórico en el lote 847. Posible sinergia entre sustratos. Registrada en el histórico.', linkLabel: 'Ver detalle' },
+    { severity: 'error', icon: 'ti-alert-triangle', title: 'Alerta de inhibición', body: 'Caída significativa frente al teórico en el lote 851. Revisa la mezcla de sustratos.', linkLabel: 'Ver detalle' },
+    { severity: 'warning', icon: 'ti-gavel', title: 'Alerta de compliance', body: 'Aplicación prevista en la parcela ZA-04 no permitida en el periodo actual.', linkLabel: 'Ver normativa aplicable' },
+  ];
+
+  activityDefs = [
+    { icon: 'ti-package', title: 'Entrada de residuo registrada', meta: 'Lote 852', time: 'hace 12 min' },
+    { icon: 'ti-droplet', title: 'Aplicación de digestato validada', meta: 'Parcela ZA-02', time: 'hace 1 h' },
+    { icon: 'ti-certificate', title: 'Certificado emitido', meta: 'Garantía de origen', time: 'ayer' },
+    { icon: 'ti-radio', title: 'Sensor sincronizado', meta: 'Gasómetro principal', time: 'hace 4 min' },
+  ];
+
+  casosCatalog = [
+    { icon: 'ti-certificate', title: 'Cálculo de la huella de carbono', desc: 'El dato que más interesa al gasista, convertido en activo certificable.', status: 'activo' },
+    { icon: 'ti-clipboard-check', title: 'Trazabilidad completa', desc: 'Del productor al campo, sin puntos ciegos.', status: 'activo' },
+    { icon: 'ti-wifi', title: 'Integración y monitorización IoT', desc: 'Visibilidad total de tu planta, en tiempo real y con memoria.', status: 'desarrollo' },
+    { icon: 'ti-cpu', title: 'Modelos predictivos · Gemelos digitales', desc: 'Tu planta anticipa en lugar de reaccionar.', status: 'disponible' },
+    { icon: 'ti-drone', title: 'Inspección con drones', desc: 'Evidencia visual objetiva de lo que ocurre en el campo.', status: 'disponible' },
+    { icon: 'ti-shield-check', title: 'Verificación y compliance normativo dinámico', desc: 'El cumplimiento deja de ser una carga y pasa a ser automático.', status: 'disponible' },
+    { icon: 'ti-rosette', title: 'Emisión de certificados', desc: 'El respaldo Kiwa que da validez de mercado a cada afirmación.', status: 'activo' },
+  ];
+
+  trazaNodeDefs = [
+    { id: 'productor', icon: 'ti-leaf', label: 'Productor', fecha: '08 jul 2026', actor: 'Agropecuaria Del Sur S.L.', volumen: '—', doc: 'ALB-2026-0341', trust: 'verified' },
+    { id: 'transportista', icon: 'ti-truck', label: 'Transportista', fecha: '09 jul 2026', actor: 'Transportes Ecoresiduos S.L.', volumen: '12,4 t', doc: 'CTR-2026-0341', trust: 'verified' },
+    { id: 'entrada', icon: 'ti-package', label: 'Entrada en planta', fecha: '09 jul 2026', actor: 'Recepción · Báscula 2', volumen: '12,4 t', doc: 'LOT-2026-0852', trust: 'verified' },
+    { id: 'digestion', icon: 'ti-building-factory-2', label: 'Digestión', fecha: '10–24 jul 2026', actor: 'Digestor principal', volumen: '—', doc: 'DIG-0847', trust: 'partial' },
+    { id: 'gas', icon: 'ti-chart-bar', label: 'Producción de gas', fecha: '24 jul 2026', actor: 'Gasómetro principal', volumen: '—', doc: 'REN-0847', trust: 'verified' },
+    { id: 'digestato', icon: 'ti-droplet', label: 'Digestato', fecha: '25 jul 2026', actor: 'Salida de digestato', volumen: '8,1 t', doc: 'DIG-SAL-0847', trust: 'verified' },
+    { id: 'aplicacion', icon: 'ti-map-pin', label: 'Aplicación en parcela', fecha: '26 jul 2026', actor: 'Parcela ZA-02', volumen: '8,1 t', doc: 'JA-ZA02-26', trust: 'partial' },
+  ];
+
+  parcelaDefs = [
+    { id: 'ZA-01', cultivo: 'Cereal de invierno', estado: 'Post-cosecha', ultimaAplicacion: '12 jun 2026' },
+    { id: 'ZA-02', cultivo: 'Maíz', estado: 'Floración', ultimaAplicacion: '25 jul 2026' },
+    { id: 'ZA-04', cultivo: 'Girasol', estado: 'Pre-siembra', ultimaAplicacion: '—' },
+  ];
+
+  rutaDefs = [
+    { order: 1, label: 'Planta de biometano', detail: 'Salida de digestato · 8,1 t' },
+    { order: 2, label: 'Parcela ZA-02', detail: '18 km · Maíz en floración' },
+  ];
+
+  complianceDefs = [
+    { parcela: 'ZA-01', cultivo: 'Cereal de invierno', estado: 'Post-cosecha', periodo: 'Jul–ago 2026', verif: 'permitida', action: 'Ver justificación' },
+    { parcela: 'ZA-02', cultivo: 'Maíz', estado: 'Floración', periodo: 'Jul 2026', verif: 'condicionada', action: 'Ver condiciones' },
+    { parcela: 'ZA-04', cultivo: 'Girasol', estado: 'Pre-siembra', periodo: 'Jul 2026', verif: 'no_permitida', action: 'Ver normativa' },
+    { parcela: 'ZA-06', cultivo: 'Alfalfa', estado: 'Crecimiento vegetativo', periodo: 'Jul–sep 2026', verif: 'permitida', action: 'Ver justificación' },
+  ];
+
+  certDefs = [
+    { nombre: 'Trazabilidad de residuos', alcance: 'Lote 2024-Q2', estado: 'vigente', emision: '14 abr 2026', vigencia: '14 abr 2027', action1: 'Descargar', action2: 'Verificar' },
+    { nombre: 'Huella de carbono', alcance: 'Periodo 2025', estado: 'vigente', emision: '02 feb 2026', vigencia: '02 feb 2027', action1: 'Descargar', action2: 'Verificar' },
+    { nombre: 'Digestato como fertilizante orgánico', alcance: 'Lote 851', estado: 'tramite', emision: '—', vigencia: '—', action1: 'Ver estado', action2: null },
+    { nombre: 'Garantía de origen', alcance: 'Periodo 2025', estado: 'vigente', emision: '20 ene 2026', vigencia: '20 ene 2027', action1: 'Descargar', action2: 'Verificar' },
+  ];
+
+  usuariosDefs = [
+    { nombre: 'M. García', email: 'm.garcia@vegahenares.es', rol: 'Administrador' },
+    { nombre: 'A. López', email: 'a.lopez@vegahenares.es', rol: 'Operador' },
+    { nombre: 'C. Ruiz', email: 'c.ruiz@vegahenares.es', rol: 'Lectura' },
+  ];
+
+  setNav = (id) => this.setState({ activeNav: id, plantMenuOpen: false });
+  togglePlantMenu = () => this.setState((s) => ({ plantMenuOpen: !s.plantMenuOpen }));
+  pickPlant = (i) => this.setState({ selectedPlant: i, plantMenuOpen: false });
+  setTrazaView = (v) => this.setState({ trazaView: v });
+  selectTrazaNode = (id) => this.setState({ trazaActiveNode: id });
+  noop = () => {};
+  goHome = () => { window.location.href = 'Brain Recycle Home.dc.html'; };
+
+  renderVals() {
+    const { activeNav, plantMenuOpen, selectedPlant, trazaActiveNode, trazaView } = this.state;
+    const isPanel = activeNav === 'panel';
+    const alertsEmpty = this.props.alertsEmpty ?? false;
+
+    const activeNodeData = this.trazaNodeDefs.find((n) => n.id === trazaActiveNode) || this.trazaNodeDefs[0];
+
+    return {
+      plantName: this.plantNames[selectedPlant],
+      plants: this.plantNames.map((name, i) => ({ name, active: i === selectedPlant, select: () => this.pickPlant(i) })),
+      plantMenuOpen,
+      togglePlantMenu: this.togglePlantMenu,
+
+      navItems: this.navDefs.map((n) => ({ ...n, active: n.id === activeNav, notActive: n.id !== activeNav, onClick: () => this.setNav(n.id) })),
+      logoutClick: this.goHome,
+      goHome: this.goHome,
+
+      isPanel,
+      isCasos: activeNav === 'casos',
+      isTrazabilidad: activeNav === 'trazabilidad',
+      isCompliance: activeNav === 'compliance',
+      isCertificados: activeNav === 'certificados',
+      isOrganizacion: activeNav === 'organizacion',
+
+      casos: this.casosCatalog.map((c) => ({
+        ...c,
+        statusActivo: c.status === 'activo',
+        statusDesarrollo: c.status === 'desarrollo',
+        statusDisponible: c.status === 'disponible',
+        activate: this.noop,
+      })),
+
+      trazaViewTimeline: trazaView === 'timeline',
+      trazaViewTimelineOff: trazaView !== 'timeline',
+      trazaViewMapa: trazaView === 'mapa',
+      trazaViewMapaOff: trazaView !== 'mapa',
+      trazaViewRuta: trazaView === 'ruta',
+      trazaViewRutaOff: trazaView !== 'ruta',
+      setTrazaViewTimeline: () => this.setTrazaView('timeline'),
+      setTrazaViewMapa: () => this.setTrazaView('mapa'),
+      setTrazaViewRuta: () => this.setTrazaView('ruta'),
+
+      trazaNodes: this.trazaNodeDefs.map((n, i) => ({
+        ...n,
+        active: n.id === trazaActiveNode,
+        inactive: n.id !== trazaActiveNode,
+        hasNext: i < this.trazaNodeDefs.length - 1,
+        select: () => this.selectTrazaNode(n.id),
+      })),
+      activeNodeTrust: activeNodeData.trust,
+      activeNodeFecha: activeNodeData.fecha,
+      activeNodeActor: activeNodeData.actor,
+      activeNodeVolumen: activeNodeData.volumen,
+      activeNodeDoc: activeNodeData.doc,
+
+      parcelas: this.parcelaDefs,
+      ruta: this.rutaDefs,
+
+      complianceRows: this.complianceDefs.map((row) => ({
+        ...row,
+        permitida: row.verif === 'permitida',
+        condicionada: row.verif === 'condicionada',
+        noPermitida: row.verif === 'no_permitida',
+        onAction: this.noop,
+      })),
+
+      certificados: this.certDefs.map((c) => ({
+        ...c,
+        vigente: c.estado === 'vigente',
+        tramite: c.estado === 'tramite',
+        hasTwoActions: !!c.action2,
+        hasOneAction: !c.action2 && !!c.action1,
+      })),
+
+      plantasAdheridas: this.plantNames.map((name) => ({ name })),
+      usuarios: this.usuariosDefs,
+      serviciosContratados: this.casosCatalog.filter((c) => c.status === 'activo').map((c) => ({ title: c.title })),
+
+      kpis: this.kpiDefs.map((k) => ({
+        ...k,
+        valueDefault: !k.valueSuccess,
+        estadoWarning: k.tone === 'warning',
+        estadoSuccess: k.tone === 'success',
+        estadoInfo: k.tone === 'info',
+      })),
+
+      hasAlerts: !alertsEmpty,
+      hasNoAlerts: alertsEmpty,
+      alerts: this.alertDefs.map((a) => ({
+        ...a,
+        severitySuccess: a.severity === 'success',
+        severityError: a.severity === 'error',
+        severityWarning: a.severity === 'warning',
+        onLink: this.noop,
+      })),
+
+      activity: this.activityDefs,
+    };
+  }
+}
+</script>
+</body>
+</html>
