@@ -1,0 +1,1 @@
+Force GitHub Pages redeploy after restoring support.js to the last known-good version.
