@@ -1,0 +1,35 @@
+name: Activate Services viewport-fixed mobile header 0040
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/activate-services-viewport-header-0040.yml'
+permissions:
+  contents: write
+jobs:
+  patch:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load isolated Services header runtime
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path('Brain Recycle Servicios.dc.html')
+          s=p.read_text(encoding='utf-8')
+          tag='<script src="./services-fixed-header.js?v=20260808-0040" defer></script>'
+          s=re.sub(r'\n?<script src="\./services-fixed-header\.js(?:\?v=[^"]*)?" defer></script>', '', s)
+          m=re.search(r'<script src="\./support\.js(?:\?v=[^"]*)?"></script>', s)
+          if not m:
+              raise SystemExit('support.js tag not found')
+          s=s[:m.end()]+'\n'+tag+s[m.end():]
+          p.write_text(s,encoding='utf-8')
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'Brain Recycle Servicios.dc.html'
+          git commit -m 'Activate isolated viewport-fixed Services mobile header'
+          git push
