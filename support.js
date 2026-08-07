@@ -10,6 +10,9 @@
     var p=decodedPath();
     return /(?:Brain Recycle Home\.dc\.html|\/brainrecycle-demo\/?$|\/brainrecycle-demo\/index\.html$|\/index\.html$)/i.test(p);
   }
+  function isServices(){
+    return /Brain Recycle Servicios\.dc\.html$/i.test(decodedPath());
+  }
 
   function installPersistentMobileCSS(){
     if(!window.matchMedia('(max-width:760px)').matches) return;
@@ -47,6 +50,21 @@
     document.head.appendChild(st);
   }
 
+  function installServicesHeaderCSS(){
+    if(!isServices() || !window.matchMedia('(max-width:760px)').matches) return;
+    if(document.getElementById('br-services-fixed-header')) return;
+    var st=document.createElement('style');
+    st.id='br-services-fixed-header';
+    st.textContent='@media(max-width:760px){'+
+      /* Only pin the existing Services header. Do not alter the Jotform agent. */
+      'body{padding-top:72px!important;}'+
+      'body header{position:fixed!important;top:0!important;left:0!important;right:0!important;width:100%!important;height:72px!important;z-index:200!important;background:rgba(44,72,61,.96)!important;}'+
+      'body header>div:first-child{height:72px!important;}'+
+      'body .mobile-menu-panel{top:72px!important;height:calc(100dvh - 72px)!important;}'+
+    '}';
+    document.head.appendChild(st);
+  }
+
   function normalizeLanguageButton(){
     if(!isHome() || !window.matchMedia('(max-width:760px)').matches) return;
     var btn=document.querySelector('header .header-actions>button');
@@ -58,9 +76,11 @@
   function runAfterCore(){
     installPersistentMobileCSS();
     installHomeHeaderCSS();
+    installServicesHeaderCSS();
     normalizeLanguageButton();
     /* A few bounded retries only, because the DC runtime may render the header just after DOMContentLoaded. */
     if(isHome()) [120,350,800,1600].forEach(function(ms){setTimeout(function(){installHomeHeaderCSS();normalizeLanguageButton();},ms);});
+    if(isServices()) [120,350,800].forEach(function(ms){setTimeout(installServicesHeaderCSS,ms);});
   }
 
   var s=document.createElement('script');
