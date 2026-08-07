@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Roboto:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.34.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/styles.css">
+  <script src="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/_ds_bundle.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{font-family:var(--font-body);color:var(--text-primary);background:var(--color-deep)}
+    a{color:var(--text-link)}
+    a:hover{color:var(--text-link-hover)}
+    @keyframes lg-gradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    @keyframes lg-blob{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-28px) scale(1.06)}66%{transform:translate(-24px,20px) scale(0.97)}}
+    @keyframes lg-blob2{0%,100%{transform:translate(0,0) scale(1)}40%{transform:translate(-32px,26px) scale(1.05)}70%{transform:translate(22px,-16px) scale(0.98)}}
+    @keyframes lg-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes lg-spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .lg-a1{animation:lg-up .6s cubic-bezier(.16,1,.3,1) both}
+    .lg-a2{animation:lg-up .6s .1s cubic-bezier(.16,1,.3,1) both}
+    .lg-spin{animation:lg-spin .8s linear infinite}
+    .lg-input:focus{border-color:var(--color-forest)!important;box-shadow:var(--shadow-focus)}
+    .lg-btn:hover{background:var(--color-primary-hover)!important}
+    .lg-back:hover{color:var(--color-sage)!important}
+  </style>
+</helmet>
+
+<div style="min-height:100vh;width:100%;background:linear-gradient(135deg,var(--color-black),var(--color-deep),var(--color-forest),var(--color-deep),var(--color-black));background-size:280% 280%;animation:lg-gradient 20s ease-in-out infinite;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden">
+    <div style="position:absolute;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(63,104,91,0.32) 0%,transparent 70%);top:-180px;left:-140px;animation:lg-blob 18s ease-in-out infinite"></div>
+    <div style="position:absolute;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(204,230,177,0.1) 0%,transparent 70%);bottom:-140px;right:-120px;animation:lg-blob2 22s ease-in-out infinite"></div>
+    <div style="position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(204,230,177,0.07) 0%,transparent 70%);top:38%;left:58%;animation:lg-blob 26s ease-in-out infinite reverse"></div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;align-items:center;gap:32px;position:relative;z-index:1;width:100%;max-width:420px">
+
+    <img src="assets/logo-light.png" alt="brainrecycle" class="lg-a1" style="height:56px;width:auto;display:block">
+
+    <div class="lg-a2" style="background:var(--color-white);border:1px solid var(--border-subtle);border-radius:16px;box-shadow:var(--shadow-lg);padding:40px 36px;width:100%">
+
+      <div style="margin-bottom:28px">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-forest);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">Acceso</div>
+        <h1 style="font-family:var(--font-display);font-weight:700;font-size:24px;color:var(--text-primary);letter-spacing:-.02em;margin-bottom:8px">Entra en tu espacio de datos</h1>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.55">Introduce tus credenciales para acceder al panel de tu planta.</p>
+      </div>
+
+      <sc-if value="{{ authError }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;gap:10px;align-items:flex-start;background:var(--color-error-surface);border:1px solid var(--color-error);border-radius:8px;padding:12px 14px;margin-bottom:20px">
+          <i class="ti ti-alert-triangle" style="font-size:16px;color:var(--color-error);flex-shrink:0;margin-top:1px"></i>
+          <p style="font-size:13px;color:var(--color-error);line-height:1.5">Usuario o contraseña incorrectos. Comprueba los datos e inténtalo de nuevo.</p>
+        </div>
+      </sc-if>
+
+      <form onSubmit="{{ handleSubmit }}" noValidate="true" style="display:flex;flex-direction:column;gap:18px">
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px">Usuario</label>
+          <div style="position:relative">
+            <i class="ti ti-user" style="position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text-muted)"></i>
+            <input type="text" name="usuario" value="{{ usuario }}" onChange="{{ onUsuarioChange }}" placeholder="nombre@empresa.com" class="lg-input" style="width:100%;padding:11px 14px 11px 38px;border:1px solid {{ usuarioBorderColor }};border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none"/>
+          </div>
+          <sc-if value="{{ errorUsuario }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:var(--color-error);margin-top:5px">Requerido</p></sc-if>
+        </div>
+
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px">Contraseña</label>
+          <div style="position:relative">
+            <i class="ti ti-lock" style="position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:16px;color:var(--text-muted)"></i>
+            <input type="password" name="password" value="{{ password }}" onChange="{{ onPasswordChange }}" placeholder="········" class="lg-input" style="width:100%;padding:11px 14px 11px 38px;border:1px solid {{ passwordBorderColor }};border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none"/>
+          </div>
+          <sc-if value="{{ errorPassword }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:var(--color-error);margin-top:5px">Requerido</p></sc-if>
+        </div>
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <sc-if value="{{ showRememberMe }}" hint-placeholder-val="{{ true }}">
+            <label style="display:flex;align-items:center;gap:7px;font-size:13px;color:var(--text-secondary);cursor:pointer">
+              <input type="checkbox" checked="{{ rememberMe }}" onChange="{{ toggleRememberMe }}" style="accent-color:var(--color-forest)"/>Recordarme
+            </label>
+          </sc-if>
+          <a href="#" onClick="{{ preventDefault }}" style="font-size:13px;color:var(--color-forest);text-decoration:none">¿Has olvidado tu contraseña?</a>
+        </div>
+
+        <button type="submit" class="lg-btn" disabled="{{ submitting }}" style="{{ submitBtnStyle }}">
+          <sc-if value="{{ submitting }}" hint-placeholder-val="{{ false }}"><i class="ti ti-loader-2 lg-spin" style="font-size:15px"></i>Comprobando credenciales</sc-if>
+          <sc-if value="{{ notSubmitting }}" hint-placeholder-val="{{ true }}">Iniciar sesión<i class="ti ti-arrow-right" style="font-size:14px"></i></sc-if>
+        </button>
+      </form>
+    </div>
+
+    <a href="Brain Recycle Home.dc.html" class="lg-a1 lg-back" style="font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;display:inline-flex;align-items:center;gap:6px">
+      <i class="ti ti-arrow-left" style="font-size:13px"></i>Volver a brainrecycle&reg;
+    </a>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;showRememberMe&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;simulateError&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
+class Component extends DCLogic {
+  state = {
+    usuario: '',
+    password: '',
+    rememberMe: true,
+    errors: {},
+    submitting: false,
+    authError: false,
+  };
+
+  onUsuarioChange = (e) => this.setState({ usuario: e.target.value, authError: false });
+  onPasswordChange = (e) => this.setState({ password: e.target.value, authError: false });
+  toggleRememberMe = () => this.setState((s) => ({ rememberMe: !s.rememberMe }));
+  preventDefault = (e) => e.preventDefault();
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { usuario, password } = this.state;
+    const errors = {};
+    if (!usuario.trim()) errors.usuario = true;
+    if (!password.trim()) errors.password = true;
+    if (Object.keys(errors).length) {
+      this.setState({ errors });
+      return;
+    }
+    this.setState({ errors: {}, submitting: true, authError: false });
+    const simulateError = this.props.simulateError ?? false;
+    setTimeout(() => {
+      if (simulateError) {
+        this.setState({ submitting: false, authError: true });
+      } else {
+        window.location.href = 'Plant Dashboard.dc.html';
+      }
+    }, 700);
+  };
+
+  renderVals() {
+    const { usuario, password, rememberMe, errors, submitting, authError } = this.state;
+    const showRememberMe = this.props.showRememberMe ?? true;
+    const bc = (f) => (errors[f] ? 'var(--color-error)' : 'var(--border-default)');
+
+    return {
+      usuario, password, rememberMe, submitting, authError,
+      onUsuarioChange: this.onUsuarioChange,
+      onPasswordChange: this.onPasswordChange,
+      toggleRememberMe: this.toggleRememberMe,
+      preventDefault: this.preventDefault,
+      handleSubmit: this.handleSubmit,
+      showRememberMe,
+      errorUsuario: !!errors.usuario,
+      errorPassword: !!errors.password,
+      usuarioBorderColor: bc('usuario'),
+      passwordBorderColor: bc('password'),
+      notSubmitting: !submitting,
+      submitBtnStyle: {
+        width: '100%', height: '46px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+        fontFamily: 'var(--font-display)', fontSize: '15px', fontWeight: '600', color: '#fff',
+        background: submitting ? 'var(--color-primary-hover)' : 'var(--color-primary)',
+        border: 'none', borderRadius: '4px', cursor: submitting ? 'default' : 'pointer',
+        marginTop: '4px', transition: 'background 150ms ease',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

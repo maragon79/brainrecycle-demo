@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Roboto:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.34.0/dist/tabler-icons.min.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/effects.css">
+  <link rel="stylesheet" href="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/styles.css">
+  <script src="_ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/_ds_bundle.js"></script>
+  <script src="https://cdn.jotfor.ms/agent/embedjs/019fa26bce5070008110e6538cf51792df87/embed.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--text-primary); background: var(--color-deep); overflow-x: hidden; }
+    a { color: var(--text-link); text-decoration: none; }
+    a:hover { color: var(--text-link-hover); }
+    @keyframes br-up { from { opacity:0; transform:translateY(36px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes br-in { from { opacity:0; } to { opacity:1; } }
+    @keyframes br-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(7px)} }
+    @keyframes br-spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
+    @keyframes br-pulse { 0%,100%{opacity:0.3} 50%{opacity:0.7} }
+    @keyframes br-blob { 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(48px,-32px) scale(1.07)} 66%{transform:translate(-28px,22px) scale(0.96)} }
+    @keyframes br-blob2 { 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(-36px,28px) scale(1.05)} 70%{transform:translate(24px,-18px) scale(0.98)} }
+    @keyframes br-grid-drift { from{transform:translate(0,0)} to{transform:translate(32px,32px)} }
+    .ha1{animation:br-up .7s cubic-bezier(.16,1,.3,1) both}
+    .ha2{animation:br-up .7s .12s cubic-bezier(.16,1,.3,1) both}
+    .ha3{animation:br-up .7s .22s cubic-bezier(.16,1,.3,1) both}
+    .ha4{animation:br-up .7s .34s cubic-bezier(.16,1,.3,1) both}
+    .ha5{animation:br-up .7s .46s cubic-bezier(.16,1,.3,1) both}
+    .ha6{animation:br-in .9s .2s ease both}
+    .bounce{animation:br-bounce 2s ease-in-out infinite}
+    .spin-slow{animation:br-spin 40s linear infinite;transform-origin:200px 200px}
+    .spin-rev{animation:br-spin 28s linear infinite reverse;transform-origin:200px 200px}
+    .pulse{animation:br-pulse 3s ease-in-out infinite}
+    .nav-link:hover{color:var(--color-sage)!important}
+    .btn-inv:hover{background:rgba(255,255,255,.09)!important}
+    .svc-nav-wrap{position:relative;}
+    .svc-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(4px);opacity:0;visibility:hidden;transition:opacity 150ms ease,transform 150ms ease;pointer-events:none;}
+    .svc-nav-wrap:hover .svc-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto;}
+    .svc-dropdown a:hover{background:rgba(255,255,255,.06)!important;color:var(--color-sage)!important;}
+    .svc-card{transition:box-shadow 150ms ease,transform 150ms ease}
+    .svc-card:hover{box-shadow:var(--shadow-md)!important;transform:translateY(-2px)}
+    .step-card:hover{border-color:var(--color-forest)!important}
+    .silo-box:hover{border-color:rgba(63,104,91,.5)!important}
+    @media(max-width:900px){
+      .hm{display:none!important}.sm{display:block!important}.sflex{display:flex!important}
+      .g1m{grid-template-columns:1fr!important}.g2m{grid-template-columns:1fr 1fr!important}
+      .colm{flex-direction:column!important}.pxm{padding-left:20px!important;padding-right:20px!important}
+      .pym{padding-top:64px!important;padding-bottom:64px!important}
+    }
+    @media(min-width:901px){.hd{display:none!important}}
+  </style>
+</helmet>
+
+<!-- ══════════════════════════════════════ HEADER ══ -->
+<header style="position:sticky;top:0;z-index:200;background:rgba(44,72,61,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,0.07);">
+  <div style="max-width:1280px;margin:0 auto;padding:0 40px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:24px;" class="pxm">
+    <a href="Brain Recycle Home.dc.html" style="flex-shrink:0;display:flex;align-items:center;">
+      <img src="assets/logo-light.png" alt="brainrecycle®" style="height:28px;width:auto;display:block;">
+    </a>
+    <nav class="hm" style="display:flex;align-items:center;gap:32px;flex:1;justify-content:center;">
+      <a href="#como-funciona" class="nav-link" style="font-size:13.5px;color:rgba(255,255,255,.6);text-decoration:none;transition:color 150ms ease;">Cómo funciona</a>
+      <div class="svc-nav-wrap">
+        <a href="Brain Recycle Servicios.dc.html" class="nav-link" style="font-size:13.5px;color:rgba(255,255,255,.6);text-decoration:none;transition:color 150ms ease;display:flex;align-items:center;gap:4px;">Casos de uso <i class="ti ti-chevron-down" style="font-size:11px;"></i></a>
+        <div class="svc-dropdown" style="background:var(--color-deep);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px;min-width:320px;box-shadow:var(--shadow-md);z-index:50;display:flex;flex-direction:column;gap:1px;">
+          <sc-for list="{{ serviceLinks }}" as="s" hint-placeholder-count="7">
+            <a href="{{ s.href }}" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;text-decoration:none;color:rgba(255,255,255,.75);font-size:13px;transition:background 120ms ease,color 120ms ease;">
+              <i class="{{ s.icon }}" style="font-size:14px;color:var(--color-sage);flex-shrink:0;"></i>{{ s.title }}
+            </a>
+          </sc-for>
+          <a href="Brain Recycle Servicios.dc.html" style="display:flex;align-items:center;gap:6px;margin-top:4px;padding:9px 12px;border-top:1px solid rgba(255,255,255,.08);text-decoration:none;color:var(--color-sage);font-size:12.5px;font-weight:500;">Ver los siete casos de uso <i class="ti ti-arrow-right" style="font-size:11px;"></i></a>
+        </div>
+      </div>
+      <a href="#empezar" class="nav-link" style="font-size:13.5px;color:rgba(255,255,255,.6);text-decoration:none;transition:color 150ms ease;">Cómo se empieza</a>
+      <a href="#gobernanza" class="nav-link" style="font-size:13.5px;color:rgba(255,255,255,.6);text-decoration:none;transition:color 150ms ease;">Seguridad y gobernanza</a>
+    </nav>
+    <div class="hm" style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+      <button onClick="{{ toggleLang }}" class="btn-inv" style="font-family:var(--font-mono);font-size:12px;font-weight:500;color:rgba(255,255,255,.8);padding:7px 12px;border:1px solid rgba(255,255,255,.18);border-radius:4px;background:none;cursor:pointer;letter-spacing:.04em;transition:background 150ms ease;" aria-label="Change language">{{ langOther }}</button>
+      <a href="Plant Dashboard.dc.html" class="btn-inv" style="font-size:13.5px;font-weight:500;color:rgba(255,255,255,.8);padding:7px 18px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;transition:background 150ms ease;">Acceder</a>
+      <a href="#formulario" style="font-size:13.5px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:7px 18px;border-radius:4px;text-decoration:none;">Solicitar acceso</a>
+    </div>
+    <button class="sm" onClick="{{ toggleMenu }}" style="display:none;background:none;border:none;cursor:pointer;color:white;padding:6px;">
+      <i class="ti ti-menu-2" style="font-size:22px;"></i>
+    </button>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div style="background:var(--color-deep);border-top:1px solid rgba(255,255,255,.07);padding:20px;display:flex;flex-direction:column;gap:14px;">
+      <a href="#como-funciona" onClick="{{ toggleMenu }}" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Cómo funciona</a>
+      <div>
+        <a href="Brain Recycle Servicios.dc.html" onClick="{{ toggleMenu }}" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Casos de uso</a>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px;padding-left:14px;border-left:1px solid rgba(255,255,255,.1);">
+          <sc-for list="{{ serviceLinks }}" as="s" hint-placeholder-count="7">
+            <a href="{{ s.href }}" onClick="{{ toggleMenu }}" style="display:flex;align-items:center;gap:8px;font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;"><i class="{{ s.icon }}" style="font-size:13px;color:var(--color-sage);"></i>{{ s.title }}</a>
+          </sc-for>
+        </div>
+      </div>
+      <a href="#empezar" onClick="{{ toggleMenu }}" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Cómo se empieza</a>
+      <a href="#gobernanza" onClick="{{ toggleMenu }}" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Seguridad y gobernanza</a>
+      <div style="display:flex;gap:10px;margin-top:4px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);">
+        <a href="Plant Dashboard.dc.html" style="flex:1;text-align:center;font-size:14px;font-weight:500;color:rgba(255,255,255,.8);padding:10px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;">Acceder</a>
+        <a href="#formulario" onClick="{{ toggleMenu }}" style="flex:1;text-align:center;font-size:14px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:10px;border-radius:4px;text-decoration:none;">Solicitar acceso</a>
+      </div>
+    </div>
+  </sc-if>
+</header>
+
+<!-- ══════════════════════════════════════ HERO ══ -->
+<section style="background:var(--color-deep);min-height:calc(100vh - 68px);padding:60px 40px 48px;display:flex;align-items:center;position:relative;overflow:hidden;" class="pxm">
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;">
+    <div style="position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(63,104,91,0.28) 0%,transparent 70%);top:-180px;left:-100px;animation:br-blob 18s ease-in-out infinite;"></div>
+    <div style="position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(204,230,177,0.12) 0%,transparent 70%);bottom:-100px;right:-80px;animation:br-blob2 22s ease-in-out infinite;"></div>
+  </div>
+  <div style="position:absolute;inset:0;pointer-events:none;overflow:hidden;opacity:0.18;">
+    <svg viewBox="0 0 900 700" style="position:absolute;right:-120px;top:-80px;width:720px;height:auto;" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="450" cy="350" r="320" fill="none" stroke="#cce6b1" stroke-width="0.8" stroke-dasharray="4 12" class="spin-slow"/>
+      <circle cx="450" cy="350" r="220" fill="none" stroke="#cce6b1" stroke-width="0.8" class="spin-rev"/>
+      <circle cx="450" cy="350" r="140" fill="none" stroke="#cce6b1" stroke-width="0.8" stroke-dasharray="2 6"/>
+    </svg>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.08fr 1fr;gap:56px;align-items:center;position:relative;z-index:1;" class="g1m">
+    <!-- LEFT — text -->
+    <div>
+      <div class="ha1" style="display:inline-flex;align-items:center;gap:6px;background:rgba(204,230,177,.1);border:1px solid rgba(204,230,177,.25);border-radius:9999px;padding:4px 14px;margin-bottom:32px;">
+        <i class="ti ti-flame" style="font-size:11px;color:var(--color-sage);"></i>
+        <span style="font-family:var(--font-mono);font-size:11px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;">Biometano · Datos verificables</span>
+      </div>
+      <h1 class="ha2" style="font-family:var(--font-display);font-weight:700;font-size:clamp(36px,4.4vw,58px);color:var(--color-white);line-height:1.06;letter-spacing:-.025em;margin-bottom:24px;max-width:660px;">Los datos de tu planta, conectados y preparados para generar confianza<span style="color:var(--color-sage);">.</span></h1>
+      <p class="ha3" style="font-size:16px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:16px;max-width:540px;">La información sobre transporte, ESIR, dispositivos IoT, consumos, trazabilidad, digestato y parcelas suele estar dispersa en sistemas que no se comunican entre sí.</p>
+      <p class="ha3" style="font-size:16px;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:40px;max-width:540px;">BrainRecycle® la integra en un espacio de datos soberano, seguro e interoperable y la transforma en información útil para la gestión: informes, comunicaciones y evidencias preparadas para procesos de verificación y certificación.</p>
+      <div class="ha4" style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="#formulario" style="font-family:var(--font-display);font-size:14.5px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:13px 26px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+          Solicitar acceso a la demo <i class="ti ti-arrow-right" style="font-size:13px;"></i>
+        </a>
+        <a href="#como-funciona" class="btn-inv" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.8);padding:13px 26px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 150ms ease;">
+          Ver cómo funciona
+        </a>
+      </div>
+      <p class="ha5" style="font-size:13px;color:rgba(255,255,255,.38);line-height:1.65;margin-top:26px;max-width:480px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;">Un espacio de datos de <img src="assets/hispania-silva-logo-white.png" alt="Hispania Silva" style="height:11px;width:auto;opacity:.85;">. Asistencia técnica, compliance normativo y certificación acreditada: <img src="assets/kiwa-logo-white.png" alt="Kiwa España" style="height:11px;width:auto;opacity:.85;">.</p>
+    </div>
+
+    <!-- RIGHT — visual panel -->
+    <div class="ha6 hm" style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:#0e1e17;border-radius:20px;overflow:hidden;position:relative;flex:1;min-height:420px;">
+        <svg viewBox="0 0 560 440" style="position:absolute;inset:0;width:100%;height:100%;" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="he1" cx="50%" cy="38%" r="60%"><stop offset="0%" stop-color="#3f685b" stop-opacity=".85"/><stop offset="100%" stop-color="#0e1e17" stop-opacity="0"/></radialGradient>
+            <radialGradient id="he2" cx="50%" cy="53%" r="58%"><stop offset="0%" stop-color="#2c483d" stop-opacity=".95"/><stop offset="100%" stop-color="#0e1e17" stop-opacity="0"/></radialGradient>
+            <radialGradient id="he3" cx="50%" cy="68%" r="58%"><stop offset="0%" stop-color="#cce6b1" stop-opacity=".14"/><stop offset="100%" stop-color="#0e1e17" stop-opacity="0"/></radialGradient>
+          </defs>
+          <ellipse cx="280" cy="155" rx="258" ry="96" fill="url(#he1)" stroke="#3f685b" stroke-width="1.5" stroke-opacity=".7"/>
+          <ellipse cx="280" cy="232" rx="258" ry="96" fill="url(#he2)" stroke="#cce6b1" stroke-width="1" stroke-opacity=".3"/>
+          <ellipse cx="280" cy="309" rx="258" ry="96" fill="url(#he3)" stroke="#cce6b1" stroke-width=".8" stroke-opacity=".15"/>
+          <circle cx="40" cy="200" r="3" fill="#cce6b1" opacity=".55" class="pulse"/>
+          <circle cx="520" cy="175" r="3" fill="#cce6b1" opacity=".45" class="pulse"/>
+          <circle cx="280" cy="62" r="3.5" fill="#cce6b1" opacity=".65" class="pulse"/>
+          <circle cx="280" cy="385" r="3" fill="#cce6b1" opacity=".35" class="pulse"/>
+          <line x1="40" y1="232" x2="520" y2="232" stroke="rgba(204,230,177,.07)" stroke-width="1"/>
+          <line x1="40" y1="155" x2="520" y2="155" stroke="rgba(63,104,91,.15)" stroke-width="1"/>
+        </svg>
+        <div style="position:absolute;top:20px;right:20px;background:var(--color-white);border-radius:9999px;padding:5px 14px;display:flex;align-items:center;gap:7px;box-shadow:0 2px 8px rgba(0,0,0,.15);">
+          <img src="assets/kiwa-logo-blue.png" alt="Kiwa" style="height:12px;width:auto;display:block;">
+          <span style="font-family:var(--font-mono);font-size:9px;color:var(--text-muted);letter-spacing:.05em;text-transform:uppercase;font-weight:500;">certified</span>
+        </div>
+        <div style="position:absolute;top:20px;left:20px;background:var(--color-white);border-radius:9999px;padding:5px 12px;">
+          <img src="assets/hispania-silva-logo.png" alt="Hispania Silva" style="height:11px;width:auto;display:block;">
+        </div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:28px 28px 24px;background:linear-gradient(to top,rgba(14,30,23,.9) 0%,transparent 100%);">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--color-white);letter-spacing:-.02em;line-height:1;">brainrecycle<span style="color:var(--color-sage);">®</span></div>
+          <div style="font-size:12px;color:rgba(255,255,255,.35);margin-top:4px;font-family:var(--font-mono);">El espacio de datos soberano</div>
+        </div>
+      </div>
+      <!-- Eje strip — honest, on-message -->
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 18px;">
+        <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.32);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">El recorrido del dato</div>
+        <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+          <sc-for list="{{ ejeChips }}" as="c" hint-placeholder-count="5">
+            <span style="font-family:var(--font-mono);font-size:10px;font-weight:500;color:{{ c.color }};letter-spacing:.04em;">{{ c.label }}</span>
+            <sc-if value="{{ c.hasArrow }}" hint-placeholder-val="{{ true }}"><i class="ti ti-chevron-right" style="font-size:10px;color:rgba(255,255,255,.25);"></i></sc-if>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ CREDIBILITY BAR ══ -->
+<section style="background:var(--color-white);border-bottom:1px solid var(--border-subtle);">
+  <div style="max-width:1280px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:center;flex-wrap:wrap;" class="pxm colm">
+    <div style="display:flex;align-items:center;gap:12px;padding:22px 48px;" class="pxm" data-anim="" data-delay="0">
+      <i class="ti ti-building" style="font-size:18px;color:var(--color-forest);"></i>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px;">Promotor</div>
+        <img src="assets/hispania-silva-logo.png" alt="Hispania Silva" style="height:16px;width:auto;display:block;">
+      </div>
+    </div>
+    <div class="hm" style="width:1px;height:40px;background:var(--border-subtle);"></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:22px 48px;" class="pxm" data-anim="" data-delay="80">
+      <i class="ti ti-shield-check" style="font-size:18px;color:var(--color-forest);"></i>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px;">Compliance y certificación</div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+          <img src="assets/kiwa-logo-blue.png" alt="Kiwa España" style="height:17px;width:auto;display:block;">
+          <img src="assets/eu-data-space-kiwa-logo.png" alt="EU Data Space by Kiwa" style="height:20px;width:auto;display:block;">
+        </div>
+      </div>
+    </div>
+    <div class="hm" style="width:1px;height:40px;background:var(--border-subtle);"></div>
+    <div style="display:flex;align-items:center;gap:12px;padding:22px 48px;" class="pxm" data-anim="" data-delay="160">
+      <i class="ti ti-circle-check" style="font-size:18px;color:var(--color-forest);"></i>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px;">Validez</div>
+        <div style="font-family:var(--font-display);font-weight:600;font-size:15px;color:var(--text-primary);">Certificación acreditada</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ EL PROBLEMA ══ -->
+<section style="background:var(--surface-background);padding:112px 40px;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:80px;align-items:start;margin-bottom:56px;" class="g1m" data-anim="" data-delay="0">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-forest);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">El punto de partida</div>
+        <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3.6vw,46px);color:var(--text-primary);line-height:1.08;letter-spacing:-.025em;">Tu planta ya genera todos los datos. El problema es que no están juntos.</h2>
+      </div>
+      <div style="padding-top:6px;">
+        <p style="font-size:17px;color:var(--text-secondary);line-height:1.7;">Cada área produce información fiable por separado. Nadie tiene la imagen completa. Y cuando llega una auditoría, una memoria anual o una solicitud de certificación, alguien reconstruye a mano lo que el sistema ya sabía.</p>
+      </div>
+    </div>
+
+    <!-- Silos -->
+    <div style="font-family:var(--font-mono);font-size:11px;color:var(--text-muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;" data-anim="" data-delay="0">Siete silos que no se comunican entre sí</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:56px;" class="g2m" data-anim="" data-delay="60">
+      <sc-for list="{{ silos }}" as="s" hint-placeholder-count="7">
+        <div class="silo-box" style="background:var(--color-white);border:1px dashed var(--border-default);border-radius:12px;padding:20px;transition:border-color 150ms ease;">
+          <i class="{{ s.icon }}" style="font-size:18px;color:var(--color-forest);margin-bottom:14px;display:block;"></i>
+          <div style="font-family:var(--font-display);font-weight:600;font-size:14.5px;color:var(--text-primary);margin-bottom:6px;letter-spacing:-.01em;">{{ s.name }}</div>
+          <div style="font-size:12.5px;color:var(--text-muted);line-height:1.5;">{{ s.where }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- El coste, en tres frases -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;" class="g1m">
+      <div style="background:var(--color-white);border:1px solid var(--border-subtle);border-radius:12px;padding:32px 28px;box-shadow:var(--shadow-xs);" data-anim="" data-delay="0">
+        <div style="width:44px;height:44px;background:var(--color-primary-subtle);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;"><i class="ti ti-clock-hour-4" style="font-size:20px;color:var(--color-forest);"></i></div>
+        <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--text-primary);margin-bottom:12px;letter-spacing:-.01em;">Semanas de trabajo manual</h3>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Cada memoria, cada auditoría y cada certificación empieza recopilando lo mismo desde cero.</p>
+      </div>
+      <div style="background:var(--color-white);border:1px solid var(--border-subtle);border-radius:12px;padding:32px 28px;box-shadow:var(--shadow-xs);" data-anim="" data-delay="100">
+        <div style="width:44px;height:44px;background:var(--color-primary-subtle);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;"><i class="ti ti-coin-off" style="font-size:20px;color:var(--color-forest);"></i></div>
+        <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--text-primary);margin-bottom:12px;letter-spacing:-.01em;">Valor que no se cobra</h3>
+        <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;">Garantías de origen, créditos de carbono y circularidad de nutrientes exigen evidencias que no se pueden construir a tiempo.</p>
+      </div>
+      <div style="background:var(--color-deep);border-radius:12px;padding:32px 28px;" data-anim="" data-delay="200">
+        <div style="width:44px;height:44px;background:rgba(204,230,177,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;"><i class="ti ti-alert-triangle" style="font-size:20px;color:var(--color-sage);"></i></div>
+        <h3 style="font-family:var(--font-display);font-weight:600;font-size:19px;color:var(--color-white);margin-bottom:12px;letter-spacing:-.01em;">Riesgo normativo</h3>
+        <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.7;">El incumplimiento se detecta después de aplicar, cuando ya no tiene arreglo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ EL EJE: 5 PASOS ══ -->
+<section id="como-funciona" style="background:var(--color-black);padding:112px 40px;overflow:hidden;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:64px;" class="g1m" data-anim="" data-delay="0">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Cómo funciona</div>
+        <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(30px,3.8vw,50px);color:var(--color-white);line-height:1.06;letter-spacing:-.025em;">Del dato disperso al certificado acreditado.</h2>
+      </div>
+      <div>
+        <p style="font-size:16px;color:rgba(255,255,255,.5);line-height:1.7;">Un mismo recorrido para todos los casos de uso. Empiezas por donde más te urge y avanzas a tu ritmo.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <sc-for list="{{ ejePasos }}" as="p" hint-placeholder-count="5">
+        <div style="{{ p.rowStyle }}" data-anim="" data-delay="{{ p.delay }}">
+          <div style="display:flex;align-items:center;gap:20px;min-width:0;flex:1;" class="colm">
+            <div style="display:flex;align-items:baseline;gap:12px;min-width:230px;">
+              <span style="font-family:var(--font-mono);font-size:30px;font-weight:500;color:{{ p.accent }};line-height:1;opacity:.75;">{{ p.num }}</span>
+              <span style="font-family:var(--font-mono);font-size:13px;font-weight:500;color:{{ p.accent }};letter-spacing:.1em;">{{ p.tag }}</span>
+            </div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-family:var(--font-display);font-weight:600;font-size:18px;color:var(--color-white);letter-spacing:-.01em;margin-bottom:6px;">{{ p.title }}</div>
+              <p style="font-size:14px;color:rgba(255,255,255,.5);line-height:1.6;max-width:640px;">{{ p.desc }}</p>
+            </div>
+          </div>
+          <div style="{{ p.sostieneStyle }}"><sc-if value="{{ p.sostieneIsKiwa }}" hint-placeholder-val="{{ false }}"><img src="assets/kiwa-logo-white.png" alt="Kiwa" style="height:11px;width:auto;"></sc-if><sc-if value="{{ p.sostieneIsKiwa }}" hint-placeholder-val="{{ false }}"><span style="opacity:.6">·</span></sc-if><i class="{{ p.sostieneIcon }}" style="font-size:12px;"></i>{{ p.sostiene }}</div>
+        </div>
+      </sc-for>
+    </div>
+
+    <!-- Cierre: separación Kiwa -->
+    <div style="margin-top:40px;background:rgba(204,230,177,.06);border:1px solid rgba(204,230,177,.18);border-radius:12px;padding:28px 32px;display:flex;gap:18px;align-items:flex-start;" class="colm" data-anim="" data-delay="0">
+      <i class="ti ti-scale" style="font-size:22px;color:var(--color-sage);flex-shrink:0;margin-top:2px;"></i>
+      <p style="font-size:15px;color:rgba(255,255,255,.72);line-height:1.7;max-width:900px;">Los tres primeros pasos ocurren dentro del espacio de datos. Los dos últimos los sostiene Kiwa España como tercera parte independiente: asistencia técnica, compliance normativo y certificación acreditada. Kiwa no participa en el desarrollo del espacio de datos, y esa separación es lo que da validez al certificado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ QUÉ ES UN ESPACIO DE DATOS ══ -->
+<section id="espacio-de-datos" style="background:var(--color-white);padding:112px 40px;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:56px;align-items:end;" class="g1m" data-anim="" data-delay="0">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-forest);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Qué es</div>
+        <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.4vw,44px);color:var(--text-primary);line-height:1.1;letter-spacing:-.025em;">No es un software. Es el sitio donde tu dato deja de valer a solas.</h2>
+      </div>
+      <div>
+        <blockquote style="border-left:3px solid var(--color-forest);padding-left:28px;margin:0;">
+          <p style="font-size:15.5px;color:var(--text-secondary);line-height:1.7;">Un espacio de datos es un ecosistema donde varios actores —productor de residuo, transportista, planta, gasista y certificador— comparten información bajo reglas explícitas, sin que ninguno pierda el control de lo suyo. brainrecycle® es el espacio de datos soberano de Hispania Silva para el sector del biometano.</p>
+        </blockquote>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:56px;" class="g1m" data-anim="" data-delay="0">
+      <div style="background:var(--surface-background);border:1px solid var(--border-subtle);border-radius:12px;padding:28px 30px;">
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;">En una plataforma</div>
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.7;">Subes tus datos y pasan a estar en el sistema de otro.</p>
+      </div>
+      <div style="background:var(--color-primary-subtle);border:1px solid rgba(63,104,91,.25);border-radius:12px;padding:28px 30px;">
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--color-forest);letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px;">En un espacio de datos</div>
+        <p style="font-size:15px;color:var(--text-primary);line-height:1.7;">Tus datos siguen siendo tuyos y tú decides, dato a dato, quién accede y para qué.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="g2m">
+      <sc-for list="{{ propiedades }}" as="p" hint-placeholder-count="4">
+        <div style="background:var(--surface-background);border:1px solid var(--border-subtle);border-radius:12px;padding:28px;" data-anim="" data-delay="{{ p.delay }}">
+          <div style="width:40px;height:40px;background:var(--color-primary-subtle);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;">
+            <i class="{{ p.icon }}" style="font-size:18px;color:var(--color-forest);"></i>
+          </div>
+          <h3 style="font-family:var(--font-display);font-weight:600;font-size:16px;color:var(--text-primary);margin-bottom:10px;letter-spacing:-.01em;">{{ p.title }}</h3>
+          <p style="font-size:13px;color:var(--text-secondary);line-height:1.7;">{{ p.body }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ CASOS DE USO ══ -->
+<section id="casos" style="background:var(--surface-background);padding:112px 40px;position:relative;overflow:hidden;" class="pxm pym">
+  <div style="position:absolute;inset:-32px;pointer-events:none;opacity:0.45;animation:br-grid-drift 8s linear infinite;">
+    <div style="width:100%;height:100%;background-image:radial-gradient(circle,rgba(63,104,91,0.35) 1px,transparent 1px);background-size:32px 32px;"></div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;position:relative;z-index:1;">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:56px;gap:24px;flex-wrap:wrap;" data-anim="" data-delay="0">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-forest);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Casos de uso</div>
+        <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(30px,4vw,52px);color:var(--text-primary);line-height:1.05;letter-spacing:-.025em;max-width:560px;">Siete casos de uso sobre una misma infraestructura de datos.</h2>
+        <p style="font-size:16px;color:var(--text-secondary);line-height:1.65;max-width:560px;margin-top:18px;">Cada caso de uso resuelve una necesidad concreta de la planta. Todos reutilizan la misma trazabilidad, evitando duplicar integraciones y evidencias.</p>
+      </div>
+      <a href="Brain Recycle Servicios.dc.html" style="font-size:13.5px;font-weight:500;color:var(--color-forest);border:1px solid var(--border-default);border-radius:4px;padding:10px 20px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;background:var(--color-white);">Ver los siete casos de uso <i class="ti ti-arrow-right" style="font-size:12px;"></i></a>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="g2m">
+      <sc-for list="{{ casosDestacados }}" as="c" hint-placeholder-count="4">
+        <a href="{{ c.href }}" class="svc-card" style="{{ c.cardStyle }}">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <span style="font-family:var(--font-mono);font-size:14px;font-weight:500;color:{{ c.numColor }};">{{ c.num }}</span>
+            <i class="{{ c.icon }}" style="font-size:18px;color:{{ c.iconColor }};"></i>
+          </div>
+          <span style="font-family:var(--font-mono);font-size:9.5px;color:{{ c.ejeColor }};letter-spacing:.08em;text-transform:uppercase;">{{ c.eje }}</span>
+          <h3 style="font-family:var(--font-display);font-weight:600;font-size:15px;color:{{ c.titleColor }};line-height:1.3;letter-spacing:-.01em;">{{ c.title }}</h3>
+          <p style="font-size:13px;color:{{ c.descColor }};line-height:1.6;flex:1;">{{ c.desc }}</p>
+          <span style="font-size:12px;color:{{ c.linkColor }};display:inline-flex;align-items:center;gap:4px;">Ver el caso de uso <i class="ti ti-arrow-right" style="font-size:11px;"></i></span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ EL RESULTADO ══ -->
+<section style="background:var(--color-white);padding:112px 40px;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="margin-bottom:56px;" data-anim="" data-delay="0">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-forest);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Qué cambia</div>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(30px,4vw,52px);color:var(--text-primary);line-height:1.05;letter-spacing:-.025em;">Lo que te cuesta tres semanas.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;" class="g2m">
+      <sc-for list="{{ resultados }}" as="r" hint-placeholder-count="4">
+        <div style="{{ r.cardStyle }}" data-anim="" data-delay="{{ r.delay }}">
+          <i class="{{ r.icon }}" style="font-size:24px;color:{{ r.iconColor }};margin-bottom:20px;display:block;"></i>
+          <h3 style="font-family:var(--font-display);font-weight:700;font-size:20px;color:{{ r.titleColor }};margin-bottom:12px;letter-spacing:-.015em;line-height:1.15;">{{ r.title }}</h3>
+          <p style="font-size:14px;color:{{ r.descColor }};line-height:1.7;">{{ r.desc }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ PRUEBA: EL PANEL DE TU PLANTA ══ -->
+<section style="background:var(--color-deep);padding:112px 40px;overflow:hidden;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;" class="g1m">
+    <div data-anim="" data-delay="0">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Ver para creer</div>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.6vw,46px);color:var(--color-white);line-height:1.08;letter-spacing:-.025em;margin-bottom:24px;">Así se ve tu planta cuando los datos están juntos.</h2>
+      <p style="font-size:15.5px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:16px;">Trazabilidad nodo a nodo con el documento asociado a cada paso. Compliance en semáforo, parcela por parcela, con la normativa aplicable citada y fechada. Certificados descargables y verificables. Alertas de rendimiento cuando el lote se desvía del teórico.</p>
+      <p style="font-size:15.5px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:36px;">No es una maqueta comercial: es el panel real del espacio de datos, con datos de demostración.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+        <a href="#formulario" style="font-family:var(--font-display);font-size:14.5px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:13px 26px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Solicitar acceso a la demo <i class="ti ti-arrow-right" style="font-size:13px;"></i></a>
+        <a href="Login.dc.html" class="btn-inv" style="font-size:14.5px;font-weight:500;color:rgba(255,255,255,.8);padding:13px 26px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 150ms ease;">Ver el panel de demostración</a>
+      </div>
+      <p style="font-size:13px;color:rgba(255,255,255,.38);line-height:1.65;margin-top:20px;max-width:440px;">Acceso para plantas en evaluación. Te damos credenciales y te acompañamos en la primera sesión.</p>
+    </div>
+    <!-- Panel preview -->
+    <a href="Login.dc.html" style="text-decoration:none;display:block;" data-anim="" data-delay="150">
+      <div style="background:#0e1e17;border:1px solid rgba(255,255,255,.09);border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.35);">
+        <div style="height:38px;background:rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:7px;padding:0 16px;">
+          <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);"></span>
+          <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);"></span>
+          <span style="width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18);"></span>
+          <span style="margin-left:12px;font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.35);">panel.brainrecycle.es</span>
+        </div>
+        <div style="padding:24px;">
+          <div style="font-family:var(--font-display);font-weight:700;font-size:17px;color:#fff;margin-bottom:4px;">El estado de tu planta</div>
+          <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.35);margin-bottom:20px;">Datos de demostración</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;">
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px;">
+              <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Compliance</div>
+              <div style="display:flex;align-items:center;gap:6px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--color-sage);"></span><span style="font-family:var(--font-display);font-weight:700;font-size:15px;color:#fff;">Conforme</span></div>
+            </div>
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px;">
+              <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Trazabilidad</div>
+              <div style="font-family:var(--font-display);font-weight:700;font-size:20px;color:#fff;">100<span style="font-size:12px;color:var(--color-sage);">%</span></div>
+            </div>
+            <div style="background:var(--color-sage);border-radius:10px;padding:14px;">
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--color-deep);opacity:.6;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Certificados</div>
+              <div style="font-family:var(--font-mono);font-weight:600;font-size:20px;color:var(--color-deep);">04</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;padding:14px;background:rgba(204,230,177,.08);border:1px solid rgba(204,230,177,.18);border-radius:10px;">
+            <i class="ti ti-trending-up" style="font-size:16px;color:var(--color-sage);flex-shrink:0;"></i>
+            <div><div style="font-size:12.5px;font-weight:600;color:#fff;margin-bottom:2px;">Alerta booster · Lote 1.284</div><div style="font-size:11.5px;color:rgba(255,255,255,.45);line-height:1.4;">Pico de rendimiento sobre el teórico. Registrado para replicar.</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:14px;font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.35);display:flex;align-items:center;justify-content:center;gap:6px;">Entrar al panel <i class="ti ti-arrow-right" style="font-size:11px;"></i></div>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ CÓMO SE EMPIEZA ══ -->
+<section id="empezar" style="background:var(--color-black);padding:112px 40px;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="margin-bottom:56px;max-width:640px;" data-anim="" data-delay="0">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">El recorrido</div>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(30px,4vw,50px);color:var(--color-white);line-height:1.06;letter-spacing:-.025em;">No hace falta activarlo todo el primer día.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:14px;" class="g2m">
+      <sc-for list="{{ recorrido }}" as="p" hint-placeholder-count="5">
+        <div class="step-card" style="{{ p.cardStyle }}" data-anim="" data-delay="{{ p.delay }}">
+          <div style="font-family:var(--font-mono);font-size:32px;font-weight:500;color:{{ p.numColor }};line-height:1;margin-bottom:22px;opacity:.7;">{{ p.num }}</div>
+          <h3 style="font-family:var(--font-display);font-weight:600;font-size:16px;color:{{ p.titleColor }};margin-bottom:12px;letter-spacing:-.01em;line-height:1.25;">{{ p.title }}</h3>
+          <p style="font-size:13px;color:{{ p.descColor }};line-height:1.65;margin-bottom:18px;flex:1;">{{ p.desc }}</p>
+          <sc-if value="{{ p.hasWho }}" hint-placeholder-val="{{ false }}"><div style="font-family:var(--font-mono);font-size:10.5px;color:{{ p.whoColor }};letter-spacing:.04em;">{{ p.who }}</div></sc-if>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:48px;text-align:center;" data-anim="" data-delay="0">
+      <a href="#formulario" style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:14px 30px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">Solicitar acceso a la demo <i class="ti ti-arrow-right" style="font-size:13px;"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ GOBERNANZA ══ -->
+<section id="gobernanza" style="background:var(--color-deep);padding:112px 40px;" class="pxm pym">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="max-width:680px;margin-bottom:56px;" data-anim="" data-delay="0">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Seguridad y gobernanza</div>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.5vw,44px);color:var(--color-white);line-height:1.1;letter-spacing:-.025em;margin-bottom:24px;">Reglas claras. Confianza demostrable.</h2>
+      <p style="font-size:16px;color:rgba(255,255,255,.6);line-height:1.65;">Tus datos permanecen en tus sistemas. Solo se comparten cuando existe una autorización expresa, con condiciones que tú defines y un registro trazable de cada operación.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;margin-bottom:36px;" data-anim="" data-delay="60">
+      <div style="display:flex;align-items:center;">
+        <sc-for list="{{ stepDots }}" as="sd" hint-placeholder-count="3">
+          <button onClick="{{ sd.go }}" style="{{ sd.circleStyle }}">{{ sd.num }}</button>
+          <sc-if value="{{ sd.notLast }}" hint-placeholder-val="{{ true }}"><div style="{{ sd.lineStyle }}"></div></sc-if>
+        </sc-for>
+      </div>
+      <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase;text-align:right;">Paso {{ segStepNum }} de 3</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:56px;align-items:center;margin-bottom:20px;" class="g1m" data-anim="" data-delay="80">
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px;">{{ pilarActual.eyebrow }}</div>
+        <div style="font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.4vw,32px);color:var(--color-white);line-height:1.2;letter-spacing:-.015em;margin-bottom:16px;">{{ pilarActual.title }}</div>
+        <p style="font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:22px;">{{ pilarActual.body }}</p>
+        <div style="display:flex;align-items:baseline;gap:10px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);">
+          <span style="font-family:var(--font-display);font-weight:700;font-size:32px;color:var(--color-sage);">{{ pilarActual.stat }}</span>
+          <span style="font-size:12.5px;color:rgba(255,255,255,.4);line-height:1.4;max-width:200px;">{{ pilarActual.statLabel }}</span>
+        </div>
+      </div>
+      <div>
+        <sc-if value="{{ segIs0 }}" hint-placeholder-val="{{ true }}">
+          <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px;display:grid;grid-template-columns:1fr auto 1fr;gap:18px;align-items:center;">
+            <div style="background:var(--color-white);border-radius:10px;padding:22px 16px;text-align:center;">
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--text-muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Tu organización</div>
+              <i class="ti ti-database" style="font-size:26px;color:var(--color-forest);"></i>
+              <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--text-primary);margin-top:10px;">Sistema de origen</div>
+              <div style="font-size:10.5px;color:var(--text-muted);margin-top:4px;">El dato permanece aquí</div>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.5);font-size:9px;letter-spacing:.03em;text-align:center;">
+              <i class="ti ti-lock" style="font-size:16px;color:var(--color-sage);"></i>
+              <span>Conexión autorizada</span>
+            </div>
+            <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:22px 16px;text-align:center;">
+              <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Espacio de datos</div>
+              <i class="ti ti-plug-connected" style="font-size:26px;color:var(--color-sage);"></i>
+              <div style="font-family:var(--font-display);font-weight:700;font-size:14px;color:var(--color-white);margin-top:10px;">Conector seguro</div>
+              <div style="font-size:10.5px;color:rgba(255,255,255,.45);margin-top:4px;">Negocia; no almacena por defecto</div>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ segIs1 }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <sc-for list="{{ controlCards }}" as="cc" hint-placeholder-count="4">
+              <div style="{{ cc.style }}">
+                <div style="font-family:var(--font-mono);font-size:9px;color:{{ cc.eyebrowColor }};letter-spacing:.12em;">{{ cc.eyebrow }}</div>
+                <div style="font-family:var(--font-display);font-weight:700;font-size:16px;{{ cc.titleColor }}margin-top:16px;">{{ cc.title }}</div>
+                <div style="font-size:11px;{{ cc.descColor }}margin-top:6px;">{{ cc.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+        <sc-if value="{{ segIs2 }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <sc-for list="{{ evidenceSteps }}" as="es" hint-placeholder-count="5">
+              <div style="{{ es.style }}">
+                <div style="{{ es.badgeStyle }}">{{ es.num }}</div>
+                <div style="font-family:var(--font-display);font-weight:700;font-size:13px;{{ es.titleColor }}">{{ es.title }}</div>
+                <div style="font-size:11px;{{ es.descColor }}">{{ es.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:36px;" class="g1m" data-anim="" data-delay="100">
+      <sc-for list="{{ pilarActual.checks }}" as="chk" hint-placeholder-count="3">
+        <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.5;padding-top:12px;border-top:1px solid rgba(255,255,255,.08);"><span style="color:var(--color-sage);font-weight:700;margin-right:5px;">✓</span>{{ chk }}</div>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:10px;margin-bottom:64px;" data-anim="" data-delay="120">
+      <button onClick="{{ segPrev }}" disabled="{{ segAtStart }}" style="{{ segPrevStyle }}">← Anterior</button>
+      <button onClick="{{ segNext }}" style="{{ segNextStyle }}">{{ segNextLabel }}</button>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;padding-top:56px;border-top:1px solid rgba(255,255,255,.08);" class="g1m">
+      <div data-anim="" data-delay="0">
+        <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-sage);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Quién hace qué</div>
+        <h3 style="font-family:var(--font-display);font-weight:700;font-size:clamp(22px,2.2vw,28px);color:var(--color-white);line-height:1.2;letter-spacing:-.02em;">Quién promueve, quién desarrolla, quién certifica.</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;" data-anim="" data-delay="100">
+        <sc-for list="{{ gobernanza }}" as="g" hint-placeholder-count="5">
+          <div style="{{ g.rowStyle }}">
+            <div style="font-family:var(--font-mono);font-size:12px;color:rgba(255,255,255,.35);letter-spacing:.02em;">{{ g.label }}</div>
+            <p style="font-size:14px;color:rgba(255,255,255,.72);line-height:1.7;">{{ g.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ FORMULARIO ══ -->
+<section id="formulario" style="background:var(--color-white);padding:112px 40px;" class="pxm pym">
+  <div style="max-width:800px;margin:0 auto;">
+    <div style="margin-bottom:52px;" data-anim="" data-delay="0">
+      <div style="font-family:var(--font-mono);font-size:11px;color:var(--color-forest);letter-spacing:.08em;text-transform:uppercase;margin-bottom:16px;">Solicitud de acceso</div>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(28px,3.5vw,44px);color:var(--text-primary);line-height:1.05;letter-spacing:-.025em;margin-bottom:12px;">Pide acceso a la demo de tu sector.</h2>
+      <p style="font-size:16px;color:var(--text-muted);line-height:1.65;">Cuéntanos cómo es tu planta y qué caso de uso te interesa. Te damos credenciales para el panel de demostración y concertamos una sesión para enseñártelo.</p>
+    </div>
+    <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--color-success-surface);border:1px solid var(--color-success);border-radius:12px;padding:32px 28px;display:flex;gap:18px;align-items:flex-start;">
+        <i class="ti ti-circle-check" style="font-size:22px;color:var(--color-success);flex-shrink:0;"></i>
+        <div>
+          <div style="font-family:var(--font-display);font-weight:600;font-size:17px;color:var(--color-success);margin-bottom:6px;">Solicitud recibida</div>
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.65;">Te escribimos en menos de 48 horas con las credenciales de la demo y una propuesta de fecha para la sesión.</p>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ formNotSubmitted }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ handleFormSubmit }}" style="display:flex;flex-direction:column;gap:22px;" noValidate="true" data-anim="" data-delay="100">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="g1m">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Nombre y apellidos <span style="color:var(--color-error);">*</span></label>
+            <input type="text" name="nombre" placeholder="Tu nombre completo" style="width:100%;padding:11px 14px;border:1px solid {{ nombreBorderColor }};border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+            <sc-if value="{{ errorNombre }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:var(--color-error);margin-top:4px;">Requerido</p></sc-if>
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Empresa <span style="color:var(--color-error);">*</span></label>
+            <input type="text" name="empresa" placeholder="Nombre de tu empresa" style="width:100%;padding:11px 14px;border:1px solid {{ empresaBorderColor }};border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+            <sc-if value="{{ errorEmpresa }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:var(--color-error);margin-top:4px;">Requerido</p></sc-if>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;" class="g1m">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Cargo <span style="color:var(--color-error);">*</span></label>
+            <input type="text" name="cargo" placeholder="Tu cargo en la empresa" style="width:100%;padding:11px 14px;border:1px solid {{ cargoBorderColor }};border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+            <sc-if value="{{ errorCargo }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:var(--color-error);margin-top:4px;">Requerido</p></sc-if>
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Email corporativo <span style="color:var(--color-error);">*</span></label>
+            <input type="email" name="email" placeholder="nombre@empresa.com" style="width:100%;padding:11px 14px;border:1px solid {{ emailBorderColor }};border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+            <sc-if value="{{ errorEmail }}" hint-placeholder-val="{{ false }}"><p style="font-size:12px;color:var(--color-error);margin-top:4px;">{{ emailErrorMsg }}</p></sc-if>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;" class="g1m">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Teléfono</label>
+            <input type="tel" name="telefono" placeholder="+34 600 000 000" style="width:100%;padding:11px 14px;border:1px solid var(--border-default);border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Número de plantas</label>
+            <input type="number" name="nplantas" placeholder="1" min="1" style="width:100%;padding:11px 14px;border:1px solid var(--border-default);border-radius:4px;font-family:var(--font-mono);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Ubicación</label>
+            <input type="text" name="ubicacion" placeholder="Comunidad autónoma" style="width:100%;padding:11px 14px;border:1px solid var(--border-default);border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'">
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">¿Qué te urge más ahora mismo?</label>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" class="g1m">
+            <sc-for list="{{ urgencias }}" as="u" hint-placeholder-count="5">
+              <label style="{{ u.style }}"><input type="radio" name="urgencia" value="{{ u.value }}" checked="{{ u.checked }}" onChange="{{ selectUrgencia }}" style="accent-color:var(--color-forest);"> {{ u.label }}</label>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:10px;">¿Qué casos de uso te interesan?</label>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;" class="g1m">
+            <sc-for list="{{ interesCasos }}" as="c" hint-placeholder-count="7">
+              <label style="display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border-subtle);border-radius:4px;cursor:pointer;font-size:13px;color:var(--text-secondary);"><input type="checkbox" name="{{ c.name }}" style="accent-color:var(--color-forest);"> {{ c.label }}</label>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <label style="display:block;font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:7px;">Comentarios</label>
+          <textarea name="comentarios" rows="4" placeholder="Cuéntanos más sobre tu planta, tus objetivos o cualquier otra información relevante." style="width:100%;padding:11px 14px;border:1px solid var(--border-default);border-radius:4px;font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--color-white);outline:none;resize:vertical;line-height:1.55;" onFocus="this.style.borderColor='var(--color-forest)';this.style.boxShadow='var(--shadow-focus)'" onBlur="this.style.boxShadow='none'"></textarea>
+        </div>
+        <div>
+          <button type="submit" style="font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--color-white);background:var(--color-forest);border:none;padding:14px 30px;border-radius:4px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background 150ms ease;">
+            Solicitar acceso <i class="ti ti-arrow-right" style="font-size:14px;"></i>
+          </button>
+        </div>
+      </form>
+    </sc-if>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════ FOOTER ══ -->
+<footer style="background:var(--color-deep);padding:64px 40px 40px;border-top:1px solid rgba(255,255,255,.07);" class="pxm">
+  <div style="max-width:1280px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;margin-bottom:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.07);" class="g1m">
+      <div>
+        <img src="assets/logo-light.png" alt="brainrecycle®" style="height:26px;width:auto;display:block;margin-bottom:16px;">
+        <p style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.7;max-width:280px;">El espacio de datos que convierte los datos de tu planta de biometano en información útil y certificable.</p>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;">Navegación</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#como-funciona" style="font-size:13.5px;color:rgba(255,255,255,.5);text-decoration:none;" style-hover="color:rgba(204,230,177,1)">Cómo funciona</a>
+          <a href="Brain Recycle Servicios.dc.html" style="font-size:13.5px;color:rgba(255,255,255,.5);text-decoration:none;" style-hover="color:rgba(204,230,177,1)">Casos de uso</a>
+          <a href="#gobernanza" style="font-size:13.5px;color:rgba(255,255,255,.5);text-decoration:none;" style-hover="color:rgba(204,230,177,1)">Seguridad y gobernanza</a>
+          <a href="#formulario" style="font-size:13.5px;color:rgba(255,255,255,.5);text-decoration:none;" style-hover="color:rgba(204,230,177,1)">Solicitar acceso</a>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.25);letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px;">Legal</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <a href="#" style="font-size:13.5px;color:rgba(255,255,255,.5);text-decoration:none;" style-hover="color:rgba(255,255,255,0.85)">Aviso legal</a>
+          <a href="#" style="font-size:13.5px;color:rgba(255,255,255,.5);text-decoration:none;" style-hover="color:rgba(255,255,255,0.85)">Política de privacidad</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:28px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.07);">
+      <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,.35);letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;">Con la financiación de</span>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <div style="background:var(--color-white);border-radius:6px;padding:8px 12px;display:flex;align-items:center;"><img src="assets/funder-gobierno-espana.png" alt="Gobierno de España · Ministerio para la Transformación Digital y de la Función Pública" style="height:26px;width:auto;display:block;"></div>
+        <div style="background:var(--color-white);border-radius:6px;padding:8px 12px;display:flex;align-items:center;"><img src="assets/funder-financiado-ue.png" alt="Financiado por la Unión Europea · NextGenerationEU" style="height:26px;width:auto;display:block;"></div>
+        <div style="background:var(--color-white);border-radius:6px;padding:8px 12px;display:flex;align-items:center;"><img src="assets/funder-plan-recuperacion.png" alt="Plan de Recuperación, Transformación y Resiliencia" style="height:26px;width:auto;display:block;"></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+      <p style="font-size:12px;color:rgba(255,255,255,.25);line-height:1.5;display:flex;align-items:center;gap:6px;flex-wrap:wrap;">Un espacio de datos de <img src="assets/hispania-silva-logo-white.png" alt="Hispania Silva" style="height:10px;width:auto;opacity:.7;"> · Asistencia técnica, compliance y certificación acreditada: <img src="assets/kiwa-logo-white.png" alt="Kiwa España" style="height:11px;width:auto;opacity:.7;"></p>
+      <p style="font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.18);">brainrecycle® · 2026</p>
+    </div>
+  </div>
+</footer>
+
+<template id="__bundler_thumbnail" data-bg-color="#2c483d">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#2c483d"/>
+    <ellipse cx="600" cy="330" rx="360" ry="128" fill="rgba(63,104,91,0.75)" stroke="#3f685b" stroke-width="2"/>
+    <ellipse cx="600" cy="400" rx="360" ry="128" fill="rgba(44,72,61,0.85)" stroke="rgba(204,230,177,0.35)" stroke-width="1.5"/>
+    <ellipse cx="600" cy="470" rx="360" ry="128" fill="rgba(204,230,177,0.08)" stroke="rgba(204,230,177,0.18)" stroke-width="1"/>
+    <text x="600" y="590" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="700" font-size="44" fill="rgba(255,255,255,0.8)" letter-spacing="-1">brainrecycle®</text>
+  </svg>
+</template>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    menuOpen: false,
+    formSubmitted: false,
+    formErrors: {},
+    urgencia: 'trazabilidad',
+    segStep: 0,
+    lang: (typeof localStorage !== 'undefined' && localStorage.getItem('br_lang')) || 'es',
+  };
+
+  DICT = {
+    'Cómo funciona': 'How it works', 'Casos de uso': 'Use cases', 'Cómo se empieza': 'Getting started',
+    'Gobernanza': 'Governance', 'Seguridad y gobernanza': 'Security & governance', 'Acceder': 'Log in', 'Solicitar acceso': 'Request access',
+    'Ver los siete casos de uso': 'See the seven use cases',
+    'Trazabilidad normativa': 'Regulatory traceability', 'Huella de carbono': 'Carbon footprint',
+    'Planes agronómicos de digestato': 'Digestate agronomic plans',
+    'Certificación fertilizante UE': 'EU fertiliser certification',
+    'Monitorización de rendimiento de sustratos': 'Substrate performance monitoring',
+    'Gemelos digitales': 'Digital twins', 'Drones': 'Drones',
+    'Biometano · Datos verificables': 'Biomethane · Verifiable data',
+    'Los datos de tu planta, conectados y preparados para generar confianza': "Your plant's data, connected and ready to build trust",
+    'La información sobre transporte, ESIR, dispositivos IoT, consumos, trazabilidad, digestato y parcelas suele estar dispersa en sistemas que no se comunican entre sí.': "Information on transport, ESIR, IoT devices, consumption, traceability, digestate and plots is usually scattered across systems that don't talk to each other.",
+    'BrainRecycle® la integra en un espacio de datos soberano, seguro e interoperable y la transforma en información útil para la gestión: informes, comunicaciones y evidencias preparadas para procesos de verificación y certificación.': 'BrainRecycle® integrates it into a sovereign, secure and interoperable data space and turns it into useful management information: reports, communications and evidence ready for verification and certification processes.',
+    'Solicitar acceso a la demo': 'Request demo access', 'Ver cómo funciona': 'See how it works',
+    'El recorrido del dato': 'The data journey', 'El espacio de datos soberano': 'The sovereign data space',
+    'Promotor': 'Promoter', 'Compliance y certificación': 'Compliance & certification',
+    'Validez': 'Validity', 'Certificación acreditada': 'Accredited certification',
+    'El punto de partida': 'The starting point',
+    'Tu planta ya genera todos los datos. El problema es que no están juntos.': "Your plant already generates all the data. The problem is it isn't together.",
+    'Cada área produce información fiable por separado. Nadie tiene la imagen completa. Y cuando llega una auditoría, una memoria anual o una solicitud de certificación, alguien reconstruye a mano lo que el sistema ya sabía.': 'Each area produces reliable information on its own. Nobody has the full picture. And when an audit, an annual report or a certification request arrives, someone rebuilds by hand what the system already knew.',
+    'Siete silos que no se comunican entre sí': "Seven silos that don't talk to each other",
+    'Semanas de trabajo manual': 'Weeks of manual work',
+    'Cada memoria, cada auditoría y cada certificación empieza recopilando lo mismo desde cero.': 'Every report, audit and certification starts by gathering the same data from scratch.',
+    'Valor que no se cobra': 'Value left uncollected',
+    'Garantías de origen, créditos de carbono y circularidad de nutrientes exigen evidencias que no se pueden construir a tiempo.': "Guarantees of origin, carbon credits and nutrient circularity require evidence that can't be built in time.",
+    'Riesgo normativo': 'Regulatory risk',
+    'El incumplimiento se detecta después de aplicar, cuando ya no tiene arreglo.': 'Non-compliance is detected after application, when it can no longer be fixed.',
+    'Del dato disperso al certificado acreditado.': 'From scattered data to accredited certificate.',
+    'Un mismo recorrido para todos los casos de uso. Empiezas por donde más te urge y avanzas a tu ritmo.': 'One journey for every use case. Start where it matters most and move at your own pace.',
+    'Qué es': 'What it is', 'No es un software. Es el sitio donde tu dato deja de valer a solas.': "It's not software. It's the place where your data stops standing alone.",
+    'En una plataforma': 'On a platform', 'Subes tus datos y pasan a estar en el sistema de otro.': "You upload your data and it ends up in someone else's system.",
+    'En un espacio de datos': 'In a data space',
+    'Tus datos siguen siendo tuyos y tú decides, dato a dato, quién accede y para qué.': 'Your data stays yours and you decide, data point by data point, who accesses it and for what.',
+    'Un espacio de datos es un ecosistema donde varios actores —productor de residuo, transportista, planta, gasista y certificador— comparten información bajo reglas explícitas, sin que ninguno pierda el control de lo suyo. brainrecycle® es el espacio de datos soberano de Hispania Silva para el sector del biometano.': 'A data space is an ecosystem where several actors —waste producer, carrier, plant, gas company and certifier— share information under explicit rules without any of them losing control of their own. brainrecycle® is Hispania Silva\u2019s sovereign data space for the biomethane sector.',
+    'Soberanía del dato': 'Data sovereignty',
+    'Tú decides qué compartes, con quién y durante cuánto tiempo. Las reglas se definen una vez y el sistema las aplica siempre.': 'You decide what you share, with whom and for how long. The rules are defined once and the system always enforces them.',
+    'Interoperabilidad': 'Interoperability',
+    'Sistemas distintos, mismo lenguaje. El dato circula entre actores sin que nadie tenga que cambiar de herramienta.': 'Different systems, same language. Data flows between actors without anyone having to change tools.',
+    'Trazabilidad verificable': 'Verifiable traceability',
+    'Cada dato lleva su origen, su autor y su momento. La confianza no se promete: se comprueba.': 'Every data point carries its origin, author and moment. Trust is not promised: it is verified.',
+    'Kiwa convierte la trazabilidad del espacio en certificados reconocidos por el mercado.': 'Kiwa turns the space\u2019s traceability into market-recognised certificates.',
+    'Siete casos de uso sobre una misma infraestructura de datos.': 'Seven use cases on the same data infrastructure.',
+    'Cada caso de uso resuelve una necesidad concreta de la planta. Todos reutilizan la misma trazabilidad, evitando duplicar integraciones y evidencias.': 'Each use case solves a specific need of the plant. They all reuse the same traceability, avoiding duplicate integrations and evidence.',
+    'Ver el caso de uso': 'See the use case',
+    'Traslados, Documento de Identificación, eSIR y plataformas autonómicas: una cadena documental conectada desde el origen hasta la recepción.': 'Shipments, Identification Document, eSIR and regional platforms: a documentary chain connected from origin to reception.',
+    'Cálculo auditable sobre datos trazados y evidencias preparadas para verificación y certificación por una tercera parte independiente.': 'Auditable calculation on traced data and evidence ready for verification and certification by an independent third party.',
+    'Parcelas, cultivos, dosis, meteorología, restricciones y capacidad logística integradas en un único plan operativo.': 'Plots, crops, doses, weather, restrictions and logistics capacity integrated into a single operational plan.',
+    'Trazabilidad de materias primas, proceso y producto final para construir el expediente y las evidencias de conformidad.': 'Traceability of raw materials, process and final product to build the compliance file and evidence.',
+    'Rendimiento real frente al teórico, comportamiento por lote, boosters, inhibiciones y aprendizaje de mezclas.': 'Actual versus theoretical yield, batch behaviour, boosters, inhibitions and mix learning.',
+    'Modelos predictivos para simular mezclas y anticipar el rendimiento antes de actuar sobre la planta.': 'Predictive models to simulate mixes and anticipate yield before acting on the plant.',
+    'Inspección técnica de la planta mediante drones, cámaras y sensores especializados para capturar evidencias de alta resolución y documentar el estado de los activos.': 'Technical inspection of the plant using drones, cameras and specialised sensors to capture high-resolution evidence and document asset condition.',
+    'Cumplimiento': 'Compliance', 'Certificación': 'Certification', 'Agronomía': 'Agronomy', 'Producto': 'Product',
+    'Operación': 'Operation', 'Optimización': 'Optimisation', 'Verificación': 'Verification', 'Inspección': 'Inspection',
+    'Qué cambia': 'What changes', 'Lo que te cuesta tres semanas.': 'What takes you three weeks.',
+    'Reporta sin reconstruir': 'Report without rebuilding',
+    'Las comunicaciones a la administración dejan de ser un proyecto trimestral y pasan a ser una descarga.': 'Reporting to the authorities stops being a quarterly project and becomes a download.',
+    'Cumple antes de actuar': 'Comply before acting',
+    'Las restricciones por periodo, cultivo y estado fenológico se comprueban en el momento de planificar la aplicación.': 'Restrictions by period, crop and phenological stage are checked when planning the application.',
+    'Optimiza la producción': 'Optimise production',
+    'Las mezclas óptimas y las alertas de inhibición evitan pérdidas de rendimiento que se detectan tarde.': 'Optimal mixes and inhibition alerts prevent yield losses that are otherwise detected too late.',
+    'Monetiza lo invisible': 'Monetise the invisible',
+    'Garantías de origen, créditos de carbono y circularidad de nutrientes dejan de perderse por falta de evidencias.': 'Guarantees of origin, carbon credits and nutrient circularity stop being lost for lack of evidence.',
+    'Ver para creer': 'Seeing is believing',
+    'Así se ve tu planta cuando los datos están juntos.': 'This is your plant when the data is together.',
+    'Trazabilidad nodo a nodo con el documento asociado a cada paso. Compliance en semáforo, parcela por parcela, con la normativa aplicable citada y fechada. Certificados descargables y verificables. Alertas de rendimiento cuando el lote se desvía del teórico.': 'Node-by-node traceability with the document attached to each step. Traffic-light compliance, plot by plot, with the applicable regulation cited and dated. Downloadable, verifiable certificates. Yield alerts when a batch deviates from the theoretical value.',
+    'No es una maqueta comercial: es el panel real del espacio de datos, con datos de demostración.': 'This is not a sales mock-up: it is the real data-space panel, with demo data.',
+    'Ver el panel de demostración': 'See the demo panel',
+    'Acceso para plantas en evaluación. Te damos credenciales y te acompañamos en la primera sesión.': 'Access for plants under evaluation. We provide credentials and guide you through the first session.',
+    'El estado de tu planta': 'Your plant status', 'Datos de demostración': 'Demo data',
+    'Trazabilidad': 'Traceability', 'Certificados': 'Certificates', 'Conforme': 'Compliant',
+    'Alerta booster · Lote 1.284': 'Booster alert · Batch 1,284',
+    'Pico de rendimiento sobre el teórico. Registrado para replicar.': 'Yield peak above theoretical. Logged to replicate.',
+    'Entrar al panel': 'Enter the panel',
+    'El recorrido': 'The path', 'No hace falta activarlo todo el primer día.': "You don't need to switch it all on day one.",
+    'Conversación inicial': 'Initial conversation',
+    'Nos cuentas cómo está montada tu planta y qué te aprieta más. Te damos acceso a la demo para que veas el resultado antes de comprometer nada.': 'You tell us how your plant is set up and what presses you most. We give you demo access so you see the result before committing to anything.',
+    'Adhesión al espacio de datos': 'Joining the data space',
+    'Tu planta se incorpora al ecosistema brainrecycle®. Se definen las reglas de tu dato: qué compartes, con quién y para qué.': 'Your plant joins the brainrecycle® ecosystem. Your data rules are defined: what you share, with whom and for what.',
+    'Conexión de tus sistemas': 'Connecting your systems',
+    'Integración técnica de las fuentes que necesita tu primer caso de uso. Tus sistemas actuales siguen funcionando; el espacio de datos se conecta a ellos.': 'Technical integration of the sources your first use case needs. Your current systems keep running; the data space connects to them.',
+    'Primer caso de uso en marcha': 'First use case live',
+    'Empiezas por lo que más te urge. Los siguientes casos de uso reutilizan la misma integración.': 'You start with what you need most. The next use cases reuse the same integration.',
+    'Certificación y crecimiento': 'Certification & growth',
+    'Con la trazabilidad ya construida, Kiwa emite los certificados acreditados y tu planta incorpora nuevos casos de uso a su ritmo.': 'With traceability already built, Kiwa issues the accredited certificates and your plant adds new use cases at its own pace.',
+    'Equipo técnico · Asistencia Kiwa': 'Technical team · Kiwa assistance', 'Certificación Kiwa': 'Kiwa certification',
+    'Reglas claras. Confianza demostrable.': 'Clear rules. Demonstrable trust.',
+    'Tus datos permanecen en tus sistemas. Solo se comparten cuando existe una autorización expresa, con condiciones que tú defines y un registro trazable de cada operación.': 'Your data stays in your systems. It is only shared when explicit authorisation exists, under conditions you define, with a traceable record of every operation.',
+    'Ver el recorrido interactivo': 'See the interactive walkthrough',
+    'Modelo de gobernanza': 'Governance model',
+    'Quién promueve, quién desarrolla, quién certifica.': 'Who promotes it, who develops it, who certifies it.',
+    '01 · Soberanía': '01 · Sovereignty', '02 · Control': '02 · Control', '03 · Evidencia': '03 · Evidence',
+    'El dato no se entrega. Permanece bajo tu control.': 'Data is never handed over. It stays under your control.',
+    'El espacio de datos conecta organizaciones sin crear una base de datos común. La información permanece en los sistemas de su propietario y solo se comparte con autorización expresa.': 'The data space connects organisations without creating a shared database. Information stays in its owner\u2019s systems and is only shared with explicit authorisation.',
+    'copias obligatorias en una plataforma central': 'mandatory copies in a central platform',
+    'Tú decides cada condición antes de compartir.': 'You decide every condition before sharing.',
+    'El propietario establece reglas verificables — qué, quién, para qué y hasta cuándo — y el intercambio solo se habilita si el solicitante las cumple todas.': 'The owner sets verifiable rules \u2014 what, who, for what and until when \u2014 and the exchange is only enabled if the requester meets them all.',
+    'decisiones explícitas antes de cada acceso': 'explicit decisions before every access',
+    'Nada se comparte sin dejar evidencia.': 'Nothing is shared without leaving evidence.',
+    'Cada paso genera un registro trazable: quién solicitó el activo, qué política se evaluó, qué condiciones se aceptaron y cuándo se ejecutó la transferencia.': 'Every step generates a traceable record: who requested the asset, what policy was evaluated, what conditions were accepted and when the transfer was executed.',
+    'capas de evidencia para revisión y auditoría': 'layers of evidence for review and audit',
+    'Leer el modelo de gobernanza': 'Read the governance model',
+    'Qui\u00e9n hace qu\u00e9': 'Who does what',
+    'Sin repositorio central obligatorio': 'No mandatory central repository', 'Sin acceso general del operador': 'No general operator access',
+    'Sin exposici\u00f3n del contenido en el cat\u00e1logo': 'No content exposure in the catalogue',
+    'Identidad y atributos comprobables': 'Verifiable identity and attributes', 'Pol\u00edticas de uso asociadas al activo': 'Usage policies linked to the asset',
+    'Contrato previo a la transferencia': 'Contract prior to transfer',
+    'Historial consultable de operaciones': 'Searchable history of operations', 'Separaci\u00f3n entre autorizaci\u00f3n y transferencia': 'Separation between authorisation and transfer',
+    'Evidencias preparadas para revisi\u00f3n independiente': 'Evidence ready for independent review',
+    'Tu organizaci\u00f3n': 'Your organisation', 'Sistema de origen': 'Source system', 'El dato permanece aqu\u00ed': 'Data stays here',
+    'Conexi\u00f3n autorizada': 'Authorised connection', 'Espacio de datos': 'Data space', 'Conector seguro': 'Secure connector',
+    'Negocia; no almacena por defecto': 'Negotiates; does not store by default',
+    'Activo m\u00ednimo necesario': 'Minimum necessary asset', 'Campos y alcance definidos': 'Defined fields and scope',
+    'Organizaci\u00f3n autorizada': 'Authorised organisation', 'Identidad y perfil verificados': 'Verified identity and profile',
+    'Finalidad acordada': 'Agreed purpose', 'Uso limitado al prop\u00f3sito': 'Use limited to purpose',
+    'Vigencia controlada': 'Controlled validity', 'Condiciones temporales': 'Time conditions',
+    'Identidad': 'Identity', 'Participante verificado': 'Verified participant', 'Solicitud': 'Request', 'Activo y finalidad': 'Asset and purpose',
+    'Pol\u00edtica': 'Policy', 'Condiciones evaluadas': 'Conditions evaluated', 'Contrato': 'Contract', 'Acuerdo formalizado': 'Formalised agreement',
+    'Transferencia': 'Transfer', 'Operaci\u00f3n registrada': 'Operation recorded',
+    'Siguiente \u2192': 'Next \u2192', 'Volver al inicio': 'Back to start', '\u2190 Anterior': '\u2190 Previous',
+    'Quién promueve': 'Who promotes it', 'Quién desarrolla': 'Who develops it',
+    'Quién supervisa y certifica': 'Who supervises & certifies', 'Quién participa': 'Who takes part',
+    'Cómo se protege tu dato': 'How your data is protected',
+    'Hispania Silva es el promotor y propietario del espacio de datos brainrecycle®.': 'Hispania Silva is the promoter and owner of the brainrecycle® data space.',
+    'El desarrollo tecnológico del espacio de datos corresponde a Hispania Silva y su equipo técnico. Kiwa España no participa en el desarrollo.': 'Technological development of the data space is carried out by Hispania Silva and its technical team. Kiwa España does not take part in development.',
+    'Kiwa España, como tercera parte independiente y acreditada: asistencia técnica, compliance normativo y emisión de certificados. Su independencia respecto al desarrollo es condición del esquema de acreditación.': 'Kiwa España, as an independent accredited third party: technical assistance, regulatory compliance and certificate issuance. Its independence from development is a condition of the accreditation scheme.',
+    'Productores de residuo, transportistas, plantas, gasistas y certificadores.': 'Waste producers, carriers, plants, gas companies and certifiers.',
+    'Cada participante define qué comparte, con quién y para qué. Las reglas se aplican de forma automática.': 'Each participant defines what they share, with whom and for what. The rules are enforced automatically.',
+    'Solicitud de acceso': 'Access request', 'Pide acceso a la demo de tu sector.': 'Request demo access for your sector.',
+    'Cuéntanos cómo es tu planta y qué caso de uso te interesa. Te damos credenciales para el panel de demostración y concertamos una sesión para enseñártelo.': 'Tell us about your plant and which use case interests you. We give you credentials for the demo panel and arrange a session to walk you through it.',
+    'Solicitud recibida': 'Request received',
+    'Te escribimos en menos de 48 horas con las credenciales de la demo y una propuesta de fecha para la sesión.': "We'll email you within 48 hours with your demo credentials and a proposed session date.",
+    'Nombre y apellidos': 'Full name', 'Empresa': 'Company', 'Cargo': 'Role', 'Email corporativo': 'Work email',
+    'Teléfono': 'Phone', 'Número de plantas': 'Number of plants', 'Ubicación': 'Location', 'Comentarios': 'Comments',
+    '¿Qué te urge más ahora mismo?': 'What do you need most right now?',
+    '¿Qué casos de uso te interesan?': 'Which use cases interest you?',
+    'Resolver trazabilidad normativa': 'Solve regulatory traceability',
+    'Certificar huella de carbono': 'Certify carbon footprint',
+    'Planificar la aplicación del digestato': 'Plan digestate application',
+    'Certificar fertilizante UE': 'Certify EU fertiliser',
+    'Optimizar sustratos y producción': 'Optimise substrates & production',
+    'Aún lo estoy explorando': "I'm still exploring",
+    'Planes agronómicos de aplicación de digestato': 'Digestate application agronomic plans',
+    'Rendimiento de sustratos': 'Substrate performance',
+    'Requerido': 'Required', 'El formato no es válido. Usa nombre@dominio.com.': 'Invalid format. Use name@domain.com.',
+    'Tu nombre completo': 'Your full name', 'Nombre de tu empresa': 'Your company name', 'Tu cargo en la empresa': 'Your role',
+    'nombre@empresa.com': 'name@company.com', '+34 600 000 000': '+34 600 000 000', 'Comunidad autónoma': 'Region',
+    'Cuéntanos más sobre tu planta, tus objetivos o cualquier otra información relevante.': 'Tell us more about your plant, your goals or any other relevant information.',
+    'Navegación': 'Navigation', 'Legal': 'Legal', 'Aviso legal': 'Legal notice', 'Política de privacidad': 'Privacy policy',
+    'El espacio de datos que convierte los datos de tu planta de biometano en información útil y certificable.': 'The data space that turns your biomethane plant data into useful, certifiable information.',
+    'Un espacio de datos de': 'A data space by',
+    '· Asistencia técnica, compliance y certificación acreditada:': '· Technical assistance, compliance & accredited certification:',
+  };
+
+  setLang = (lang) => {
+    try { localStorage.setItem('br_lang', lang); } catch (e) {}
+    this.setState({ lang });
+  };
+
+  translatePage() {
+    if (this.state.lang !== 'en') return;
+    const d = this.DICT;
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      const raw = n.nodeValue;
+      const key = raw.replace(/\s+/g, ' ').trim();
+      if (d[key]) {
+        const lead = raw.match(/^\s*/)[0];
+        const trail = raw.match(/\s*$/)[0];
+        n.nodeValue = lead + d[key] + trail;
+      }
+    });
+    document.querySelectorAll('[placeholder]').forEach(el => {
+      const k = (el.getAttribute('placeholder') || '').trim();
+      if (d[k]) el.setAttribute('placeholder', d[k]);
+    });
+  }
+
+  componentDidUpdate() { this.translatePage(); }
+
+  componentDidMount() {
+    this.translatePage();
+    const hash = window.location.hash;
+    const targets = document.querySelectorAll('[data-anim]');
+    targets.forEach(el => {
+      if (hash && el.closest(hash)) { el.style.opacity = '1'; el.style.transform = 'none'; return; }
+      const delay = el.getAttribute('data-delay') || '0';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = `opacity 0.7s ${delay}ms cubic-bezier(0.16,1,0.3,1), transform 0.7s ${delay}ms cubic-bezier(0.16,1,0.3,1)`;
+    });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    targets.forEach(el => io.observe(el));
+    if (hash) {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash.slice(1));
+        if (el) el.scrollIntoView({ behavior: 'auto', block: 'start' });
+      });
+    }
+  }
+
+  renderVals() {
+    const { menuOpen, formSubmitted, formErrors, urgencia } = this.state;
+
+    // ── Eje chips (hero) ──
+    const ejeDefs = [
+      { label: 'INTEGRAR', owner: 'br' },
+      { label: 'MEDIR', owner: 'br' },
+      { label: 'REPORTAR', owner: 'both' },
+      { label: 'VERIFICAR', owner: 'kiwa' },
+      { label: 'CERTIFICAR', owner: 'kiwa' },
+    ];
+    const ejeChips = ejeDefs.map((e, i) => ({
+      label: e.label,
+      color: e.owner === 'kiwa' ? 'var(--color-sage)' : 'rgba(255,255,255,.7)',
+      hasArrow: i < ejeDefs.length - 1,
+    }));
+
+    // ── Silos ──
+    const silos = [
+      { name: 'Transporte', where: 'Albaranes y documentos de control en papel o PDF', icon: 'ti ti-truck' },
+      { name: 'ESIR y registros de residuos', where: 'Plataforma administrativa, al margen de la operación', icon: 'ti ti-file-database' },
+      { name: 'IoT y sensores', where: 'SCADA de planta, sin memoria histórica explotable', icon: 'ti ti-wifi' },
+      { name: 'Consumos', where: 'Facturas y hojas de cálculo', icon: 'ti ti-bolt' },
+      { name: 'Trazabilidad de lotes', where: 'Registros dispersos entre báscula, laboratorio y producción', icon: 'ti ti-versions' },
+      { name: 'Digestato', where: 'Partes de salida y albaranes de aplicación', icon: 'ti ti-droplet' },
+      { name: 'Parcelas y cultivos', where: 'Conocimiento del agricultor, rara vez documentado', icon: 'ti ti-plant-2' },
+    ];
+
+    // ── El eje: 5 pasos ──
+    const pasoDefs = [
+      { num: '01', tag: 'INTEGRAR', title: 'Todas tus fuentes, en un mismo espacio.', desc: 'Conectamos transporte, ESIR, sensores, consumos, digestato y parcelas sin sustituir tus sistemas actuales. Tu SCADA sigue siendo tu SCADA; el espacio de datos se conecta a él.', owner: 'br' },
+      { num: '02', tag: 'MEDIR', title: 'Indicadores calculados sobre dato trazado.', desc: 'Rendimiento frente al teórico, huella de carbono, balance de nutrientes. Sin estimaciones ni extrapolaciones: cada cifra procede de un dato con origen identificado.', owner: 'br' },
+      { num: '03', tag: 'REPORTAR', title: 'Comunicaciones y planes que se alimentan solos.', desc: 'Memorias de residuos, declaraciones ambientales, PRTR, documentación agronómica del digestato y planes ambientales. Se redactan una vez y se actualizan con los datos que tu planta ya está generando.', owner: 'both' },
+      { num: '04', tag: 'VERIFICAR', title: 'Cada dato con origen, autor y momento.', desc: 'El cumplimiento normativo se comprueba antes de actuar, no después. Si una aplicación de digestato no está permitida en esa parcela y ese periodo, lo sabes antes de salir al campo.', owner: 'kiwa' },
+      { num: '05', tag: 'CERTIFICAR', title: 'Certificados con validez de mercado.', desc: 'Kiwa, como tercera parte independiente y acreditada, emite certificados sostenidos por la trazabilidad del espacio de datos: trazabilidad de residuos, huella de carbono, digestato como fertilizante orgánico y garantías de origen.', owner: 'kiwa' },
+    ];
+    const ownerMap = {
+      br: { text: 'brainrecycle®', icon: 'ti ti-database', color: 'var(--color-sage)', bg: 'rgba(204,230,177,.1)', bd: 'rgba(204,230,177,.22)' },
+      kiwa: { text: 'España', icon: 'ti ti-shield-check', color: '#cfe0ff', bg: 'rgba(120,160,220,.12)', bd: 'rgba(120,160,220,.28)' },
+      both: { text: 'brainrecycle® · verifica Kiwa', icon: 'ti ti-transform', color: 'var(--color-sage)', bg: 'rgba(204,230,177,.1)', bd: 'rgba(204,230,177,.22)' },
+    };
+    const ejePasos = pasoDefs.map((p, i) => {
+      const o = ownerMap[p.owner];
+      return {
+        ...p,
+        accent: p.owner === 'kiwa' ? '#cfe0ff' : 'var(--color-sage)',
+        delay: i * 60,
+        rowStyle: 'display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px 28px;',
+        sostiene: o.text,
+        sostieneIsKiwa: p.owner === 'kiwa',
+        sostieneIcon: o.icon,
+        sostieneStyle: `flex-shrink:0;display:inline-flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:11px;color:${o.color};background:${o.bg};border:1px solid ${o.bd};border-radius:9999px;padding:6px 14px;letter-spacing:.03em;`,
+      };
+    });
+
+    // ── Propiedades del espacio de datos ──
+    const propiedades = [
+      { title: 'Soberanía del dato', body: 'Tú decides qué compartes, con quién y durante cuánto tiempo. Las reglas se definen una vez y el sistema las aplica siempre.', icon: 'ti ti-lock', delay: 0 },
+      { title: 'Interoperabilidad', body: 'Sistemas distintos, mismo lenguaje. El dato circula entre actores sin que nadie tenga que cambiar de herramienta.', icon: 'ti ti-arrows-exchange', delay: 100 },
+      { title: 'Trazabilidad verificable', body: 'Cada dato lleva su origen, su autor y su momento. La confianza no se promete: se comprueba.', icon: 'ti ti-clipboard-check', delay: 200 },
+      { title: 'Certificación acreditada', body: 'Kiwa convierte la trazabilidad del espacio en certificados reconocidos por el mercado.', icon: 'ti ti-certificate', delay: 300 },
+    ];
+
+    // ── Casos destacados (4) ──
+    const casoRaw = [
+      { num: '01', eje: 'Cumplimiento', title: 'Trazabilidad normativa', desc: 'Traslados, Documento de Identificación, eSIR y plataformas autonómicas: una cadena documental conectada desde el origen hasta la recepción.', icon: 'ti ti-clipboard-check', id: 'trazabilidad', accent: true },
+      { num: '02', eje: 'Certificación', title: 'Huella de carbono', desc: 'Cálculo auditable sobre datos trazados y evidencias preparadas para verificación y certificación por una tercera parte independiente.', icon: 'ti ti-leaf', id: 'huella-carbono', accent: false },
+      { num: '03', eje: 'Agronomía', title: 'Planes agronómicos de aplicación de digestato', desc: 'Parcelas, cultivos, dosis, meteorología, restricciones y capacidad logística integradas en un único plan operativo.', icon: 'ti ti-plant-2', id: 'planes-agronomicos', accent: false },
+      { num: '04', eje: 'Producto', title: 'Certificación fertilizante UE', desc: 'Trazabilidad de materias primas, proceso y producto final para construir el expediente y las evidencias de conformidad.', icon: 'ti ti-rosette', id: 'fertilizante-ue', accent: false },
+      { num: '05', eje: 'Operación', title: 'Monitorización de rendimiento de sustratos', desc: 'Rendimiento real frente al teórico, comportamiento por lote, boosters, inhibiciones y aprendizaje de mezclas.', icon: 'ti ti-chart-line', id: 'rendimiento-sustratos', accent: false },
+      { num: '06', eje: 'Optimización', title: 'Gemelos digitales', desc: 'Modelos predictivos para simular mezclas y anticipar el rendimiento antes de actuar sobre la planta.', icon: 'ti ti-cpu', id: 'gemelos-digitales', accent: false },
+      { num: '07', eje: 'Inspección', title: 'Drones', desc: 'Inspección técnica de la planta mediante drones, cámaras y sensores especializados para capturar evidencias de alta resolución y documentar el estado de los activos.', icon: 'ti ti-drone', id: 'inspeccion-drones', accent: false },
+    ];
+    const casosDestacados = casoRaw.map(c => c.accent ? {
+      ...c,
+      href: 'Brain Recycle Servicios.dc.html#' + c.id,
+      cardStyle: 'background:var(--color-sage);border-radius:12px;padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:12px;',
+      numColor: 'rgba(44,72,61,.55)', iconColor: 'var(--color-deep)', ejeColor: 'rgba(44,72,61,.7)',
+      titleColor: 'var(--color-deep)', descColor: 'rgba(44,72,61,.72)', linkColor: 'var(--color-deep)',
+    } : {
+      ...c,
+      href: 'Brain Recycle Servicios.dc.html#' + c.id,
+      cardStyle: 'background:var(--color-white);border:1px solid var(--border-subtle);border-radius:12px;padding:24px;box-shadow:var(--shadow-xs);text-decoration:none;display:flex;flex-direction:column;gap:12px;',
+      numColor: 'var(--text-muted)', iconColor: 'var(--color-neutral-300)', ejeColor: 'var(--color-forest)',
+      titleColor: 'var(--text-primary)', descColor: 'var(--text-muted)', linkColor: 'var(--color-forest)',
+    });
+
+    // ── El resultado (4) ──
+    const resRaw = [
+      { title: 'Reporta sin reconstruir', desc: 'Las comunicaciones a la administración dejan de ser un proyecto trimestral y pasan a ser una descarga.', icon: 'ti ti-file-download', dark: true },
+      { title: 'Cumple antes de actuar', desc: 'Las restricciones por periodo, cultivo y estado fenológico se comprueban en el momento de planificar la aplicación.', icon: 'ti ti-shield-check', dark: false },
+      { title: 'Optimiza la producción', desc: 'Las mezclas óptimas y las alertas de inhibición evitan pérdidas de rendimiento que se detectan tarde.', icon: 'ti ti-trending-up', dark: false },
+      { title: 'Monetiza lo invisible', desc: 'Garantías de origen, créditos de carbono y circularidad de nutrientes dejan de perderse por falta de evidencias.', icon: 'ti ti-coin', sage: true },
+    ];
+    const resultados = resRaw.map((r, i) => {
+      if (r.dark) return { ...r, delay: i * 80, cardStyle: 'background:var(--color-deep);border-radius:16px;padding:36px 30px;', iconColor: 'var(--color-sage)', titleColor: 'var(--color-white)', descColor: 'rgba(255,255,255,.5)' };
+      if (r.sage) return { ...r, delay: i * 80, cardStyle: 'background:var(--color-sage);border-radius:16px;padding:36px 30px;', iconColor: 'var(--color-deep)', titleColor: 'var(--color-deep)', descColor: 'rgba(44,72,61,.7)' };
+      return { ...r, delay: i * 80, cardStyle: 'background:var(--surface-background);border:1px solid var(--border-subtle);border-radius:16px;padding:36px 30px;', iconColor: 'var(--color-forest)', titleColor: 'var(--text-primary)', descColor: 'var(--text-secondary)' };
+    });
+
+    // ── Cómo se empieza (5 pasos) ──
+    const recRaw = [
+      { num: '01', title: 'Conversación inicial', desc: 'Nos cuentas cómo está montada tu planta y qué te aprieta más. Te damos acceso a la demo para que veas el resultado antes de comprometer nada.', who: null },
+      { num: '02', title: 'Adhesión al espacio de datos', desc: 'Tu planta se incorpora al ecosistema brainrecycle®. Se definen las reglas de tu dato: qué compartes, con quién y para qué.', who: 'Hispania Silva' },
+      { num: '03', title: 'Conexión de tus sistemas', desc: 'Integración técnica de las fuentes que necesita tu primer caso de uso. Tus sistemas actuales siguen funcionando; el espacio de datos se conecta a ellos.', who: 'Equipo técnico · Asistencia Kiwa' },
+      { num: '04', title: 'Primer caso de uso en marcha', desc: 'Empiezas por lo que más te urge. Los siguientes casos de uso reutilizan la misma integración.', who: null },
+      { num: '05', title: 'Certificación y crecimiento', desc: 'Con la trazabilidad ya construida, Kiwa emite los certificados acreditados y tu planta incorpora nuevos casos de uso a su ritmo.', who: 'Certificación Kiwa', last: true },
+    ];
+    const recorrido = recRaw.map((p, i) => p.last ? {
+      ...p, delay: i * 80,
+      cardStyle: 'background:var(--color-sage);border:1px solid var(--color-sage);border-radius:12px;padding:28px 22px;display:flex;flex-direction:column;transition:border-color 150ms ease;',
+      numColor: 'var(--color-deep)', titleColor: 'var(--color-deep)', descColor: 'rgba(44,72,61,.7)',
+      hasWho: !!p.who, whoColor: 'rgba(44,72,61,.6)', who: p.who,
+    } : {
+      ...p, delay: i * 80,
+      cardStyle: 'background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:28px 22px;display:flex;flex-direction:column;transition:border-color 150ms ease;',
+      numColor: 'var(--color-sage)', titleColor: 'var(--color-white)', descColor: 'rgba(255,255,255,.45)',
+      hasWho: !!p.who, whoColor: 'rgba(255,255,255,.3)', who: p.who,
+    });
+
+    // ── Seguridad y gobernanza ──
+    const pilares = [
+      { eyebrow: '01 · Soberanía', title: 'El dato no se entrega. Permanece bajo tu control.', body: 'El espacio de datos conecta organizaciones sin crear una base de datos común. La información permanece en los sistemas de su propietario y solo se comparte con autorización expresa.', stat: '0', statLabel: 'copias obligatorias en una plataforma central', checks: ['Sin repositorio central obligatorio', 'Sin acceso general del operador', 'Sin exposición del contenido en el catálogo'] },
+      { eyebrow: '02 · Control', title: 'Tú decides cada condición antes de compartir.', body: 'El propietario establece reglas verificables — qué, quién, para qué y hasta cuándo — y el intercambio solo se habilita si el solicitante las cumple todas.', stat: '4', statLabel: 'decisiones explícitas antes de cada acceso', checks: ['Identidad y atributos comprobables', 'Políticas de uso asociadas al activo', 'Contrato previo a la transferencia'] },
+      { eyebrow: '03 · Evidencia', title: 'Nada se comparte sin dejar evidencia.', body: 'Cada paso genera un registro trazable: quién solicitó el activo, qué política se evaluó, qué condiciones se aceptaron y cuándo se ejecutó la transferencia.', stat: '5', statLabel: 'capas de evidencia para revisión y auditoría', checks: ['Historial consultable de operaciones', 'Separación entre autorización y transferencia', 'Evidencias preparadas para revisión independiente'] },
+    ];
+    const segStep = this.state.segStep;
+    const pilarActual = pilares[segStep];
+    const stepDots = pilares.map((p, i) => ({
+      num: i + 1,
+      go: () => this.setState({ segStep: i }),
+      notLast: i < pilares.length - 1,
+      circleStyle: `width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:600;cursor:pointer;border:1px solid ${i <= segStep ? 'var(--color-sage)' : 'rgba(255,255,255,.2)'};background:${i === segStep ? 'var(--color-sage)' : i < segStep ? 'rgba(204,230,177,.15)' : 'transparent'};color:${i === segStep ? 'var(--color-deep)' : i < segStep ? 'var(--color-sage)' : 'rgba(255,255,255,.4)'};`,
+      lineStyle: `width:44px;height:1px;background:${i < segStep ? 'var(--color-sage)' : 'rgba(255,255,255,.15)'};`,
+    }));
+    const controlCards = [
+      { eyebrow: 'QUÉ', title: 'Activo mínimo necesario', desc: 'Campos y alcance definidos', dark: true },
+      { eyebrow: 'QUIÉN', title: 'Organización autorizada', desc: 'Identidad y perfil verificados' },
+      { eyebrow: 'PARA QUÉ', title: 'Finalidad acordada', desc: 'Uso limitado al propósito' },
+      { eyebrow: 'HASTA CUÁNDO', title: 'Vigencia controlada', desc: 'Condiciones temporales' },
+    ].map(c => ({
+      ...c,
+      style: `border-radius:10px;padding:20px;${c.dark ? 'background:var(--color-sage);' : 'background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);'}`,
+      eyebrowColor: c.dark ? 'var(--color-deep)' : 'var(--color-sage)',
+      titleColor: c.dark ? 'color:var(--color-deep);' : 'color:var(--color-white);',
+      descColor: c.dark ? 'color:rgba(44,72,61,.7);' : 'color:rgba(255,255,255,.5);',
+    }));
+    const evidenceSteps = [
+      ['1', 'Identidad', 'Participante verificado'],
+      ['2', 'Solicitud', 'Activo y finalidad'],
+      ['3', 'Política', 'Condiciones evaluadas'],
+      ['4', 'Contrato', 'Acuerdo formalizado'],
+      ['5', 'Transferencia', 'Operación registrada'],
+    ].map(([num, title, desc], i, arr) => ({
+      num, title, desc,
+      style: `display:grid;grid-template-columns:26px 120px 1fr;align-items:center;gap:14px;padding:12px 16px;border-radius:8px;${i === arr.length - 1 ? 'background:var(--color-sage);' : 'background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);'}`,
+      badgeStyle: `width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;${i === arr.length - 1 ? 'background:var(--color-deep);color:var(--color-sage);' : 'background:rgba(204,230,177,.15);color:var(--color-sage);'}`,
+      titleColor: i === arr.length - 1 ? 'color:var(--color-deep);' : 'color:var(--color-white);',
+      descColor: i === arr.length - 1 ? 'color:rgba(44,72,61,.7);' : 'color:rgba(255,255,255,.45);',
+    }));
+
+    // ── Gobernanza ──
+    const gobRaw = [
+      { label: 'Quién promueve', body: 'Hispania Silva es el promotor y propietario del espacio de datos brainrecycle®.' },
+      { label: 'Quién desarrolla', body: 'El desarrollo tecnológico del espacio de datos corresponde a Hispania Silva y su equipo técnico. Kiwa España no participa en el desarrollo.' },
+      { label: 'Quién supervisa y certifica', body: 'Kiwa España, como tercera parte independiente y acreditada: asistencia técnica, compliance normativo y emisión de certificados. Su independencia respecto al desarrollo es condición del esquema de acreditación.' },
+      { label: 'Quién participa', body: 'Productores de residuo, transportistas, plantas, gasistas y certificadores.' },
+      { label: 'Cómo se protege tu dato', body: 'Cada participante define qué comparte, con quién y para qué. Las reglas se aplican de forma automática.', last: true },
+    ];
+    const gobernanza = gobRaw.map(g => ({
+      ...g,
+      rowStyle: `padding:26px 0;${g.last ? '' : 'border-bottom:1px solid rgba(255,255,255,.07);'}display:grid;grid-template-columns:220px 1fr;gap:24px;align-items:start;`,
+    }));
+
+    // ── Formulario ──
+    const urgenciaDefs = [
+      { value: 'trazabilidad', label: 'Resolver trazabilidad normativa' },
+      { value: 'huella', label: 'Certificar huella de carbono' },
+      { value: 'digestato', label: 'Planificar la aplicación del digestato' },
+      { value: 'fertilizante', label: 'Certificar fertilizante UE' },
+      { value: 'produccion', label: 'Optimizar sustratos y producción' },
+      { value: 'explorando', label: 'Aún lo estoy explorando' },
+    ];
+    const urgencias = urgenciaDefs.map(u => ({
+      ...u,
+      checked: urgencia === u.value,
+      style: `display:flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid ${urgencia === u.value ? 'var(--color-forest)' : 'var(--border-subtle)'};background:${urgencia === u.value ? 'var(--color-primary-subtle)' : 'transparent'};border-radius:4px;cursor:pointer;font-size:13px;color:var(--text-secondary);transition:border-color 120ms ease,background 120ms ease;`,
+    }));
+
+    const interesCasos = [
+      { name: 'c_trazabilidad', label: 'Trazabilidad normativa' },
+      { name: 'c_huella', label: 'Huella de carbono' },
+      { name: 'c_agronomicos', label: 'Planes agronómicos de digestato' },
+      { name: 'c_fertilizante', label: 'Certificación fertilizante UE' },
+      { name: 'c_rendimiento', label: 'Rendimiento de sustratos' },
+      { name: 'c_gemelos', label: 'Gemelos digitales' },
+      { name: 'c_drones', label: 'Drones' },
+    ];
+
+    const handleFormSubmit = (e) => {
+      e.preventDefault();
+      const fd = new FormData(e.target);
+      const errors = {};
+      ['nombre', 'empresa', 'cargo', 'email'].forEach(f => { if (!fd.get(f)?.trim()) errors[f] = true; });
+      const email = fd.get('email');
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = 'format';
+      if (Object.keys(errors).length) { this.setState({ formErrors: errors }); return; }
+      this.setState({ formSubmitted: true, formErrors: {} });
+    };
+    const bc = f => formErrors[f] ? 'var(--color-error)' : 'var(--border-default)';
+
+    // ── Service links (nav, 7) ──
+    const serviceLinks = [
+      { id: 'trazabilidad-normativa', title: 'Trazabilidad normativa', icon: 'ti ti-clipboard-check' },
+      { id: 'huella-carbono', title: 'Huella de carbono', icon: 'ti ti-leaf' },
+      { id: 'planes-agronomicos', title: 'Planes agronómicos de digestato', icon: 'ti ti-plant-2' },
+      { id: 'fertilizante-ue', title: 'Certificación fertilizante UE', icon: 'ti ti-rosette' },
+      { id: 'rendimiento-sustratos', title: 'Monitorización de rendimiento de sustratos', icon: 'ti ti-chart-line' },
+      { id: 'gemelos-digitales', title: 'Gemelos digitales', icon: 'ti ti-cpu' },
+      { id: 'inspeccion-drones', title: 'Drones', icon: 'ti ti-drone' },
+    ].map(s => ({ ...s, href: `Brain Recycle Servicios.dc.html#${s.id}` }));
+
+    return {
+      menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      langOther: this.state.lang === 'es' ? 'EN' : 'ES',
+      toggleLang: () => this.setLang(this.state.lang === 'es' ? 'en' : 'es'),
+      serviceLinks,
+      ejeChips,
+      silos,
+      ejePasos,
+      propiedades,
+      casosDestacados,
+      resultados,
+      recorrido,
+      segStep, pilarActual, stepDots, controlCards, evidenceSteps,
+      segIs0: segStep === 0, segIs1: segStep === 1, segIs2: segStep === 2,
+      segStepNum: segStep + 1,
+      segAtStart: segStep === 0,
+      segPrev: () => this.setState(s => ({ segStep: Math.max(0, s.segStep - 1) })),
+      segNext: () => this.setState(s => ({ segStep: s.segStep < 2 ? s.segStep + 1 : 0 })),
+      segNextLabel: segStep < 2 ? 'Siguiente →' : 'Volver al inicio',
+      segPrevStyle: `padding:11px 20px;border-radius:4px;border:1px solid rgba(255,255,255,.18);background:none;color:${segStep === 0 ? 'rgba(255,255,255,.25)' : 'rgba(255,255,255,.8)'};font-size:13.5px;font-weight:500;cursor:${segStep === 0 ? 'default' : 'pointer'};`,
+      segNextStyle: 'padding:11px 22px;border-radius:4px;border:none;background:var(--color-sage);color:var(--color-deep);font-size:13.5px;font-weight:600;cursor:pointer;',
+      gobernanza,
+      urgencias,
+      selectUrgencia: (e) => this.setState({ urgencia: e.target.value }),
+      interesCasos,
+      formSubmitted,
+      formNotSubmitted: !formSubmitted,
+      handleFormSubmit,
+      errorNombre: !!formErrors.nombre,
+      errorEmpresa: !!formErrors.empresa,
+      errorCargo: !!formErrors.cargo,
+      errorEmail: !!formErrors.email,
+      emailErrorMsg: formErrors.email === 'format' ? 'El formato no es válido. Usa nombre@dominio.com.' : 'Requerido',
+      nombreBorderColor: bc('nombre'),
+      empresaBorderColor: bc('empresa'),
+      cargoBorderColor: bc('cargo'),
+      emailBorderColor: bc('email'),
+    };
+  }
+}
+</script>
+</body>
+</html>

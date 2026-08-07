@@ -1,0 +1,24 @@
+BRAINRECYCLE DEMO — PUBLICACIÓN MANUAL EN GITHUB PAGES
+
+Repositorio: maragon79/brainrecycle-demo
+
+1. Entra en https://github.com/maragon79/brainrecycle-demo
+2. Pulsa "Add file" > "Upload files".
+3. Descomprime este ZIP en tu ordenador.
+4. Arrastra TODO el contenido descomprimido (archivos y carpetas) a la zona de carga.
+   IMPORTANTE: index.html debe quedar en la RAÍZ del repositorio, no dentro de una carpeta adicional.
+5. En "Commit changes", escribe por ejemplo: "Publish BrainRecycle demo V5.3" y confirma en main.
+6. Ve a Settings > Pages.
+7. En "Build and deployment":
+   - Source: Deploy from a branch
+   - Branch: main
+   - Folder: / (root)
+   - Save
+8. Espera normalmente 1-3 minutos.
+9. La URL prevista es:
+   https://maragon79.github.io/brainrecycle-demo/
+
+NOTAS
+- El sitio es público mientras el repositorio sea público.
+- No borres la carpeta _ds ni assets.
+- El archivo .nojekyll debe permanecer en la raíz.
