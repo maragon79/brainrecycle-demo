@@ -1,0 +1,6 @@
+/* Brand fonts are loaded via Google Fonts <link> in each page head */
+:root{
+  --font-display:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  --font-body:'Roboto',system-ui,-apple-system,sans-serif;
+  --font-mono:'Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+}

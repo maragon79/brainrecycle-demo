@@ -1,0 +1,5 @@
+Corrección de publicación GitHub Pages:
+- carpeta _ds renombrada a ds para evitar tratamiento especial por Jekyll/GitHub Pages;
+- referencias _ds/ sustituidas por ds/ en todas las páginas;
+- tokens críticos de diseño incluidos como fallback inline;
+- .nojekyll mantenido como protección adicional.
