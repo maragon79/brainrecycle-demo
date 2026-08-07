@@ -1,0 +1,65 @@
+name: Apply mobile header and agent repair
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-mobile-header-agent-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Patch Home pages and Dashboard
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          version = '20260808-0010'
+          homes = [Path('index.html'), Path('Brain Recycle Home.dc.html')]
+          jotform_script = re.compile(r'\s*<script\s+src=["\']https://cdn\.jotfor\.ms/agent/embedjs/019fa26bce5070008110e6538cf51792df87/embed\.js(?:\?[^"\']*)?["\']\s*>\s*</script>\s*', re.I)
+          support_script = re.compile(r'<script\s+src=["\']\./support\.js(?:\?[^"\']*)?["\']\s*>\s*</script>', re.I)
+          agent_shell_script = re.compile(r'\s*<script\s+src=["\']\./agent-shell\.js(?:\?[^"\']*)?["\']\s+defer\s*>\s*</script>\s*', re.I)
+
+          fallback = '''\n<style id="br-home-header-fallback-final">\n@media(max-width:760px){\n  body header{position:sticky!important;top:0!important;z-index:200!important;}\n  body header .header-actions{display:flex!important;margin-left:auto!important;gap:8px!important;}\n  body header .header-actions>a{display:none!important;}\n  body header .header-actions>button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:72px!important;height:48px!important;padding:0 12px!important;}\n  body header .sm{display:flex!important;align-items:center!important;justify-content:center!important;width:58px!important;min-width:58px!important;height:58px!important;padding:0!important;border:2px solid rgba(255,255,255,.42)!important;border-radius:14px!important;background:rgba(255,255,255,.12)!important;}\n  body header .sm i{font-size:38px!important;line-height:1!important;color:#fff!important;}\n}\n</style>\n'''
+
+          for p in homes:
+              s = p.read_text(encoding='utf-8')
+              s = jotform_script.sub('\n', s)
+              s = agent_shell_script.sub('\n', s)
+              replacement = f'<script src="./support.js?v={version}"></script>\n<script src="./agent-shell.js?v={version}" defer></script>'
+              s, n = support_script.subn(replacement, s, count=1)
+              if n != 1:
+                  raise SystemExit(f'Could not replace support.js in {p}')
+              s = re.sub(r'\s*<style id="br-home-header-fallback-final">.*?</style>\s*', '\n', s, flags=re.S)
+              s = s.replace('</head>', fallback + '</head>', 1)
+              p.write_text(s, encoding='utf-8')
+
+          p = Path('Plant Dashboard.dc.html')
+          s = p.read_text(encoding='utf-8')
+          s, n = support_script.subn(f'<script src="./support.js?v={version}"></script>', s, count=1)
+          if n != 1:
+              raise SystemExit('Could not replace support.js in Dashboard')
+          s = re.sub(r'\s*<style id="br-direct-dashboard-menu-repair">.*?</style>\s*', '\n', s, flags=re.S)
+          s = re.sub(r'\s*<style id="br-dashboard-menu-final-last">.*?</style>\s*', '\n', s, flags=re.S)
+          final_css = '''\n<style id="br-dashboard-menu-final-last">\n@media(max-width:760px){\n  html body x-dc div.dash-shell main.dash-main > header{height:76px!important;min-height:76px!important;padding:0 14px!important;align-items:center!important;}\n  html body x-dc div.dash-shell main.dash-main > header label.dash-mobile-menu-btn{display:flex!important;width:60px!important;height:60px!important;min-width:60px!important;max-width:60px!important;flex:0 0 60px!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.18)!important;border:2px solid rgba(255,255,255,.58)!important;border-radius:15px!important;box-shadow:0 5px 16px rgba(0,0,0,.24)!important;padding:0!important;color:#fff!important;opacity:1!important;cursor:pointer!important;}\n  html body x-dc div.dash-shell main.dash-main > header label.dash-mobile-menu-btn i{font-size:40px!important;line-height:1!important;color:#fff!important;opacity:1!important;}\n}\n</style>\n'''
+          s = s.replace('</html>', final_css + '</html>', 1)
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Commit repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html 'Brain Recycle Home.dc.html' 'Plant Dashboard.dc.html'
+          if git diff --cached --quiet; then
+            echo "No changes needed"
+          else
+            git commit -m "Use controlled AI agent panel and finalize mobile headers"
+            git push origin main
+          fi
