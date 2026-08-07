@@ -34,3 +34,4 @@ jobs:
           git diff --cached --check
           git commit -m 'Fix Home AI agent sizing from 21:34 baseline'
           git push
+# trigger 2026-08-08T00:53+02:00
