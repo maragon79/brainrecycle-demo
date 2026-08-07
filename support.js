@@ -1989,3 +1989,185 @@
   new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
   addEventListener('resize',schedule,{passive:true});
 })();
+
+/* BrainRecycle — trazabilidad: TRH realista + indicador de scroll visible (2026-08-07) */
+(() => {
+  const STYLE_ID = 'br-traza-trh-scroll-20260807-v3';
+
+  const css = `
+@media(max-width:760px){
+  .br-traza-sequence-scroll{
+    overflow-x:scroll!important;
+    overflow-y:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior-x:contain!important;
+    scrollbar-width:auto!important;
+    scrollbar-color:#73877e #dbe2dc!important;
+    padding-bottom:14px!important;
+  }
+  .br-traza-sequence-scroll::-webkit-scrollbar{height:11px!important;display:block!important}
+  .br-traza-sequence-scroll::-webkit-scrollbar-track{background:#dbe2dc!important;border-radius:999px!important}
+  .br-traza-sequence-scroll::-webkit-scrollbar-thumb{background:#73877e!important;border-radius:999px!important;border:2px solid #dbe2dc!important}
+  .br-traza-scroll-hint{
+    display:flex!important;align-items:center!important;gap:8px!important;
+    width:100%!important;margin:0 0 8px!important;padding:8px 11px!important;
+    border:1px solid rgba(63,104,91,.22)!important;border-radius:8px!important;
+    background:#eef4e8!important;color:#2c483d!important;
+    font-family:var(--font-display,system-ui)!important;font-size:12px!important;font-weight:700!important;
+  }
+  .br-traza-scroll-hint .br-arrow{margin-left:auto!important;font-size:18px!important;line-height:1!important}
+  .br-traza-custom-track{
+    display:block!important;position:relative!important;width:100%!important;height:9px!important;
+    margin:6px 0 2px!important;border-radius:999px!important;background:#dbe2dc!important;overflow:hidden!important;
+  }
+  .br-traza-custom-thumb{
+    position:absolute!important;left:0;top:0;height:100%!important;min-width:34px!important;
+    border-radius:999px!important;background:#60786d!important;transform:translateX(0);
+  }
+  .br-trh-badge{
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    margin-top:2px!important;padding:3px 7px!important;border-radius:999px!important;
+    background:#e7f0dd!important;color:#2c483d!important;
+    font-size:10.5px!important;font-weight:800!important;line-height:1.15!important;white-space:nowrap!important;
+  }
+}
+`;
+
+  function installStyle(){
+    if (document.getElementById(STYLE_ID)) return;
+    const s=document.createElement('style');
+    s.id=STYLE_ID;
+    s.textContent=css;
+    document.head.appendChild(s);
+  }
+
+  function buttonByLabel(label){
+    return [...document.querySelectorAll('button')].find((b)=>{
+      const spans=[...b.querySelectorAll('span')];
+      return spans.some((s)=>s.textContent.trim()===label);
+    }) || null;
+  }
+
+  function findTimelineScroller(){
+    const origin=buttonByLabel('Origen');
+    if(!origin) return null;
+    let el=origin.parentElement;
+    while(el && el!==document.body){
+      const inline=(el.getAttribute('style')||'').toLowerCase();
+      const cs=getComputedStyle(el);
+      if(inline.includes('overflow-x:auto') || cs.overflowX==='auto' || cs.overflowX==='scroll'){
+        return el;
+      }
+      el=el.parentElement;
+    }
+    return null;
+  }
+
+  function setSingleTRH(){
+    const dig=buttonByLabel('Digestión anaerobia');
+    const digestato=buttonByLabel('Digestato');
+    if(!dig || !digestato) return;
+
+    /* Conserva la hora de entrada a digestión y añade UNA sola referencia numérica al TRH. */
+    let badge=dig.querySelector('.br-trh-badge');
+    if(!badge){
+      badge=document.createElement('span');
+      badge.className='br-trh-badge';
+      badge.textContent='TRH · 40 días';
+      dig.appendChild(badge);
+    }
+
+    /* Evita el error conceptual de mostrar digestato saliendo 45 min después. */
+    const dSpans=[...digestato.querySelectorAll('span')].filter(s=>!s.classList.contains('br-trh-badge'));
+    if(dSpans.length){
+      const moment=dSpans[dSpans.length-1];
+      if(/^07:10$/.test(moment.textContent.trim()) || /\d{2}:\d{2}/.test(moment.textContent.trim())){
+        moment.textContent='Salida tras digestión';
+      }
+    }
+  }
+
+  function updateDigestatoDetailOnClick(){
+    const digestato=buttonByLabel('Digestato');
+    if(!digestato || digestato.dataset.brTrhBound==='1') return;
+    digestato.dataset.brTrhBound='1';
+    digestato.addEventListener('click',()=>{
+      setTimeout(()=>{
+        const scroller=findTimelineScroller();
+        if(!scroller) return;
+        const timelineBlock=scroller.parentElement;
+        if(!timelineBlock) return;
+        const labels=[...timelineBlock.querySelectorAll('div')].filter(d=>d.textContent.trim()==='Fecha');
+        const label=labels[0];
+        if(!label || !label.parentElement) return;
+        const vals=[...label.parentElement.children];
+        const value=vals.find(v=>v!==label);
+        if(value) value.textContent='Salida tras TRH del digestor';
+      },60);
+    },true);
+  }
+
+  function addScrollUI(scroller){
+    if(!scroller) return;
+    scroller.classList.add('br-traza-sequence-scroll');
+
+    let hint=scroller.previousElementSibling;
+    if(!hint || !hint.classList.contains('br-traza-scroll-hint')){
+      hint=document.createElement('div');
+      hint.className='br-traza-scroll-hint';
+      hint.innerHTML='<span>Desliza hacia la derecha para continuar</span><span class="br-arrow">→</span>';
+      scroller.parentElement.insertBefore(hint,scroller);
+    }
+
+    let track=scroller.nextElementSibling;
+    if(!track || !track.classList.contains('br-traza-custom-track')){
+      track=document.createElement('div');
+      track.className='br-traza-custom-track';
+      const thumb=document.createElement('div');
+      thumb.className='br-traza-custom-thumb';
+      track.appendChild(thumb);
+      scroller.parentElement.insertBefore(track,scroller.nextSibling);
+    }
+
+    const thumb=track.querySelector('.br-traza-custom-thumb');
+    const update=()=>{
+      const total=Math.max(scroller.scrollWidth,1);
+      const view=Math.max(scroller.clientWidth,1);
+      const ratio=Math.min(1,view/total);
+      const trackW=track.clientWidth || view;
+      const thumbW=Math.max(34,trackW*ratio);
+      const maxScroll=Math.max(1,total-view);
+      const maxMove=Math.max(0,trackW-thumbW);
+      const move=Math.min(maxMove,(scroller.scrollLeft/maxScroll)*maxMove);
+      thumb.style.width=thumbW+'px';
+      thumb.style.transform='translateX('+move+'px)';
+      hint.style.display = total > view + 8 ? 'flex' : 'none';
+      track.style.display = total > view + 8 ? 'block' : 'none';
+    };
+
+    if(scroller.dataset.brScrollBound!=='1'){
+      scroller.dataset.brScrollBound='1';
+      scroller.addEventListener('scroll',update,{passive:true});
+      window.addEventListener('resize',update,{passive:true});
+    }
+    requestAnimationFrame(update);
+  }
+
+  function apply(){
+    installStyle();
+    setSingleTRH();
+    updateDigestatoDetailOnClick();
+    addScrollUI(findTimelineScroller());
+  }
+
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',apply,{once:true});
+  else apply();
+
+  let queued=false;
+  const observer=new MutationObserver(()=>{
+    if(queued) return;
+    queued=true;
+    requestAnimationFrame(()=>{queued=false;apply();});
+  });
+  observer.observe(document.documentElement,{childList:true,subtree:true});
+})();
