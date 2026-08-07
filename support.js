@@ -1892,223 +1892,100 @@
   observer.observe(document.documentElement, { childList:true, subtree:true });
 })();
 
-
-/* BrainRecycle private dashboard responsive layer 2026-08-07 — SAFE on top of 20:07 baseline */
+/* BrainRecycle mobile private dashboard — verified selectors for current 20:07 baseline */
 (() => {
-  const STYLE_ID = 'br-private-responsive-safe-20260807';
-  const HINT_CLASS = 'br-mobile-scroll-hint';
-  const css = `
-@media (max-width:760px){
-  /* Never alter the validated drawer mechanics. */
-  html,body,x-dc{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
-  html body x-dc .dash-main{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
-  html body x-dc .dash-main *{box-sizing:border-box}
+  const ID='br-private-mobile-20260807-v2';
+  const CSS=`
+@media(max-width:760px){
+  /* Preserve current validated drawer mechanics; only content under .dash-main is touched. */
+  html,body,x-dc{max-width:100%!important;overflow-x:hidden!important}
+  .dash-main{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
+  .dash-main [style*="padding:32px"]{padding:18px 14px!important}
+  .dash-main [style*="padding:28px"]{padding:18px 14px!important}
+  .dash-main [style*="padding:24px"]{padding:16px 14px!important}
+  .dash-main [style*="padding:20px"]{padding:15px!important}
+  .dash-main [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:100%!important;min-width:0!important}
+  .dash-main [style*="min-width:"]{min-width:0!important}
+  .dash-main img,.dash-main video,.dash-main iframe,.dash-main svg{max-width:100%!important;height:auto}
 
-  /* Private content: mobile spacing and safe widths. */
-  html body x-dc .dash-main > div[style*="flex:1;overflow-y:auto"],
-  html body x-dc .dash-main > div[style*="overflow-y:auto"]{width:100%!important;max-width:100%!important;min-width:0!important;overflow-x:hidden!important}
-  html body x-dc .dash-main [style*="padding:32px"]{padding:18px 14px!important}
-  html body x-dc .dash-main [style*="padding:28px"]{padding:18px 14px!important}
-  html body x-dc .dash-main [style*="padding:24px"]{padding:16px 14px!important}
-  html body x-dc .dash-main [style*="padding:20px"]{padding:15px!important}
-  html body x-dc .dash-main [style*="font-size:30px"]{font-size:25px!important;line-height:1.12!important}
-  html body x-dc .dash-main [style*="font-size:28px"]{font-size:23px!important;line-height:1.15!important}
-  html body x-dc .dash-main [style*="font-size:26px"]{font-size:22px!important;line-height:1.16!important}
-
-  /* All grid-based desktop compositions become one column on mobile. */
-  html body x-dc .dash-main [style*="display:grid"]{
-    grid-template-columns:minmax(0,1fr)!important;
-    width:100%!important;max-width:100%!important;min-width:0!important;
-    gap:14px!important;
+  /* Traceability view selector */
+  .dash-main div[style*="display:inline-flex"][style*="width:fit-content"]{
+    display:flex!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;
+    flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch!important;padding-bottom:10px!important;
+    scrollbar-width:auto!important;scrollbar-color:#3f685b #dfe5df!important;
   }
-  html body x-dc .dash-main [style*="min-width:"]:not(.br-preserve-minwidth){min-width:0!important}
-  html body x-dc .dash-main img,
-  html body x-dc .dash-main video,
-  html body x-dc .dash-main iframe,
-  html body x-dc .dash-main svg{max-width:100%!important;height:auto}
+  .dash-main div[style*="display:inline-flex"][style*="width:fit-content"]::-webkit-scrollbar{height:9px!important;display:block!important}
+  .dash-main div[style*="display:inline-flex"][style*="width:fit-content"]::-webkit-scrollbar-track{background:#dfe5df!important;border-radius:999px!important}
+  .dash-main div[style*="display:inline-flex"][style*="width:fit-content"]::-webkit-scrollbar-thumb{background:#3f685b!important;border-radius:999px!important}
+  .dash-main div[style*="display:inline-flex"][style*="width:fit-content"]>button{flex:0 0 auto!important;white-space:nowrap!important}
 
-  /* Flex cards/toolbar rows may wrap instead of being cut off. */
-  html body x-dc .dash-main .br-mobile-wrap{
-    flex-wrap:wrap!important;
-    width:100%!important;max-width:100%!important;min-width:0!important;
-    align-items:stretch!important;
+  /* Traceability lifecycle: current source has this exact overflow-x:auto row. */
+  .dash-main div[style*="display:flex"][style*="align-items:flex-start"][style*="overflow-x:auto"]{
+    width:100%!important;max-width:100%!important;overflow-x:scroll!important;overflow-y:hidden!important;
+    flex-wrap:nowrap!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior-x:contain!important;
+    padding:8px 4px 14px!important;scrollbar-width:auto!important;scrollbar-color:#3f685b #dfe5df!important;
   }
-  html body x-dc .dash-main .br-mobile-wrap > *{min-width:0!important;max-width:100%!important}
+  .dash-main div[style*="display:flex"][style*="align-items:flex-start"][style*="overflow-x:auto"]::-webkit-scrollbar{height:11px!important;display:block!important}
+  .dash-main div[style*="display:flex"][style*="align-items:flex-start"][style*="overflow-x:auto"]::-webkit-scrollbar-track{background:#dfe5df!important;border-radius:999px!important}
+  .dash-main div[style*="display:flex"][style*="align-items:flex-start"][style*="overflow-x:auto"]::-webkit-scrollbar-thumb{background:#3f685b!important;border-radius:999px!important;border:2px solid #dfe5df!important}
+  .dash-main div[style*="display:flex"][style*="align-items:flex-start"][style*="overflow-x:auto"]>div{flex:0 0 auto!important}
 
-  /* Generic wide data blocks: contained horizontal scroller, never whole-page overflow. */
-  html body x-dc .dash-main .br-mobile-overflow{
-    width:100%!important;max-width:100%!important;
-    overflow-x:auto!important;overflow-y:visible!important;
-    -webkit-overflow-scrolling:touch!important;
-    overscroll-behavior-x:contain!important;
-    scrollbar-width:auto!important;
-    scrollbar-color:#7b8981 #e7eae5!important;
-    padding-bottom:10px!important;
-  }
-  html body x-dc .dash-main .br-mobile-overflow::-webkit-scrollbar{height:10px!important;display:block!important}
-  html body x-dc .dash-main .br-mobile-overflow::-webkit-scrollbar-track{background:#e7eae5!important;border-radius:999px!important}
-  html body x-dc .dash-main .br-mobile-overflow::-webkit-scrollbar-thumb{background:#7b8981!important;border-radius:999px!important;border:2px solid #e7eae5!important}
+  /* Data detail card below lifecycle */
+  .dash-main div[style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important;gap:12px!important}
 
-  /* Traceability stages: deliberate horizontal story, with visible scroll bar. */
-  html body x-dc .dash-main .br-trace-stages{
-    display:flex!important;flex-wrap:nowrap!important;
-    width:100%!important;max-width:100%!important;
-    overflow-x:auto!important;overflow-y:hidden!important;
-    -webkit-overflow-scrolling:touch!important;
-    overscroll-behavior-x:contain!important;
-    scroll-snap-type:x proximity!important;
-    scrollbar-width:auto!important;
-    scrollbar-color:#3f685b #e7eae5!important;
-    padding:8px 4px 14px!important;
-  }
-  html body x-dc .dash-main .br-trace-stages::-webkit-scrollbar{height:11px!important;display:block!important}
-  html body x-dc .dash-main .br-trace-stages::-webkit-scrollbar-track{background:#e7eae5!important;border-radius:999px!important}
-  html body x-dc .dash-main .br-trace-stages::-webkit-scrollbar-thumb{background:#3f685b!important;border-radius:999px!important;border:2px solid #e7eae5!important}
-  html body x-dc .dash-main .br-trace-stages > *{
-    flex:0 0 132px!important;min-width:132px!important;scroll-snap-align:start!important;
-  }
+  /* Map / route and other desktop grids */
+  .dash-main div[style*="grid-template-columns:1.3fr 1fr"],
+  .dash-main div[style*="grid-template-columns:1.4fr 1fr"],
+  .dash-main div[style*="grid-template-columns:1fr 1.15fr"],
+  .dash-main div[style*="grid-template-columns:2fr 1fr"],
+  .dash-main div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:minmax(0,1fr)!important;gap:14px!important}
 
-  /* Traceability top tabs remain readable and horizontally scrollable. */
-  html body x-dc .dash-main .br-trace-tabs{
-    display:flex!important;flex-wrap:nowrap!important;gap:8px!important;
-    width:100%!important;max-width:100%!important;
-    overflow-x:auto!important;overflow-y:hidden!important;
-    -webkit-overflow-scrolling:touch!important;
-    scrollbar-width:auto!important;scrollbar-color:#7b8981 #e7eae5!important;
-    padding-bottom:10px!important;
-  }
-  html body x-dc .dash-main .br-trace-tabs::-webkit-scrollbar{height:8px!important;display:block!important}
-  html body x-dc .dash-main .br-trace-tabs::-webkit-scrollbar-track{background:#e7eae5!important;border-radius:999px!important}
-  html body x-dc .dash-main .br-trace-tabs::-webkit-scrollbar-thumb{background:#7b8981!important;border-radius:999px!important}
-  html body x-dc .dash-main .br-trace-tabs > *{flex:0 0 auto!important;min-width:max-content!important;white-space:nowrap!important}
+  /* Tables stay inside viewport and scroll themselves. */
+  .dash-main table{min-width:620px!important;width:max-content!important}
+  .dash-main .br-auto-table-scroll{width:100%!important;max-width:100%!important;overflow-x:scroll!important;-webkit-overflow-scrolling:touch!important;padding-bottom:10px!important;scrollbar-width:auto!important;scrollbar-color:#7b8981 #dfe5df!important}
+  .dash-main .br-auto-table-scroll::-webkit-scrollbar{height:10px!important;display:block!important}
+  .dash-main .br-auto-table-scroll::-webkit-scrollbar-track{background:#dfe5df!important;border-radius:999px!important}
+  .dash-main .br-auto-table-scroll::-webkit-scrollbar-thumb{background:#7b8981!important;border-radius:999px!important}
 
-  html body x-dc .dash-main .${HINT_CLASS}{
-    display:flex!important;align-items:center!important;gap:7px!important;
-    width:max-content!important;max-width:100%!important;
-    margin:4px 0 8px!important;padding:7px 11px!important;
-    border-radius:999px!important;background:#e7f0dd!important;color:#2c483d!important;
-    font:700 12px/1.2 var(--font-display)!important;
-    letter-spacing:.01em!important;
-  }
-  html body x-dc .dash-main .${HINT_CLASS} i{font-size:15px!important;flex:0 0 auto!important}
-
-  /* Data detail cards: labels and values stack cleanly when generated as flex rows. */
-  html body x-dc .dash-main .br-detail-card-mobile{display:grid!important;grid-template-columns:1fr!important;gap:12px!important}
-  html body x-dc .dash-main .br-detail-card-mobile > *{width:100%!important;min-width:0!important;max-width:100%!important}
-
-  /* Search fields and buttons never exceed viewport. */
-  html body x-dc .dash-main input,
-  html body x-dc .dash-main select,
-  html body x-dc .dash-main textarea{max-width:100%!important;min-width:0!important}
-
-  /* Tables remain usable: contained scroll with persistent scrollbar. */
-  html body x-dc .dash-main .br-table-scroll{
-    width:100%!important;max-width:100%!important;overflow-x:auto!important;
-    -webkit-overflow-scrolling:touch!important;scrollbar-width:auto!important;
-    scrollbar-color:#7b8981 #e7eae5!important;padding-bottom:10px!important;
-  }
-  html body x-dc .dash-main .br-table-scroll::-webkit-scrollbar{height:10px!important;display:block!important}
-  html body x-dc .dash-main .br-table-scroll::-webkit-scrollbar-track{background:#e7eae5!important;border-radius:999px!important}
-  html body x-dc .dash-main .br-table-scroll::-webkit-scrollbar-thumb{background:#7b8981!important;border-radius:999px!important}
-  html body x-dc .dash-main .br-table-scroll table{min-width:640px!important;width:max-content!important;max-width:none!important}
+  .dash-main .br-scroll-message{display:flex!important;align-items:center!important;gap:7px!important;width:max-content!important;max-width:100%!important;margin:4px 0 8px!important;padding:7px 11px!important;border-radius:999px!important;background:#e7f0dd!important;color:#2c483d!important;font:700 12px/1.2 var(--font-display)!important}
 }
 `;
-
-  function installStyle(){
-    if (document.getElementById(STYLE_ID)) return;
-    const s=document.createElement('style'); s.id=STYLE_ID; s.textContent=css; document.head.appendChild(s);
+  const norm=s=>(s||'').replace(/\s+/g,' ').trim();
+  function leafByText(txt){return [...document.querySelectorAll('.dash-main *')].filter(e=>e.children.length===0&&norm(e.textContent)===txt)}
+  function addHintBefore(el,text){
+    if(!el||el.previousElementSibling?.classList?.contains('br-scroll-message')) return;
+    const h=document.createElement('div'); h.className='br-scroll-message'; h.innerHTML='<i class="ti ti-arrows-horizontal"></i><span>'+text+'</span>'; el.parentNode.insertBefore(h,el);
   }
-
-  const norm = (s) => (s || '').replace(/\s+/g,' ').trim();
-  const exactText = (root, txt) => Array.from(root.querySelectorAll('*')).filter(el => el.children.length===0 && norm(el.textContent)===txt);
-  const hasExact = (root, txt) => exactText(root, txt).length>0;
-
-  function closestUseful(el, predicate, max=8){
-    let n=el;
-    for(let i=0;n && i<max;i++,n=n.parentElement){ if(predicate(n)) return n; }
+  function findScrollerFromOrigin(){
+    const origin=leafByText('Origen')[0]; if(!origin) return null;
+    let n=origin;
+    for(let i=0;n&&i<9;i++,n=n.parentElement){
+      const st=(n.getAttribute&&n.getAttribute('style'))||'';
+      if(st.includes('overflow-x:auto')&&st.includes('align-items:flex-start')) return n;
+    }
     return null;
   }
-
-  function addHint(scroller, text){
-    if(!scroller || scroller.previousElementSibling?.classList?.contains(HINT_CLASS)) return;
-    const h=document.createElement('div'); h.className=HINT_CLASS;
-    h.innerHTML='<i class="ti ti-arrows-horizontal"></i><span>'+text+'</span>';
-    scroller.parentNode.insertBefore(h, scroller);
-  }
-
-  function markTraceability(){
-    const main=document.querySelector('.dash-main'); if(!main) return;
-
-    /* Tabs: Línea de vida / Mapa / Ruta. */
-    const tabLeaf=exactText(main,'Línea de vida del lote')[0];
-    if(tabLeaf){
-      const tabs=closestUseful(tabLeaf, n => hasExact(n,'Mapa de parcelas') && hasExact(n,'Ruta de aplicación') && n.children.length>=3, 6);
-      if(tabs){ tabs.classList.add('br-trace-tabs'); addHint(tabs,'Desliza hacia la derecha para ver las opciones →'); }
+  function findTabs(){
+    const leaf=leafByText('Línea de vida del lote')[0]; if(!leaf) return null;
+    let n=leaf;
+    for(let i=0;n&&i<7;i++,n=n.parentElement){
+      if(norm(n.textContent).includes('Mapa de parcelas')&&norm(n.textContent).includes('Ruta de aplicación')) return n;
     }
-
-    /* Lifecycle stages: Origen, Circuito regulatorio, ... */
-    const origin=exactText(main,'Origen')[0];
-    if(origin){
-      const stages=closestUseful(origin, n => hasExact(n,'Circuito regulatorio') && (hasExact(n,'Preaviso') || hasExact(n,'Recepción y báscula')) && n.children.length>=3, 8);
-      if(stages){ stages.classList.add('br-trace-stages'); addHint(stages,'Desliza hacia la derecha para recorrer toda la trazabilidad →'); }
-    }
-
-    /* TRH: replace only the detail value “Ventana temporal”, once. */
-    const vt=exactText(main,'Ventana temporal');
-    if(vt.length){ vt[0].textContent='TRH · 40 días'; }
-    /* Defensive deduplication: if a previous render/patch ever created >1 exact TRH labels, keep first. */
-    const trh=exactText(main,'TRH · 40 días');
-    trh.slice(1).forEach(el => { if(el.parentElement) el.parentElement.style.display='none'; });
+    return null;
   }
-
-  function markTables(){
-    document.querySelectorAll('.dash-main table').forEach(t => {
-      if(t.parentElement?.classList.contains('br-table-scroll')) return;
-      const w=document.createElement('div'); w.className='br-table-scroll';
-      t.parentNode.insertBefore(w,t); w.appendChild(t);
-    });
-  }
-
-  function markResponsiveContainers(){
-    const main=document.querySelector('.dash-main'); if(!main) return;
-    const vw=Math.max(document.documentElement.clientWidth||0, window.innerWidth||0);
-    if(vw>760) return;
-
-    /* Flex blocks that are wider than the viewport should wrap, except deliberate trace scrollers. */
-    main.querySelectorAll('div,section,article').forEach(el => {
-      if(el.classList.contains('br-trace-stages') || el.classList.contains('br-trace-tabs') || el.classList.contains('br-mobile-overflow')) return;
-      const cs=getComputedStyle(el);
-      if(cs.display==='flex' && cs.flexDirection==='row' && el.children.length>=2){
-        const labels=norm(el.textContent);
-        const keepHorizontal=/Origen.*Circuito regulatorio|Línea de vida del lote.*Mapa de parcelas.*Ruta de aplicación/.test(labels);
-        if(!keepHorizontal && el.scrollWidth > Math.max(el.clientWidth+6, vw-20)) el.classList.add('br-mobile-wrap');
-      }
-    });
-
-    /* Any remaining genuinely wide block gets its own contained scroller, never page-level overflow. */
-    main.querySelectorAll('div,section,article').forEach(el => {
-      if(el.closest('.br-trace-stages,.br-trace-tabs,.br-table-scroll,.dash-sidebar')) return;
-      const rect=el.getBoundingClientRect();
-      if(rect.width>0 && el.scrollWidth > Math.max(rect.width+24, vw+24) && el.children.length>0){
-        el.classList.add('br-mobile-overflow');
-      }
-    });
-
-    /* Cards containing FECHA/ACTOR/RESIDUO become vertical if their immediate data row overflows. */
-    exactText(main,'FECHA').forEach(fecha => {
-      const card=closestUseful(fecha, n => hasExact(n,'ACTOR') && (hasExact(n,'RESIDUO / FLUJO') || hasExact(n,'VOLUMEN')) && n.children.length>=2, 6);
-      if(card) card.classList.add('br-detail-card-mobile');
-    });
-  }
-
   function apply(){
-    installStyle();
-    if(window.innerWidth<=760){ markTraceability(); markTables(); markResponsiveContainers(); }
+    if(!document.getElementById(ID)){const s=document.createElement('style');s.id=ID;s.textContent=CSS;document.head.appendChild(s)}
+    if(innerWidth>760) return;
+    const sc=findScrollerFromOrigin(); if(sc){sc.style.setProperty('overflow-x','scroll','important'); addHintBefore(sc,'Desliza hacia la derecha para recorrer toda la trazabilidad →')}
+    const tabs=findTabs(); if(tabs){tabs.style.setProperty('overflow-x','auto','important');tabs.style.setProperty('max-width','100%','important')}
+    /* TRH: only the active-node detail value is changed; no duplicate label is added elsewhere. */
+    leafByText('Ventana temporal').forEach((e,i)=>{if(i===0)e.textContent='TRH · 40 días'; else e.style.display='none'});
+    const trh=leafByText('TRH · 40 días'); trh.slice(1).forEach(e=>e.style.display='none');
+    document.querySelectorAll('.dash-main table').forEach(t=>{if(t.parentElement?.classList.contains('br-auto-table-scroll'))return;const w=document.createElement('div');w.className='br-auto-table-scroll';t.parentNode.insertBefore(w,t);w.appendChild(t)});
   }
-
-  let raf=0;
-  function schedule(){ cancelAnimationFrame(raf); raf=requestAnimationFrame(apply); }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',schedule,{once:true}); else schedule();
-  window.addEventListener('resize',schedule,{passive:true});
+  let timer;
+  const schedule=()=>{clearTimeout(timer);timer=setTimeout(apply,30)};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',schedule,{once:true});else schedule();
   new MutationObserver(schedule).observe(document.documentElement,{childList:true,subtree:true,characterData:true});
+  addEventListener('resize',schedule,{passive:true});
 })();
