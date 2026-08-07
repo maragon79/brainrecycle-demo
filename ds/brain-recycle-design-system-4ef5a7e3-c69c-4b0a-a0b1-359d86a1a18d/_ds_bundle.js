@@ -12,4 +12,18 @@
   }
   window.BrainRecycleDesignSystem_4ef5a7 = window.BrainRecycleDesignSystem_4ef5a7 || {};
   window.BrainRecycleDesignSystem_4ef5a7.TrustBadge = TrustBadge;
+
+  /* 21:34 baseline hotfix: only Home had two mobile caps (76px/72px)
+     that constrained the entire Jotform agent. Services does not have
+     those caps and is the validated reference behaviour. */
+  try {
+    var p = decodeURIComponent(window.location.pathname || '');
+    var isHome = /(?:Brain Recycle Home\.dc\.html|\/brainrecycle-demo\/?$|\/brainrecycle-demo\/index\.html$|\/index\.html$)/i.test(p);
+    if (isHome) {
+      var st = document.createElement('style');
+      st.id = 'br-home-jotform-release-2134';
+      st.textContent = '@media(max-width:760px){html body .jotform-agent-widget,html body .jf-agent-widget,html body iframe[src*="jotform"]{max-width:none!important;max-height:none!important;}}';
+      document.head.appendChild(st);
+    }
+  } catch(e) {}
 })();
