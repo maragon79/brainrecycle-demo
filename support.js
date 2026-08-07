@@ -15,8 +15,6 @@
     return /Plant Dashboard\.dc\.html$/i.test(decodedPath());
   }
 
-  /* Elimina de raíz las dos reglas históricas que recortaban el widget completo de Jotform
-     a 72/76px. No añadimos otra capa CSS: borramos las restricciones de los <style> renderizados. */
   function purgeJotformCaps(){
     if(!window.matchMedia('(max-width:760px)').matches) return;
     document.querySelectorAll('style').forEach(function(st){
@@ -27,6 +25,17 @@
         .replace(/iframe\[src\*="jotform"\]\s*,\s*\.jotform-agent-widget\s*,\s*\.jf-agent-widget\s*\{\s*max-width\s*:\s*72px\s*!important\s*;\s*max-height\s*:\s*72px\s*!important\s*;?\s*\}/gi,'');
       if(n!==t) st.textContent=n;
     });
+
+    /* Override inserted LAST, after the template styles are rendered. */
+    var old=document.getElementById('br-jotform-unclip-final');
+    if(old) old.remove();
+    var st=document.createElement('style');
+    st.id='br-jotform-unclip-final';
+    st.textContent='@media(max-width:760px){'+
+      'body .jotform-agent-widget,body .jf-agent-widget{max-width:none!important;max-height:none!important;width:auto!important;height:auto!important;overflow:visible!important;}'+
+      'body iframe[src*="jotform"],body iframe[src*="jotfor.ms"],body iframe[src*="jotfor"]{max-width:none!important;max-height:none!important;}'+
+    '}';
+    document.head.appendChild(st);
   }
 
   function installMobileHeader(){
@@ -70,13 +79,11 @@
   }
 
   function runFixes(){
-    purgeJotformCaps();
     if(isHome())installMobileHeader();
     if(isDashboard())emphasizeDashboardMenu();
-    /* Los estilos del template se insertan al renderizar; tres pasadas cortas son suficientes
-       y no observan las mutaciones internas del agente. */
-    setTimeout(purgeJotformCaps,100);
-    setTimeout(purgeJotformCaps,500);
+    if(isHome()){
+      [0,250,750,1500,3000,6000].forEach(function(ms){setTimeout(purgeJotformCaps,ms);});
+    }
   }
 
   var s=document.createElement('script');
