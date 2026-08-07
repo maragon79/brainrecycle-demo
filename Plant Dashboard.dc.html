@@ -5,109 +5,106 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="./support.js"></script>
 
-<style id="brainrecycle-mobile-responsive-v59">
-/* BrainRecycle private area — comprehensive mobile reflow */
+<style id="brainrecycle-mobile-responsive-v511-safe">
+/* BrainRecycle private area — mobile-only responsive layer. Desktop remains untouched. */
+.dash-mobile-menu-btn,.dash-mobile-drawer-head,.br-css-backdrop{display:none}
+.br-dash-toggle{position:absolute;opacity:0;pointer-events:none}
+
 @media (max-width:760px){
   html,body,x-dc{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
   body{background:var(--surface-background)!important}
+  x-dc .dash-shell{display:block!important;width:100%!important;max-width:100%!important;height:auto!important;min-height:100dvh!important;overflow:visible!important}
+  x-dc .dash-main{display:flex!important;width:100%!important;max-width:100%!important;min-width:0!important;height:auto!important;min-height:100dvh!important;margin:0!important;overflow:visible!important;flex-direction:column!important}
+  x-dc .dash-main>div[style*="flex:1;overflow-y:auto"]{overflow:visible!important;min-width:0!important;width:100%!important}
 
-  /* App shell / content */
-  x-dc .dash-shell{width:100%!important;max-width:100%!important;min-height:100dvh!important;overflow:visible!important}
-  x-dc .dash-main{width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;overflow:visible!important}
-  x-dc .dash-main>div[style*="flex:1;overflow-y:auto"]{overflow:visible!important;min-width:0!important}
+  /* Proven mobile drawer behaviour: closed by default, checkbox opens it. */
+  x-dc .dash-sidebar{
+    position:fixed!important;left:0!important;top:0!important;bottom:0!important;
+    width:min(88vw,360px)!important;min-width:0!important;height:100dvh!important;max-height:100dvh!important;
+    z-index:4000!important;display:flex!important;flex-direction:column!important;
+    overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;
+    transform:translateX(-105%)!important;visibility:hidden!important;pointer-events:none!important;
+    transition:transform .22s ease,visibility 0s linear .22s!important;box-shadow:18px 0 48px rgba(0,0,0,.35)!important
+  }
+  x-dc #brDashToggle:checked~.dash-sidebar{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition:transform .22s ease!important}
+  x-dc .br-css-backdrop{display:none!important}
+  x-dc #brDashToggle:checked~.br-css-backdrop{display:block!important;position:fixed!important;inset:0!important;z-index:3900!important;background:rgba(7,17,12,.58)!important;backdrop-filter:blur(2px)!important}
 
-  /* Header: clear, white mobile menu */
-  x-dc .dash-mobile-menu-btn{display:flex!important;width:44px!important;height:44px!important;flex:0 0 44px!important;align-items:center!important;justify-content:center!important;color:#fff!important;background:rgba(255,255,255,.08)!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:10px!important;padding:0!important;cursor:pointer!important}
+  /* Drawer header/logo + independent scrolling. */
+  x-dc .dash-mobile-drawer-head{display:flex!important;height:58px!important;min-height:58px!important;flex:0 0 58px!important;align-items:center!important;justify-content:space-between!important;padding:0 14px!important;border-bottom:1px solid rgba(255,255,255,.08)!important;overflow:hidden!important}
+  x-dc .dash-mobile-drawer-head img{display:block!important;width:auto!important;height:28px!important;max-height:28px!important;max-width:132px!important;object-fit:contain!important}
+  x-dc .br-dash-close{width:42px!important;height:42px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:8px!important;color:#fff!important;cursor:pointer!important}
+  x-dc .br-dash-close i{font-size:24px!important;color:#fff!important}
+  x-dc .dash-sidebar>div:nth-of-type(2){padding:10px 12px!important;flex:0 0 auto!important}
+  x-dc .dash-sidebar>nav{display:flex!important;flex:0 0 auto!important;flex-direction:column!important;gap:3px!important;padding:8px 8px 14px!important;overflow:visible!important}
+  x-dc .dash-sidebar>nav button{width:100%!important;min-height:44px!important;padding:10px!important;font-size:14px!important;line-height:1.25!important;white-space:normal!important;flex:0 0 auto!important}
+  x-dc .dash-sidebar>div:last-child{display:block!important;flex:0 0 auto!important;margin-top:0!important}
+
+  /* Header + hamburger. */
+  x-dc .dash-main>header{position:sticky!important;top:0!important;z-index:900!important;height:60px!important;min-height:60px!important;padding:0 12px!important;gap:10px!important}
+  x-dc .dash-mobile-menu-btn{display:flex!important;width:44px!important;height:44px!important;flex:0 0 44px!important;align-items:center!important;justify-content:center!important;color:#fff!important;background:rgba(255,255,255,.13)!important;border:1px solid rgba(255,255,255,.30)!important;border-radius:10px!important;box-shadow:0 2px 10px rgba(0,0,0,.18)!important;padding:0!important;cursor:pointer!important}
   x-dc .dash-mobile-menu-btn i{font-size:27px!important;color:#fff!important;line-height:1!important}
-  x-dc .dash-main>header{height:60px!important;min-height:60px!important;padding:0 12px!important;gap:10px!important}
+  x-dc .dash-main>header>div{gap:10px!important;flex:1!important;min-width:0!important}
   x-dc .dash-main>header img{height:24px!important;width:auto!important;max-width:145px!important}
   x-dc .dash-main>header nav{display:none!important}
   x-dc .dash-main>header>button:last-child{min-width:0!important;max-width:190px!important;height:42px!important;padding:0 12px!important;font-size:14px!important}
 
-  /* Demo strip: data notice only, never a fake action */
-  x-dc .dash-demo-strip{min-height:38px!important;padding:7px 12px!important;gap:8px!important}
+  /* Data notice only. */
+  x-dc .dash-demo-strip{min-height:38px!important;padding:7px 12px!important;gap:8px!important;justify-content:flex-start!important}
   x-dc .dash-demo-strip .br-demo-video-btn{display:none!important}
   x-dc .dash-demo-strip .demo-long{display:none!important}
   x-dc .dash-demo-strip p{font-size:12px!important;white-space:normal!important}
 
-  /* Drawer: controlled logo and independent vertical scroll */
-  x-dc .dash-sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(88vw,360px)!important;min-width:0!important;height:100dvh!important;max-height:100dvh!important;z-index:4000!important;overflow-y:auto!important;overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important;overscroll-behavior:contain!important;box-shadow:18px 0 48px rgba(0,0,0,.35)!important}
-  x-dc .dash-mobile-drawer-head{display:flex!important;height:58px!important;min-height:58px!important;flex:0 0 58px!important;align-items:center!important;justify-content:space-between!important;padding:0 14px!important;border-bottom:1px solid rgba(255,255,255,.08)!important;overflow:hidden!important}
-  x-dc .dash-mobile-drawer-head img{display:block!important;height:26px!important;max-height:26px!important;width:auto!important;max-width:145px!important;object-fit:contain!important}
-  x-dc .dash-sidebar>div:first-child img{height:26px!important;max-height:26px!important;width:auto!important;max-width:145px!important;object-fit:contain!important}
-  x-dc .dash-sidebar>div:nth-of-type(2){padding:10px 12px!important;flex:0 0 auto!important}
-  x-dc .dash-sidebar>div:nth-of-type(3){padding:8px!important;flex:0 0 auto!important}
-  x-dc .dash-sidebar>nav{display:flex!important;flex-direction:column!important;gap:3px!important;padding:8px 8px 14px!important;overflow:visible!important;flex:0 0 auto!important}
-  x-dc .dash-sidebar>nav button{width:100%!important;min-height:44px!important;padding:10px!important;font-size:14px!important;line-height:1.25!important;white-space:normal!important;flex:0 0 auto!important}
-  x-dc .dash-sidebar>div:last-child{display:block!important;flex:0 0 auto!important;margin-top:0!important}
-  x-dc .br-dash-close{color:#fff!important}
-
-  /* Universal content spacing */
+  /* Private content: universal safe reflow. */
   x-dc .dash-main [style*="padding:32px"]{padding:18px 14px!important}
   x-dc .dash-main [style*="padding:28px"]{padding:16px 14px!important}
   x-dc .dash-main [style*="padding:24px"]{padding:16px 14px!important}
   x-dc .dash-main [style*="padding:20px"]{padding:14px!important}
-  x-dc .dash-main [style*="gap:24px"]{gap:16px!important}
-  x-dc .dash-main [style*="gap:20px"]{gap:14px!important}
-
-  /* Every desktop grid in private area becomes one column */
-  x-dc .dash-main [style*="grid-template-columns:repeat(4,1fr)"],
-  x-dc .dash-main [style*="grid-template-columns:repeat(3,1fr)"],
-  x-dc .dash-main [style*="grid-template-columns:1fr 1fr"],
-  x-dc .dash-main [style*="grid-template-columns:1.3fr 1fr"],
-  x-dc .dash-main [style*="grid-template-columns:1.4fr 1fr"],
-  x-dc .dash-main [style*="grid-template-columns:1.6fr 1fr"]{
-    grid-template-columns:minmax(0,1fr)!important;
-    width:100%!important;
-    min-width:0!important;
-  }
+  x-dc .dash-main [style*="display:grid"]{grid-template-columns:minmax(0,1fr)!important;width:100%!important;max-width:100%!important;min-width:0!important}
   x-dc .dash-main [style*="display:grid"]>*{min-width:0!important;max-width:100%!important}
-
-  /* Generic cards */
-  x-dc .dash-main [style*="background:var(--surface-raised)"]{max-width:100%!important;min-width:0!important}
-  x-dc .dash-main [style*="border-radius:var(--radius-sm)"]{max-width:100%!important;min-width:0!important}
-
-  /* Headings and action rows */
+  x-dc .dash-main [style*="width:480px"],x-dc .dash-main [style*="width:520px"],x-dc .dash-main [style*="width:560px"],x-dc .dash-main [style*="width:600px"],x-dc .dash-main [style*="width:640px"],x-dc .dash-main [style*="width:680px"],x-dc .dash-main [style*="width:720px"]{width:100%!important;max-width:100%!important}
   x-dc .dash-main [style*="font-size:30px"]{font-size:24px!important;line-height:1.12!important}
   x-dc .dash-main [style*="font-size:28px"]{font-size:23px!important;line-height:1.15!important}
   x-dc .dash-main [style*="font-size:26px"]{font-size:22px!important;line-height:1.18!important}
-  x-dc .dash-main [style*="justify-content:space-between"]{column-gap:10px!important;row-gap:10px!important}
-  x-dc .dash-main button{max-width:100%!important}
+  x-dc .dash-main p,x-dc .dash-main span,x-dc .dash-main td,x-dc .dash-main th,x-dc .dash-main button,x-dc .dash-main div{word-break:normal!important;overflow-wrap:break-word!important}
+  x-dc .dash-main img,x-dc .dash-main svg,x-dc .dash-main canvas,x-dc .dash-main iframe,x-dc .dash-main video,x-dc .dash-main x-import{max-width:100%!important}
 
-  /* Tabs: keep usable without squeezing text */
-  x-dc .dash-main [style*="display:inline-flex"][style*="width:fit-content"]{display:flex!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important}
-  x-dc .dash-main [style*="display:inline-flex"][style*="width:fit-content"]::-webkit-scrollbar{display:none!important}
-  x-dc .dash-main [style*="display:inline-flex"][style*="width:fit-content"] button{flex:0 0 auto!important;white-space:nowrap!important}
+  /* Traceability tabs: horizontal scroll, no squeezed/vertical words. */
+  x-dc .traza-tabs{display:flex!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;gap:6px!important;padding:4px!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important}
+  x-dc .traza-tabs::-webkit-scrollbar{display:none!important}
+  x-dc .traza-tabs button{flex:0 0 auto!important;min-width:max-content!important;white-space:nowrap!important;padding:9px 12px!important;font-size:12px!important;line-height:1.2!important}
 
-  /* Tables: controlled horizontal viewport rather than clipping whole page */
-  x-dc .dash-main table{width:max-content!important;min-width:620px!important;max-width:none!important;border-collapse:collapse!important}
+  /* Traceability timeline: vertical sequence. */
+  x-dc .traza-timeline{display:flex!important;flex-direction:column!important;align-items:stretch!important;overflow:visible!important;width:100%!important;padding:0!important;gap:0!important}
+  x-dc .traza-timeline>div{display:flex!important;width:100%!important;align-items:flex-start!important;flex-shrink:1!important;position:relative!important}
+  x-dc .traza-timeline>div>button{width:100%!important;min-width:0!important;display:grid!important;grid-template-columns:44px minmax(0,1fr)!important;align-items:center!important;text-align:left!important;gap:12px!important;padding:8px 0!important}
+  x-dc .traza-timeline>div>button>span{font-size:13px!important;text-align:left!important;line-height:1.35!important;min-width:0!important}
+  x-dc .traza-timeline>div>div:last-child{width:1px!important;height:18px!important;margin:0 0 0 22px!important;background:var(--border-default)!important}
+  x-dc .traza-timeline+div[style*="background:var(--surface-raised)"]{flex-direction:column!important;align-items:flex-start!important;gap:14px!important;padding:16px!important;width:100%!important}
+  x-dc .traza-timeline+div[style*="background:var(--surface-raised)"]>div[style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important;gap:12px!important;width:100%!important}
+
+  /* Maps and route: visual full width, information below. */
+  x-dc .traza-map-grid,x-dc .traza-route-grid{display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;gap:14px!important}
+  x-dc #mapa-parcelas,x-dc #ruta-aplicacion{display:block!important;width:100%!important;max-width:100%!important;height:300px!important;min-height:300px!important}
+  x-dc .traza-map-grid>*,x-dc .traza-route-grid>*{width:100%!important;max-width:100%!important;min-width:0!important}
+
+  /* Tables live in their own horizontal viewport. */
+  x-dc .dash-main div:has(>table),x-dc .dash-main [style*="overflow-x:auto"]:has(>table){display:block!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important}
+  x-dc .dash-main table{min-width:680px!important;width:680px!important;max-width:none!important;border-collapse:collapse!important}
   x-dc .dash-main table th,x-dc .dash-main table td{white-space:normal!important;vertical-align:top!important}
-  x-dc .dash-main div:has(> table){width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important}
 
-  /* Timelines / horizontal process rows */
-  x-dc .dash-main [style*="display:flex"][style*="overflow-x:auto"]{max-width:100%!important;-webkit-overflow-scrolling:touch!important;scroll-snap-type:x proximity!important}
-  x-dc .dash-main [style*="display:flex"][style*="overflow-x:auto"]>div{scroll-snap-align:start}
+  /* Generic horizontal process rows can scroll locally, never widen the page. */
+  x-dc .dash-main [style*="display:flex"][style*="overflow-x:auto"]:not(.traza-tabs):not(.traza-timeline){max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scroll-snap-type:x proximity!important}
+  x-dc .dash-main [style*="display:flex"][style*="overflow-x:auto"]>*{scroll-snap-align:start}
 
-  /* Map + route / mixed visual modules */
-  x-dc .dash-main img,x-dc .dash-main svg,x-dc .dash-main video,x-dc .dash-main iframe{max-width:100%!important;height:auto!important}
-  x-dc .dash-main [style*="background-image"]{max-width:100%!important;min-width:0!important}
-
-  /* Prevent fixed desktop widths from forcing off-screen content */
-  x-dc .dash-main [style*="width:480px"],x-dc .dash-main [style*="width:520px"],x-dc .dash-main [style*="width:560px"],x-dc .dash-main [style*="width:600px"],x-dc .dash-main [style*="width:640px"],x-dc .dash-main [style*="width:680px"],x-dc .dash-main [style*="width:720px"]{width:100%!important;max-width:100%!important}
-  x-dc .dash-main [style*="max-width:480px"]{max-width:100%!important}
-
-  /* Long values, emails, regulatory text */
-  x-dc .dash-main td,x-dc .dash-main p,x-dc .dash-main span,x-dc .dash-main div{overflow-wrap:anywhere}
-  x-dc .dash-main [style*="font-family:var(--font-mono)"]{word-break:break-word!important}
+  x-dc .dash-main input,x-dc .dash-main select,x-dc .dash-main textarea,x-dc .dash-main button{max-width:100%!important}
+  x-dc .dash-main input[type="text"]{min-width:0!important;font-size:16px!important}
+  x-dc .dash-main *{box-sizing:border-box!important}
 }
 
-/* Slightly wider phones / small tablets */
 @media (min-width:761px) and (max-width:980px){
-  x-dc .dash-main [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  x-dc .dash-main [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-  x-dc .dash-main [style*="grid-template-columns:1.6fr 1fr"],
-  x-dc .dash-main [style*="grid-template-columns:1.4fr 1fr"],
-  x-dc .dash-main [style*="grid-template-columns:1.3fr 1fr"]{grid-template-columns:minmax(0,1fr)!important}
+  x-dc .dash-main [style*="grid-template-columns:repeat(4,1fr)"],x-dc .dash-main [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  x-dc .dash-main [style*="grid-template-columns:1.6fr 1fr"],x-dc .dash-main [style*="grid-template-columns:1.4fr 1fr"],x-dc .dash-main [style*="grid-template-columns:1.3fr 1fr"]{grid-template-columns:minmax(0,1fr)!important}
 }
 </style>
 
@@ -134,9 +131,11 @@ a:hover{color:var(--color-primary-hover)}
 button{font:inherit}
 </style>
 </helmet>
-<div style="height:100vh;width:100%;display:flex;overflow:hidden;background:var(--surface-background)">
+<div class="dash-shell" style="height:100vh;width:100%;display:flex;overflow:hidden;background:var(--surface-background)">
+<input type="checkbox" id="brDashToggle" class="br-dash-toggle" aria-hidden="true">
 
-<aside style="width:240px;min-width:240px;height:100%;background:var(--surface-dark);display:flex;flex-direction:column;flex-shrink:0">
+<aside class="dash-sidebar" style="width:240px;min-width:240px;height:100%;background:var(--surface-dark);display:flex;flex-direction:column;flex-shrink:0">
+<div class="dash-mobile-drawer-head"><img src="assets/logo-light.png" alt="BrainRecycle"><label for="brDashToggle" class="br-dash-close" aria-label="Cerrar navegación"><i class="ti ti-x"></i></label></div>
 
 <div style="padding:16px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative">
 <button onClick="{{ togglePlantMenu }}" style="width:100%;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-xs);padding:10px 12px;cursor:pointer;text-align:left" style-hover="background:rgba(255,255,255,0.12)">
@@ -182,9 +181,11 @@ button{font:inherit}
 </div>
 </aside>
 
-<main style="flex:1;height:100%;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+<label for="brDashToggle" class="br-css-backdrop" aria-label="Cerrar menú"></label>
+<main class="dash-main" style="flex:1;height:100%;display:flex;flex-direction:column;min-width:0;overflow:hidden">
 
 <header style="height:56px;flex-shrink:0;background:var(--color-deep);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:24px">
+<label for="brDashToggle" class="dash-mobile-menu-btn" aria-label="Abrir navegación"><i class="ti ti-menu-2"></i></label>
 <div style="display:flex;align-items:center;gap:28px;min-width:0">
 <a href="Brain Recycle Home.dc.html" style="display:flex;align-items:center;flex-shrink:0">
 <img src="assets/logo-light.png" alt="brainrecycle" style="height:20px;width:auto;display:block">
@@ -201,9 +202,9 @@ button{font:inherit}
 </button>
 </header>
 
-<div style="flex-shrink:0;background:var(--color-warning-surface);border-bottom:1px solid var(--color-warning);display:flex;align-items:center;gap:10px;padding:9px 28px">
+<div class="dash-demo-strip" style="flex-shrink:0;background:var(--color-warning-surface);border-bottom:1px solid var(--color-warning);display:flex;align-items:center;gap:10px;padding:9px 28px">
 <i class="ti ti-flask" style="font-size:16px;color:var(--color-warning);flex-shrink:0"></i>
-<p style="font-size:13px;color:var(--text-primary);line-height:1.5;margin:0"><span style="font-weight:600">Entorno de demostración.</span> Los datos de esta planta son ficticios y sirven para ilustrar el funcionamiento del espacio de datos.</p>
+<p style="font-size:13px;color:var(--text-primary);line-height:1.5;margin:0"><span style="font-weight:700">Entorno de prueba · Datos ficticios</span></p>
 </div>
 
 <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;min-width:0">
@@ -311,7 +312,7 @@ button{font:inherit}
 <input type="text" placeholder="Buscar por lote, productor, transportista o parcela" style="width:100%;height:38px;padding:0 14px 0 36px;border:1px solid var(--border-default);border-radius:var(--radius-xs);font-family:var(--font-body);font-size:14px;color:var(--text-primary);background:var(--surface-raised);outline:none">
 </div>
 
-<div style="display:inline-flex;gap:4px;background:var(--color-neutral-100);border-radius:var(--radius-xs);padding:3px;width:fit-content">
+<div class="traza-tabs" style="display:inline-flex;gap:4px;background:var(--color-neutral-100);border-radius:var(--radius-xs);padding:3px;width:fit-content">
 <sc-if value="{{ trazaViewTimeline }}" hint-placeholder-val="{{ true }}"><button onClick="{{ setTrazaViewTimeline }}" style="padding:7px 14px;border:none;border-radius:4px;background:var(--surface-raised);color:var(--text-primary);font-size:13px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-xs)">Línea de vida del lote</button></sc-if>
 <sc-if value="{{ trazaViewTimelineOff }}" hint-placeholder-val="{{ false }}"><button onClick="{{ setTrazaViewTimeline }}" style="padding:7px 14px;border:none;border-radius:4px;background:transparent;color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer">Línea de vida del lote</button></sc-if>
 <sc-if value="{{ trazaViewMapa }}" hint-placeholder-val="{{ false }}"><button onClick="{{ setTrazaViewMapa }}" style="padding:7px 14px;border:none;border-radius:4px;background:var(--surface-raised);color:var(--text-primary);font-size:13px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-xs)">Mapa de parcelas</button></sc-if>
@@ -322,7 +323,7 @@ button{font:inherit}
 
 <sc-if value="{{ trazaViewTimeline }}" hint-placeholder-val="{{ true }}">
 <div style="display:flex;flex-direction:column;gap:20px">
-<div style="display:flex;align-items:flex-start;overflow-x:auto;padding-bottom:8px">
+<div class="traza-timeline" style="display:flex;align-items:flex-start;overflow-x:auto;padding-bottom:8px">
 <sc-for list="{{ trazaNodes }}" as="n" hint-placeholder-count="7">
 <div style="display:flex;align-items:center;flex-shrink:0">
 <button onClick="{{ n.select }}" style="display:flex;flex-direction:column;align-items:center;gap:8px;background:none;border:none;cursor:pointer;padding:4px;width:104px">
@@ -348,7 +349,7 @@ button{font:inherit}
 </sc-if>
 
 <sc-if value="{{ trazaViewMapa }}" hint-placeholder-val="{{ false }}">
-<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
+<div class="traza-map-grid" style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
 <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="mapa-parcelas" shape="rounded" radius="16" placeholder="Mapa de parcelas — arrastra una imagen del mapa" style="width:100%;height:360px;display:block" hint-size="100%,360px"></x-import>
 <div style="display:flex;flex-direction:column;gap:10px">
 <sc-for list="{{ parcelas }}" as="pc" hint-placeholder-count="3">
@@ -363,7 +364,7 @@ button{font:inherit}
 </sc-if>
 
 <sc-if value="{{ trazaViewRuta }}" hint-placeholder-val="{{ false }}">
-<div style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
+<div class="traza-route-grid" style="display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start">
 <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="ruta-aplicacion" shape="rounded" radius="16" placeholder="Ruta de aplicación — arrastra una imagen del recorrido" style="width:100%;height:360px;display:block" hint-size="100%,360px"></x-import>
 <div style="display:flex;flex-direction:column">
 <sc-for list="{{ ruta }}" as="r" hint-placeholder-count="2">
