@@ -1,0 +1,6 @@
+V5.9
+- Dashboard móvil: menú lateral controlado por :target (HTML/CSS), cerrado por defecto y fuera del flujo.
+- Se neutralizan los mecanismos legacy br-drawer-open/is-open en móvil.
+- Botón Demo: modal por :target, sin dependencia de onclick/JavaScript.
+- Selector ES/EN del vídeo mediante dos modales enlazados, ambos funcionales sin JS.
+- Cierre de menú y vídeo con enlaces nativos.
