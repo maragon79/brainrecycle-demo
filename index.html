@@ -3,11 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="./support.js?v=20260808-0005"></script>
 
   <style id="brainrecycle-critical-tokens">
     :root{--color-deep:#2c483d;--color-black:#16241d;--color-forest:#3f685b;--color-primary-hover:#365c50;--color-primary-subtle:#e7f0dd;--color-sage:#cce6b1;--color-white:#fff;--surface-background:#f3f5f1;--surface-raised:#fff;--surface-dark:#243b32;--text-primary:#1b2721;--text-secondary:#48564f;--text-muted:#7b8981;--text-link:#3f685b;--text-link-hover:#2c483d;--border-subtle:#e7eae5;--border-default:#d3d9d1;--color-neutral-300:#c2cbc4;--color-success:#3f7d4e;--color-success-surface:#e6f2e8;--color-error:#c0453c;--color-error-surface:#f8e8e6;--color-warning:#b8801f;--color-warning-surface:#f7eed8;--color-info:#3d6fa5;--color-info-surface:#e6eef7;--font-display:'Space Grotesk',system-ui,-apple-system,sans-serif;--font-body:'Roboto',system-ui,-apple-system,sans-serif;--font-mono:'Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace;--radius-xs:6px;--radius-sm:10px;--radius-md:14px;--radius-lg:20px;}
   </style>
+
+<style id="br-direct-home-mobile-repair">
+@media(max-width:760px){
+  iframe[src*="jotform"],iframe[src*="jotfor.ms"],.jotform-agent-widget,.jf-agent-widget{max-width:none!important;max-height:none!important;}
+  #br-mobile-fixed-nav .br-fixed-menu,header .sm{width:58px!important;min-width:58px!important;height:58px!important;border:2px solid rgba(255,255,255,.42)!important;border-radius:14px!important;background:rgba(255,255,255,.12)!important;padding:0!important;display:flex!important;align-items:center!important;justify-content:center!important;}
+  #br-mobile-fixed-nav .br-fixed-menu i,header .sm i{font-size:38px!important;line-height:1!important;color:#fff!important;}
+}
+</style>
 </head>
 <body>
 <x-dc>
@@ -98,7 +106,7 @@
   [style*="grid-template-columns:1fr 1.15fr"]{grid-template-columns:1fr!important}
   [style*="grid-template-columns:1.08fr 1fr"]{grid-template-columns:1fr!important}
   img,video,iframe,svg{max-width:100%!important}
-  .jotform-agent-widget,.jf-agent-widget{max-width:76px!important;max-height:76px!important}
+  
 }
 </style>
 <style id="brainrecycle-mobile-final">
@@ -173,7 +181,7 @@
   [style*="width:700px"],[style*="width:720px"],[style*="width:900px"]{max-width:none!important}
 
   /* Chat assistant stays visible but does not cover controls */
-  iframe[src*="jotform"],.jotform-agent-widget,.jf-agent-widget{max-width:72px!important;max-height:72px!important}
+  
 }
 </style>
 
