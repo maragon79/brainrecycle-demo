@@ -7,7 +7,7 @@
   }
   function isHome(){
     var p=pathDecoded();
-    return /(?:Brain Recycle Home\.dc\.html|\/brainrecycle-demo\/?$)/i.test(p);
+    return /(?:Brain Recycle Home\.dc\.html|\/brainrecycle-demo\/?$|\/brainrecycle-demo\/index\.html$|\/index\.html$)/i.test(p);
   }
 
   function installMobileHeader(){
