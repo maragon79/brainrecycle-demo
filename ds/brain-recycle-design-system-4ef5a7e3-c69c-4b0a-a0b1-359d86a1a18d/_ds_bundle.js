@@ -33,8 +33,13 @@
       [0,50,150,350,700,1200,2000,3500].forEach(function(ms){setTimeout(repairHome,ms);});
     }
 
-    if(/Plant Dashboard\.dc\.html$/i.test(p)&&!document.getElementById('br-dashboard-hotfix-v3')){
-      var sc=document.createElement('script');sc.id='br-dashboard-hotfix-v3';sc.src='./dashboard-hotfix-v3.js?v=20260808-0133';sc.defer=true;document.head.appendChild(sc);
+    if(/Plant Dashboard\.dc\.html$/i.test(p)){
+      if(!document.getElementById('br-dashboard-hotfix-v3')){
+        var sc=document.createElement('script');sc.id='br-dashboard-hotfix-v3';sc.src='./dashboard-hotfix-v3.js?v=20260808-0133';sc.defer=true;document.head.appendChild(sc);
+      }
+      if(!document.getElementById('br-dashboard-translation-v4')){
+        var tr=document.createElement('script');tr.id='br-dashboard-translation-v4';tr.src='./dashboard-translation-v4.js?v=20260808-0142';tr.defer=true;document.head.appendChild(tr);
+      }
     }
   }catch(e){}
 })();
