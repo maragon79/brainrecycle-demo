@@ -30,48 +30,44 @@ a:hover{color:var(--color-primary-hover)}
 ::-webkit-scrollbar-thumb{background:var(--border-default);border-radius:9999px}
 button{font:inherit}
 </style>
-
-<style id="brainrecycle-dashboard-mobile-v1">
-@media (max-width: 900px){
-  html,body{width:100%;max-width:100%;overflow:hidden!important}
-  body>x-dc>div[style*="height:100vh"]{height:100dvh!important;min-height:100dvh!important;flex-direction:column!important;overflow:hidden!important}
-  body>x-dc>div[style*="height:100vh"]>aside{width:100%!important;min-width:0!important;height:72px!important;min-height:72px!important;flex-direction:row!important;align-items:center!important;overflow:hidden!important}
-  body>x-dc>div[style*="height:100vh"]>aside>div:first-child{width:190px!important;min-width:190px!important;padding:8px!important;border-bottom:0!important;border-right:1px solid rgba(255,255,255,.08)!important}
-  body>x-dc>div[style*="height:100vh"]>aside>div:nth-child(2){display:none!important}
-  body>x-dc>div[style*="height:100vh"]>aside>nav{height:72px!important;flex:1!important;flex-direction:row!important;align-items:center!important;overflow-x:auto!important;overflow-y:hidden!important;padding:8px!important;gap:4px!important}
-  body>x-dc>div[style*="height:100vh"]>aside>nav button{width:auto!important;min-width:max-content!important;white-space:nowrap!important;padding:9px 10px!important;border-left:0!important;border-bottom:2px solid transparent!important}
-  body>x-dc>div[style*="height:100vh"]>aside>div:last-child{display:none!important}
-  body>x-dc>div[style*="height:100vh"]>main{width:100%!important;height:calc(100dvh - 72px)!important;min-width:0!important}
-  main>header{height:50px!important;padding:0 12px!important;gap:10px!important}
-  main>header nav{display:none!important}
-  main>header>div{gap:10px!important}
-  main>header button{padding:6px 10px!important;font-size:12px!important}
-  main>header button i{display:none!important}
-  main>div[style*="background:var(--color-warning-surface)"]{padding:7px 12px!important;align-items:flex-start!important}
-  main>div[style*="background:var(--color-warning-surface)"] p{font-size:11.5px!important;line-height:1.35!important}
-  main [style*="padding:32px"]{padding:18px!important}
-  main [style*="grid-template-columns:repeat(3"],main [style*="grid-template-columns:repeat(4"],main [style*="grid-template-columns:repeat(5"],main [style*="grid-template-columns:1fr 1fr"],main [style*="grid-template-columns:1fr 2fr"],main [style*="grid-template-columns:2fr 1fr"]{grid-template-columns:1fr!important}
-  main [style*="gap:28px"],main [style*="gap:24px"]{gap:16px!important}
-  main [style*="font-size:30px"]{font-size:24px!important;line-height:1.08!important}
-  main [style*="font-size:28px"]{font-size:24px!important}
-  main img,main video,main iframe,main svg{max-width:100%!important;height:auto}
-  table{display:table;min-width:680px}
-  table[style]{max-width:none!important}
-  main [style*="overflow-x:auto"]{max-width:100%!important;-webkit-overflow-scrolling:touch}
-  [style*="position:fixed"][style*="width:"]{max-width:calc(100vw - 24px)!important}
-}
-@media (max-width: 520px){
-  body>x-dc>div[style*="height:100vh"]>aside{height:64px!important;min-height:64px!important}
-  body>x-dc>div[style*="height:100vh"]>aside>div:first-child{width:152px!important;min-width:152px!important}
-  body>x-dc>div[style*="height:100vh"]>aside>div:first-child button{padding:7px 8px!important}
-  body>x-dc>div[style*="height:100vh"]>aside>div:first-child button>i:last-child{display:none!important}
-  body>x-dc>div[style*="height:100vh"]>aside>nav{height:64px!important}
-  body>x-dc>div[style*="height:100vh"]>main{height:calc(100dvh - 64px)!important}
-  main>header a img{height:18px!important}
-  main>header button{font-size:0!important;width:34px!important;height:34px!important;padding:0!important;justify-content:center!important}
-  main>header button i{display:block!important;font-size:16px!important}
-  main [style*="padding:22px"],main [style*="padding:20px"]{padding:14px!important}
-  main [style*="font-size:24px"]{font-size:21px!important}
+<style>
+/* ===== BrainRecycle dashboard mobile V5.5 ===== */
+@media (max-width: 760px){
+  html,body{width:100%!important;height:auto!important;min-height:100%!important;overflow-x:hidden!important}
+  body> x-dc > div:first-of-type,
+  x-dc>div[style*="height:100vh"]{height:auto!important;min-height:100dvh!important;width:100%!important;display:flex!important;flex-direction:column!important;overflow:visible!important}
+  x-dc>div[style*="height:100vh"]>aside{width:100%!important;min-width:0!important;height:auto!important;max-height:none!important;flex:none!important;position:relative!important;overflow:visible!important}
+  x-dc>div[style*="height:100vh"]>aside>div:first-child{padding:10px 14px!important}
+  x-dc>div[style*="height:100vh"]>aside>div:first-child button{padding:9px 10px!important}
+  x-dc>div[style*="height:100vh"]>aside>div:nth-of-type(2){display:none!important}
+  x-dc>div[style*="height:100vh"]>aside>nav{flex:none!important;display:flex!important;flex-direction:row!important;gap:6px!important;overflow-x:auto!important;overflow-y:hidden!important;padding:8px 10px 10px!important;scrollbar-width:none!important;-webkit-overflow-scrolling:touch}
+  x-dc>div[style*="height:100vh"]>aside>nav::-webkit-scrollbar{display:none!important}
+  x-dc>div[style*="height:100vh"]>aside>nav button{flex:0 0 auto!important;white-space:nowrap!important;font-size:12.5px!important;padding:8px 10px!important;border-left:0!important;border-bottom:2px solid transparent!important;gap:6px!important}
+  x-dc>div[style*="height:100vh"]>aside>nav button i{font-size:15px!important}
+  x-dc>div[style*="height:100vh"]>aside>div:last-child{display:none!important}
+  x-dc>div[style*="height:100vh"]>main{width:100%!important;min-width:0!important;height:auto!important;min-height:0!important;overflow:visible!important;flex:none!important}
+  x-dc>div[style*="height:100vh"]>main>header{height:48px!important;padding:0 14px!important;gap:10px!important}
+  x-dc>div[style*="height:100vh"]>main>header nav{display:none!important}
+  x-dc>div[style*="height:100vh"]>main>header button{padding:6px 9px!important;font-size:0!important}
+  x-dc>div[style*="height:100vh"]>main>header button i{font-size:16px!important}
+  x-dc>div[style*="height:100vh"]>main>div[style*="color-warning-surface"]{padding:8px 14px!important;align-items:flex-start!important}
+  x-dc>div[style*="height:100vh"]>main>div[style*="flex:1;overflow-y:auto"]{overflow:visible!important;display:block!important}
+  x-dc main [style*="padding:32px"]{padding:20px 14px!important}
+  x-dc main [style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;gap:10px!important}
+  x-dc main [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:1fr!important}
+  x-dc main [style*="grid-template-columns:1.4fr 1fr"]{grid-template-columns:1fr!important;gap:16px!important}
+  x-dc main [style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  x-dc main [style*="grid-template-columns:1fr 1.15fr"]{grid-template-columns:1fr!important}
+  x-dc main [style*="grid-template-columns:2fr 1fr"]{grid-template-columns:1fr!important}
+  x-dc main [style*="display:grid"]{min-width:0!important;max-width:100%!important}
+  x-dc main [style*="font-size:30px"]{font-size:24px!important;line-height:1.12!important}
+  x-dc main [style*="font-size:28px"]{font-size:22px!important}
+  x-dc main [style*="padding:28px"]{padding:18px!important}
+  x-dc main [style*="padding:24px"]{padding:16px!important}
+  x-dc main [style*="padding:20px"]{padding:16px!important}
+  x-dc main table{min-width:640px!important}
+  x-dc main [style*="overflow-x:auto"],x-dc main .table-wrap{max-width:100%!important;overflow-x:auto!important;-webkit-overflow-scrolling:touch}
+  x-dc main img,x-dc main video,x-dc main svg,x-dc main iframe{max-width:100%!important;height:auto}
 }
 </style>
 </helmet>

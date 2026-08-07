@@ -1,0 +1,6 @@
+BrainRecycle V5.5 responsive
+- Home: menú móvil compactado; hero móvil remaquetado; pasos MEDIR/REPORTAR/etc. apilados sin solapes.
+- Dashboard: sidebar de escritorio convertido en selector + navegación horizontal móvil; contenido ocupa el 100% del viewport.
+- Grids y tarjetas principales pasan a una columna en móvil.
+- Tablas mantienen scroll horizontal local sin desplazar toda la página.
+- Services/Login: refuerzo responsive.
