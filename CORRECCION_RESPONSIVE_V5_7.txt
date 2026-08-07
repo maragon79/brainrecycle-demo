@@ -1,0 +1,11 @@
+BrainRecycle V5.7 — corrección móvil final sobre V5.6
+
+- Menú móvil compactado para mostrar navegación, 7 casos de uso e idioma ES/EN con banderas.
+- Selector de idioma visible y acciones inferiores sticky.
+- Tarjetas 01–05 homogeneizadas en móvil tomando REPORTAR como patrón.
+- Diagramas y bloques de gobernanza reforzados a una columna.
+- Aviso del dashboard reducido a una sola línea: Entorno de prueba · Datos ficticios.
+- Botón compacto Ver demostración y modal de vídeo ES/EN sin abandonar la página.
+- Drawer del dashboard reforzado con JavaScript nativo: abrir, cerrar, backdrop, Escape y cierre al seleccionar opción.
+- Contenido del dashboard mantiene ancho completo cuando el drawer está cerrado.
+- Refuerzo de seguridad responsive en Servicios, Login y calculadora.

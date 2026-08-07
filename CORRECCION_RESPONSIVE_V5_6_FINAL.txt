@@ -1,0 +1,12 @@
+BrainRecycle V5.6 — corrección responsive integral
+
+- Menú móvil Home convertido en overlay a pantalla completa con todos los casos de uso visibles.
+- Selector de idioma visible con banderas: Español / English, con estado activo y cambio a un toque.
+- Hero y CTAs adaptados al viewport móvil.
+- Grids, tarjetas, mockups y diagramas pasan de horizontal a vertical en móvil.
+- Seguridad y gobernanza: pasos 1/2/3, diagramas y bloque “Quién hace qué” reorganizados en una sola columna.
+- Preview del panel reconstruido para móvil sin recortes.
+- Dashboard: sidebar sustituida en móvil por drawer plegable superpuesto, cerrado por defecto, con botón menú y fondo de cierre.
+- Contenido del dashboard ocupa el 100% del viewport; KPIs y grids se apilan.
+- Tablas mantienen scroll interno sin provocar scroll horizontal de la página.
+- Servicios, Login y calculadora reciben normalización responsive complementaria.
