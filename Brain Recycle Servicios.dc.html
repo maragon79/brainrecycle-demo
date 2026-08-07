@@ -98,6 +98,28 @@
 }
 </style>
 
+
+<style id="brainrecycle-services-v58">
+.br-mobile-lang-inline{display:none}
+@media(max-width:760px){
+  .br-mobile-lang-inline{display:flex!important;align-items:center!important;gap:5px!important;margin-left:auto!important}
+  .br-mobile-lang-inline button{height:34px!important;min-width:44px!important;padding:0 7px!important;border-radius:7px!important;border:1px solid rgba(255,255,255,.18)!important;background:rgba(255,255,255,.04)!important;color:#fff!important;font:600 11px/1 var(--font-body)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:3px!important}
+  .mobile-menu-panel .br-mobile-lang{display:none!important}
+  header img[src*="logo-light"]{width:auto!important;height:34px!important;max-width:150px!important;max-height:34px!important}
+  /* Dense analytical tables: scroll, never compress */
+  .br-dense-scroll{position:relative!important;width:100%!important;max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:thin!important}
+  .br-monthly-scroll>.br-dense-scroll-inner{min-width:820px!important;width:820px!important;max-width:none!important}
+  .br-cross-scroll>.br-dense-scroll-inner{min-width:940px!important;width:940px!important;max-width:none!important}
+  .br-dense-scroll::before{content:"Desliza para ver más →";position:sticky;left:10px;display:inline-block;margin:8px 10px 0;padding:5px 9px;border-radius:999px;background:var(--color-deep);color:#fff;font:600 10px/1.2 var(--font-body);z-index:4;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+  .br-dense-scroll [style*="min-width:"]{min-width:revert!important}
+  /* KPI cards may wrap; individual data tables must not */
+  [style*="display:flex"][style*="flex-wrap:wrap"]>div[style*="min-width:120px"]{min-width:calc(50% - 6px)!important;flex:1 1 calc(50% - 6px)!important}
+  /* Generic logos on this page keep sane dimensions */
+  img[src*="kiwa-logo"]{width:auto!important;height:auto!important;max-width:110px!important;max-height:38px!important;object-fit:contain!important}
+  img[src*="hispania-silva-logo"]{width:auto!important;height:auto!important;max-width:180px!important;max-height:38px!important;object-fit:contain!important}
+}
+</style>
+
 </helmet>
 
 <!-- ══════ HEADER ══ -->
@@ -126,6 +148,10 @@
       <a href="Plant Dashboard.dc.html" class="btn-inv" style="font-size:13.5px;font-weight:500;color:rgba(255,255,255,.8);padding:7px 18px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;transition:background 150ms ease;">Acceder</a>
       <a href="Brain Recycle Home.dc.html#formulario" style="font-size:13.5px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:7px 18px;border-radius:4px;text-decoration:none;">Solicitar acceso</a>
     </div>
+    <div class="br-mobile-lang-inline" aria-label="Idioma">
+      <button onClick="{{ setLangEs }}" style="{{ langEsStyle }}" aria-label="Español">🇪🇸 <span>ES</span></button>
+      <button onClick="{{ setLangEn }}" style="{{ langEnStyle }}" aria-label="English">🇬🇧 <span>EN</span></button>
+    </div>
     <button class="sm" onClick="{{ toggleMenu }}" style="display:none;background:none;border:none;cursor:pointer;color:white;padding:6px;">
       <i class="ti ti-menu-2" style="font-size:22px;"></i>
     </button>
@@ -143,10 +169,6 @@
       </div>
       <a href="Brain Recycle Home.dc.html#empezar" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Cómo se empieza</a>
       <a href="Brain Recycle Home.dc.html#gobernanza" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Seguridad y gobernanza</a>
-      <div class="br-mobile-lang">
-        <button onClick="{{ setLangEs }}" style="{{ langEsStyle }}">🇪🇸 Español</button>
-        <button onClick="{{ setLangEn }}" style="{{ langEnStyle }}">🇬🇧 English</button>
-      </div>
       <div class="br-mobile-actions" style="display:flex;gap:10px;margin-top:4px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);">
         <a href="Plant Dashboard.dc.html" style="flex:1;text-align:center;font-size:14px;font-weight:500;color:rgba(255,255,255,.8);padding:10px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;">Acceder</a>
         <a href="Brain Recycle Home.dc.html#formulario" style="flex:1;text-align:center;font-size:14px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:10px;border-radius:4px;text-decoration:none;">Solicitar acceso</a>
@@ -414,8 +436,8 @@
               </div>
             </sc-for>
           </div>
-          <div style="border:1px solid var(--border-subtle);border-radius:12px;overflow-x:auto;margin-bottom:40px;box-shadow:var(--shadow-xs);">
-            <div style="min-width:820px;">
+          <div class="br-dense-scroll br-monthly-scroll" style="border:1px solid var(--border-subtle);border-radius:12px;overflow-x:auto;margin-bottom:40px;box-shadow:var(--shadow-xs);">
+            <div class="br-dense-scroll-inner" style="min-width:820px;">
               <div style="display:flex;padding:12px 16px;background:var(--surface-background);font-family:var(--font-mono);font-size:9.5px;color:var(--text-muted);letter-spacing:.04em;text-transform:uppercase;">
                 <div style="flex:0 0 46px;">Mes</div><div style="flex:1;text-align:center;">Lluvia</div><div style="flex:1;text-align:center;">Bloq.</div><div style="flex:1;text-align:center;">Cond.</div><div style="flex:1;text-align:center;">P50</div><div style="flex:1;text-align:center;">P20</div><div style="flex:1;text-align:center;">P10</div><div style="flex:1;text-align:center;">Criterio</div><div style="flex:1;text-align:center;">m³/día</div><div style="flex:1.3;text-align:center;">Potencial</div><div style="flex:0 0 74px;text-align:center;">Lectura</div>
               </div>
@@ -445,8 +467,8 @@
             <div style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#f7ded9;"></span><span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">LIGHT_RED · condicionado</span></div>
             <div style="display:flex;align-items:center;gap:6px;"><span style="width:12px;height:12px;border-radius:3px;background:#efcfca;"></span><span style="font-family:var(--font-mono);font-size:10px;color:var(--text-muted);">RED · no apto</span></div>
           </div>
-          <div style="border:1px solid var(--border-subtle);border-radius:12px;overflow-x:auto;margin-bottom:32px;box-shadow:var(--shadow-xs);">
-            <div style="min-width:940px;">
+          <div class="br-dense-scroll br-cross-scroll" style="border:1px solid var(--border-subtle);border-radius:12px;overflow-x:auto;margin-bottom:32px;box-shadow:var(--shadow-xs);">
+            <div class="br-dense-scroll-inner" style="min-width:940px;">
               <div style="display:flex;padding:12px 16px;background:var(--surface-background);font-family:var(--font-mono);font-size:9.5px;color:var(--text-muted);letter-spacing:.04em;text-transform:uppercase;align-items:center;">
                 <div style="flex:0 0 200px;">Cultivo</div>
                 <sc-for list="{{ f.months }}" as="mo" hint-placeholder-count="12"><div style="flex:1;min-width:52px;text-align:center;">{{ mo }}</div></sc-for>

@@ -213,6 +213,36 @@
 }
 </style>
 
+
+<style id="brainrecycle-mobile-v58">
+/* V5.8 — targeted mobile fixes; preserve desktop */
+.br-mobile-lang-inline{display:none}
+@media(max-width:760px){
+  /* Language remains visible OUTSIDE the drawer */
+  header>div{gap:8px!important}
+  header>a:first-child, header>div>a:first-child{min-width:0!important}
+  .br-mobile-lang-inline{display:flex!important;align-items:center!important;gap:5px!important;margin-left:auto!important}
+  .br-mobile-lang-inline button{height:34px!important;min-width:44px!important;padding:0 7px!important;border-radius:7px!important;border:1px solid rgba(255,255,255,.18)!important;background:rgba(255,255,255,.04)!important;color:#fff!important;font:600 11px/1 var(--font-body)!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:3px!important}
+  .br-mobile-lang-inline button[style*="background:var(--color-sage)"],.br-mobile-lang-inline button[style*="background: var(--color-sage)"]{background:var(--color-sage)!important;color:var(--color-deep)!important}
+  .mobile-menu-panel .br-mobile-lang{display:none!important}
+  .mobile-menu-panel{padding-bottom:18px!important}
+  .br-mobile-actions{position:static!important;margin-top:12px!important}
+
+  /* Logos are NOT generic responsive images: preserve brand hierarchy */
+  .eje-owner img[src*="kiwa"]{width:auto!important;height:18px!important;max-width:92px!important;max-height:18px!important;object-fit:contain!important}
+  section img[src*="kiwa-logo-blue"],section img[src*="kiwa-logo-white"]{width:auto!important;height:auto!important;max-width:110px!important;max-height:38px!important;object-fit:contain!important}
+  section img[src*="hispania-silva-logo"]{width:auto!important;height:auto!important;max-width:180px!important;max-height:38px!important;object-fit:contain!important}
+  section img[src*="eu-data-space-kiwa-logo"]{width:auto!important;height:auto!important;max-width:150px!important;max-height:48px!important;object-fit:contain!important}
+  footer img[src*="logo-light"]{width:auto!important;height:26px!important;max-width:175px!important;max-height:26px!important;object-fit:contain!important}
+  footer img[src*="hispania-silva-logo"]{width:auto!important;height:auto!important;max-width:145px!important;max-height:28px!important;object-fit:contain!important}
+  footer img[src*="kiwa-logo"]{width:auto!important;height:auto!important;max-width:90px!important;max-height:30px!important;object-fit:contain!important}
+  footer img[src*="funder-"]{width:auto!important;height:auto!important;max-width:100%!important;max-height:58px!important;object-fit:contain!important}
+  footer [style*="background:var(--color-white)"]{min-height:74px!important;padding:10px 12px!important;justify-content:center!important}
+  /* BrainRecycle logo in header must remain compact */
+  header img[src*="logo-light"]{width:auto!important;height:34px!important;max-width:150px!important;max-height:34px!important}
+}
+</style>
+
 </helmet>
 
 <!-- ══════════════════════════════════════ HEADER ══ -->
@@ -242,6 +272,10 @@
       <a href="Plant Dashboard.dc.html" class="btn-inv" style="font-size:13.5px;font-weight:500;color:rgba(255,255,255,.8);padding:7px 18px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;transition:background 150ms ease;">Acceder</a>
       <a href="#formulario" style="font-size:13.5px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:7px 18px;border-radius:4px;text-decoration:none;">Solicitar acceso</a>
     </div>
+    <div class="br-mobile-lang-inline" aria-label="Idioma">
+      <button onClick="{{ setLangEs }}" style="{{ langEsStyle }}" aria-label="Español">🇪🇸 <span>ES</span></button>
+      <button onClick="{{ setLangEn }}" style="{{ langEnStyle }}" aria-label="English">🇬🇧 <span>EN</span></button>
+    </div>
     <button class="sm" onClick="{{ toggleMenu }}" style="display:none;background:none;border:none;cursor:pointer;color:white;padding:6px;">
       <i class="ti ti-menu-2" style="font-size:22px;"></i>
     </button>
@@ -259,10 +293,6 @@
       </div>
       <a href="#empezar" onClick="{{ toggleMenu }}" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Cómo se empieza</a>
       <a href="#gobernanza" onClick="{{ toggleMenu }}" style="font-size:15px;color:rgba(255,255,255,.8);text-decoration:none;">Seguridad y gobernanza</a>
-      <div class="br-mobile-lang">
-        <button onClick="{{ setLangEs }}" style="{{ langEsStyle }}">🇪🇸 Español</button>
-        <button onClick="{{ setLangEn }}" style="{{ langEnStyle }}">🇬🇧 English</button>
-      </div>
       <div class="br-mobile-actions" style="display:flex;gap:10px;margin-top:4px;padding-top:14px;border-top:1px solid rgba(255,255,255,.07);">
         <a href="Plant Dashboard.dc.html" style="flex:1;text-align:center;font-size:14px;font-weight:500;color:rgba(255,255,255,.8);padding:10px;border:1px solid rgba(255,255,255,.18);border-radius:4px;text-decoration:none;">Acceder</a>
         <a href="#formulario" onClick="{{ toggleMenu }}" style="flex:1;text-align:center;font-size:14px;font-weight:600;color:var(--color-deep);background:var(--color-sage);padding:10px;border-radius:4px;text-decoration:none;">Solicitar acceso</a>
