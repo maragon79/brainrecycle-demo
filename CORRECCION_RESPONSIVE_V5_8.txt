@@ -1,9 +1,9 @@
-BrainRecycle V5.8 — correcciones móviles dirigidas
+BrainRecycle V5.8 — corrección móvil consolidada
 
-- Selector ES/EN vuelve fuera del menú hamburguesa.
-- Menú móvil mantiene navegación y accesos, sin selector de idioma dentro.
-- Logos Kiwa, Hispania Silva, BrainRecycle y logos institucionales con máximos específicos; no se escalan al 100% como imágenes genéricas.
-- Tablas densas del caso agronómico conservan ancho útil y disponen de scroll horizontal táctil con indicación visual.
-- Sidebar del dashboard cerrada por defecto incluso si el runtime añade is-open; drawer controlado por estado nativo br-drawer-open.
-- Botones abrir/cerrar/backdrop reforzados con listeners DOM.
-- Barra de entorno de prueba aún más compacta; acceso Demo mantiene modal.
+- Dashboard: navegación móvil sustituida por drawer CSS nativo con checkbox/label, cerrado por defecto y sin depender de JavaScript.
+- Selector de idioma vuelve a estar fuera del menú móvil (bandera + ES/EN).
+- Eliminadas reglas globales que forzaban height:auto en todos los logos y provocaban escalados gigantes.
+- Logos Hispania Silva / Kiwa recuperan dimensiones explícitas y jerarquía visual equilibrada.
+- Tarjeta Kiwa Fertilizantes UE: fondo blanco rectangular con esquinas redondeadas en lugar de círculo.
+- Tablas, calendarios y bloques horizontales densos: patrón táctil “Desliza para ver más →” con ancho mínimo legible.
+- Filas KPI densas: scroll horizontal en móvil en lugar de comprimir textos y valores.

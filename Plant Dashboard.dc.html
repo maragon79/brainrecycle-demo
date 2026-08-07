@@ -161,30 +161,33 @@ button{font:inherit}
 </style>
 
 
-<style id="brainrecycle-dashboard-v58">
+<style id="brainrecycle-dashboard-v58-css-drawer">
+.br-dash-toggle,.br-css-backdrop{display:none}
 @media(max-width:760px){
-  /* Runtime may add .is-open; native drawer state is authoritative */
-  html body:not(.br-drawer-open) x-dc > div.dash-shell > aside.dash-sidebar,
-  html body:not(.br-drawer-open) x-dc > div.dash-shell > aside.dash-sidebar.is-open{transform:translateX(-110%)!important;visibility:hidden!important;pointer-events:none!important;left:0!important}
-  html body.br-drawer-open x-dc > div.dash-shell > aside.dash-sidebar,
-  html body.br-drawer-open x-dc > div.dash-shell > aside.dash-sidebar.is-open{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;left:0!important}
-  html body x-dc > div.dash-shell > aside.dash-sidebar{width:min(86vw,340px)!important;min-width:0!important;max-width:340px!important}
-  html body x-dc > div.dash-shell > main.dash-main{width:100vw!important;max-width:100vw!important;min-width:0!important;margin-left:0!important}
-  .dash-mobile-menu-btn{display:flex!important;position:relative!important;z-index:950!important}
-  .br-static-backdrop{z-index:1150!important}
-  body.br-drawer-open .br-static-backdrop{display:block!important}
-  /* compact top demo line */
-  .dash-demo-strip{height:34px!important;min-height:34px!important;padding:3px 9px!important}
+  .dash-shell{display:block!important;position:relative!important;overflow:hidden!important}
+  .br-dash-toggle{position:absolute!important;opacity:0!important;pointer-events:none!important}
+  .dash-sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(88vw,360px)!important;min-width:0!important;height:100dvh!important;z-index:4000!important;transform:translateX(-105%)!important;visibility:hidden!important;pointer-events:none!important;transition:transform .22s ease,visibility 0s linear .22s!important;overflow-y:auto!important;overflow-x:hidden!important;box-shadow:18px 0 48px rgba(0,0,0,.35)!important}
+  #brDashToggle:checked ~ .dash-sidebar{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition:transform .22s ease!important}
+  .br-css-backdrop{position:fixed!important;inset:0!important;z-index:3900!important;background:rgba(7,17,12,.58)!important;backdrop-filter:blur(2px)!important}
+  #brDashToggle:checked ~ .br-css-backdrop{display:block!important}
+  .dash-main{display:flex!important;position:relative!important;width:100%!important;max-width:100%!important;height:100dvh!important;margin:0!important;transform:none!important;left:auto!important;right:auto!important}
+  .dash-mobile-menu-btn{display:flex!important;cursor:pointer!important}
+  .br-dash-close{width:42px!important;height:42px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:8px!important;color:#fff!important;cursor:pointer!important}
+  .dash-mobile-drawer-head{display:flex!important}
+  .dash-sidebar>nav button{font-size:16px!important}
+  /* Demo box is useful inside drawer but must not dominate */
+  .dash-sidebar>div:nth-of-type(3){padding:10px 8px!important}
+  /* Compact demo strip */
+  .dash-demo-strip{min-height:34px!important;padding:4px 9px!important}
   .dash-demo-strip p{font-size:10.5px!important}
-  .br-demo-video-btn{height:27px!important;padding:3px 8px!important}
 }
 </style>
-
 </helmet>
 <div class="dash-shell" style="height:100vh;width:100%;display:flex;overflow:hidden;background:var(--surface-background)">
+<input type="checkbox" id="brDashToggle" class="br-dash-toggle" aria-hidden="true">
 
 <aside class="dash-sidebar {{ mobileSidebarClass }}" style="width:240px;min-width:240px;height:100%;background:var(--surface-dark);display:flex;flex-direction:column;flex-shrink:0">
-<div class="dash-mobile-drawer-head"><img src="assets/logo-light.png" alt="BrainRecycle"><button onclick="window.brCloseDashDrawer && window.brCloseDashDrawer(event)" aria-label="Cerrar navegación"><i class="ti ti-x"></i></button></div>
+<div class="dash-mobile-drawer-head"><img src="assets/logo-light.png" alt="BrainRecycle"><label for="brDashToggle" class="br-dash-close" aria-label="Cerrar navegación"><i class="ti ti-x"></i></label></div>
 
 <div style="padding:16px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative">
 <button onClick="{{ togglePlantMenu }}" style="width:100%;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-xs);padding:10px 12px;cursor:pointer;text-align:left" style-hover="background:rgba(255,255,255,0.12)">
@@ -253,7 +256,7 @@ button{font:inherit}
 <main class="dash-main" style="flex:1;height:100%;display:flex;flex-direction:column;min-width:0;overflow:hidden">
 
 <header style="height:56px;flex-shrink:0;background:var(--color-deep);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:24px">
-<button class="dash-mobile-menu-btn" onclick="window.brToggleDashDrawer && window.brToggleDashDrawer(event)" aria-label="Abrir navegación"><i class="ti ti-menu-2"></i></button>
+<label for="brDashToggle" class="dash-mobile-menu-btn" aria-label="Abrir navegación"><i class="ti ti-menu-2"></i></label>
 <div style="display:flex;align-items:center;gap:28px;min-width:0">
 <a href="Brain Recycle Home.dc.html" style="display:flex;align-items:center;flex-shrink:0">
 <img src="assets/logo-light.png" alt="brainrecycle" style="height:20px;width:auto;display:block">
@@ -1272,19 +1275,7 @@ class Component extends DCLogic {
   function mobile(){return window.matchMedia('(max-width:760px)').matches;}
   window.brToggleDashDrawer=function(e){ if(e){e.preventDefault();e.stopPropagation();} if(!mobile()) return; document.body.classList.toggle('br-drawer-open'); };
   window.brCloseDashDrawer=function(e){ if(e){e.preventDefault();e.stopPropagation();} document.body.classList.remove('br-drawer-open'); };
-  document.addEventListener('click',function(e){
-    if(!mobile()) return;
-    var openBtn=e.target.closest && e.target.closest('.dash-mobile-menu-btn');
-    if(openBtn){ e.preventDefault();e.stopPropagation(); document.body.classList.toggle('br-drawer-open'); return; }
-    var closeBtn=e.target.closest && e.target.closest('.dash-mobile-drawer-head button');
-    if(closeBtn){ e.preventDefault();e.stopPropagation(); document.body.classList.remove('br-drawer-open'); return; }
-    var back=e.target.closest && e.target.closest('.br-static-backdrop');
-    if(back){ e.preventDefault(); document.body.classList.remove('br-drawer-open'); return; }
-    var navBtn=e.target.closest && e.target.closest('.dash-sidebar nav button');
-    if(navBtn) setTimeout(window.brCloseDashDrawer,0);
-  },true);
-  window.addEventListener('resize',function(){ if(!mobile()) document.body.classList.remove('br-drawer-open'); });
-  document.body.classList.remove('br-drawer-open');
+  document.addEventListener('click',function(e){ if(!mobile()) return; var navBtn=e.target.closest && e.target.closest('.dash-sidebar nav button'); if(navBtn) setTimeout(window.brCloseDashDrawer,0); },true);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){window.brCloseDashDrawer();window.brCloseDemoVideo&&window.brCloseDemoVideo();} });
   var srcs={es:'assets/BrainRecycle_demo_profesional_ES_DEFINITIVO.mp4',en:'assets/BrainRecycle_demo_profesional_EN_LOGO_REAL.mp4'};
   window.brSetDemoVideo=function(lang){ var v=document.getElementById('brDemoVideoPlayer'),so=document.getElementById('brDemoVideoSource'); if(!v||!so)return; var next=srcs[lang]||srcs.es; if(so.getAttribute('src')!==next){so.setAttribute('src',next);v.load();} var es=document.getElementById('brVideoEs'),en=document.getElementById('brVideoEn'); if(es)es.classList.toggle('is-active',lang==='es'); if(en)en.classList.toggle('is-active',lang==='en'); };
