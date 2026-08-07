@@ -1766,3 +1766,128 @@
     throw err;
   });
 })();
+
+/* BrainRecycle mobile UI hotfix 2026-08-07 — injected after DC runtime */
+(() => {
+  const HOTFIX_ID = 'br-mobile-final-hotfix-20260807';
+  const css = `
+@media (max-width:760px){
+  /* Hamburguesa blanca, visible y táctil */
+  html body x-dc .dash-mobile-menu-btn{
+    color:#fff!important;
+    background:rgba(255,255,255,.13)!important;
+    border:1px solid rgba(255,255,255,.30)!important;
+    box-shadow:0 2px 10px rgba(0,0,0,.18)!important;
+  }
+  html body x-dc .dash-mobile-menu-btn i,
+  html body x-dc .dash-mobile-menu-btn .ti,
+  html body x-dc .dash-mobile-menu-btn::before,
+  html body x-dc .dash-mobile-menu-btn::after{
+    color:#fff!important;
+    opacity:1!important;
+  }
+
+  /* La franja superior solo informa de que son datos ficticios. */
+  html body x-dc .dash-demo-strip .br-demo-video-btn{
+    display:none!important;
+  }
+  html body x-dc .dash-demo-strip{
+    justify-content:flex-start!important;
+  }
+
+  /* Drawer móvil: altura real de viewport y scroll independiente. */
+  html body x-dc .dash-shell > .dash-sidebar{
+    height:100dvh!important;
+    max-height:100dvh!important;
+    overflow-y:auto!important;
+    overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    overscroll-behavior:contain!important;
+    touch-action:pan-y!important;
+    scrollbar-gutter:stable!important;
+  }
+
+  /* El logo del drawer no puede crecer ni empujar el menú. */
+  html body x-dc .dash-sidebar .dash-mobile-drawer-head{
+    height:58px!important;
+    min-height:58px!important;
+    flex:0 0 58px!important;
+    padding:0 14px!important;
+    overflow:hidden!important;
+  }
+  html body x-dc .dash-sidebar .dash-mobile-drawer-head img{
+    display:block!important;
+    width:auto!important;
+    height:28px!important;
+    min-height:0!important;
+    max-height:28px!important;
+    max-width:132px!important;
+    object-fit:contain!important;
+    flex:0 0 auto!important;
+  }
+
+  /* Evita que reglas genéricas de imágenes vuelvan a agrandar el logo. */
+  html body x-dc .dash-sidebar img[alt="BrainRecycle"],
+  html body x-dc .dash-sidebar img[alt="brainrecycle"]{
+    width:auto!important;
+    height:28px!important;
+    max-height:28px!important;
+    max-width:132px!important;
+    object-fit:contain!important;
+  }
+
+  /* El contenido del lateral debe crecer de forma natural para que el aside sea quien haga scroll. */
+  html body x-dc .dash-sidebar > nav{
+    flex:0 0 auto!important;
+    overflow:visible!important;
+  }
+  html body x-dc .dash-sidebar > div:last-child{
+    margin-top:0!important;
+    flex:0 0 auto!important;
+  }
+}
+`;
+
+  function install(){
+    if (!document.getElementById(HOTFIX_ID)) {
+      const style = document.createElement('style');
+      style.id = HOTFIX_ID;
+      style.textContent = css;
+      document.head.appendChild(style);
+    }
+
+    /* Refuerzo inline para navegadores móviles que prioricen estilos generados por el runtime. */
+    document.querySelectorAll('.dash-mobile-menu-btn').forEach((el) => {
+      el.style.setProperty('color', '#fff', 'important');
+      const icon = el.querySelector('i');
+      if (icon) icon.style.setProperty('color', '#fff', 'important');
+    });
+
+    document.querySelectorAll('.dash-demo-strip .br-demo-video-btn').forEach((el) => {
+      el.style.setProperty('display', 'none', 'important');
+    });
+
+    document.querySelectorAll('.dash-sidebar .dash-mobile-drawer-head img').forEach((img) => {
+      img.style.setProperty('width', 'auto', 'important');
+      img.style.setProperty('height', '28px', 'important');
+      img.style.setProperty('max-height', '28px', 'important');
+      img.style.setProperty('max-width', '132px', 'important');
+      img.style.setProperty('object-fit', 'contain', 'important');
+    });
+
+    document.querySelectorAll('.dash-sidebar').forEach((side) => {
+      side.style.setProperty('overflow-y', 'auto', 'important');
+      side.style.setProperty('overflow-x', 'hidden', 'important');
+      side.style.setProperty('-webkit-overflow-scrolling', 'touch', 'important');
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', install, { once:true });
+  } else {
+    install();
+  }
+
+  const observer = new MutationObserver(() => install());
+  observer.observe(document.documentElement, { childList:true, subtree:true });
+})();
