@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+<script src="./support.js?v=20260808-0010"></script>
+<script src="./agent-shell.js?v=20260808-0010" defer></script>
 
   <style id="brainrecycle-critical-tokens">
     :root{--color-deep:#2c483d;--color-black:#16241d;--color-forest:#3f685b;--color-primary-hover:#365c50;--color-primary-subtle:#e7f0dd;--color-sage:#cce6b1;--color-white:#fff;--surface-background:#f3f5f1;--surface-raised:#fff;--surface-dark:#243b32;--text-primary:#1b2721;--text-secondary:#48564f;--text-muted:#7b8981;--text-link:#3f685b;--text-link-hover:#2c483d;--border-subtle:#e7eae5;--border-default:#d3d9d1;--color-neutral-300:#c2cbc4;--color-success:#3f7d4e;--color-success-surface:#e6f2e8;--color-error:#c0453c;--color-error-surface:#f8e8e6;--color-warning:#b8801f;--color-warning-surface:#f7eed8;--color-info:#3d6fa5;--color-info-surface:#e6eef7;--font-display:'Space Grotesk',system-ui,-apple-system,sans-serif;--font-body:'Roboto',system-ui,-apple-system,sans-serif;--font-mono:'Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace;--radius-xs:6px;--radius-sm:10px;--radius-md:14px;--radius-lg:20px;}
@@ -11,6 +12,17 @@
 
 <style id="br-v510-language-mobile">
 @media(max-width:760px){nav.hm{display:none!important}.header-actions{display:flex!important;margin-left:auto!important;gap:8px!important}.header-actions>a{display:none!important}.header-actions>button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:62px!important;height:38px!important;padding:0 9px!important;font-size:12px!important}header .sm{display:block!important;margin-left:4px!important}.br-mobile-lang{display:none!important}}
+</style>
+
+<style id="br-home-header-fallback-final">
+@media(max-width:760px){
+  body header{position:sticky!important;top:0!important;z-index:200!important;}
+  body header .header-actions{display:flex!important;margin-left:auto!important;gap:8px!important;}
+  body header .header-actions>a{display:none!important;}
+  body header .header-actions>button{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:72px!important;height:48px!important;padding:0 12px!important;}
+  body header .sm{display:flex!important;align-items:center!important;justify-content:center!important;width:58px!important;min-width:58px!important;height:58px!important;padding:0!important;border:2px solid rgba(255,255,255,.42)!important;border-radius:14px!important;background:rgba(255,255,255,.12)!important;}
+  body header .sm i{font-size:38px!important;line-height:1!important;color:#fff!important;}
+}
 </style>
 </head>
 <body>
@@ -25,8 +37,7 @@
   <link rel="stylesheet" href="ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/tokens/effects.css">
   <link rel="stylesheet" href="ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/styles.css">
   <script src="ds/brain-recycle-design-system-4ef5a7e3-c69c-4b0a-a0b1-359d86a1a18d/_ds_bundle.js"></script>
-  <script src="https://cdn.jotfor.ms/agent/embedjs/019fa26bce5070008110e6538cf51792df87/embed.js"></script>
-  <style>
+<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body); color: var(--text-primary); background: var(--color-deep); overflow-x: hidden; }
