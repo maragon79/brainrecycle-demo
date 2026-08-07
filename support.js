@@ -2,10 +2,15 @@
 (function(){
   var CORE='https://cdn.jsdelivr.net/gh/maragon79/brainrecycle-demo@cd3ec7226160456d01e04dd531928d62b2ecc818/support.js';
 
+  function pathDecoded(){
+    try{return decodeURIComponent(location.pathname||'');}catch(e){return location.pathname||'';}
+  }
   function isHome(){
-    var p='';
-    try{p=decodeURIComponent(location.pathname||'');}catch(e){p=location.pathname||'';}
+    var p=pathDecoded();
     return /(?:Brain Recycle Home\.dc\.html|\/brainrecycle-demo\/?$)/i.test(p);
+  }
+  function isDashboard(){
+    return /Plant Dashboard\.dc\.html$/i.test(pathDecoded());
   }
 
   function installMobileHeader(){
@@ -18,7 +23,6 @@
     if(!originalBar){ setTimeout(installMobileHeader,120); return; }
 
     var logo=originalBar.querySelector('img[alt="brainrecycle®"],img[src*="logo-light"]');
-    var originalMenuBtn=originalBar.querySelector('.sm');
     var langBtn=originalBar.querySelector('.header-actions button');
 
     var style=document.createElement('style');
@@ -81,12 +85,46 @@
     document.body.appendChild(nav);
   }
 
+  function installDashboardMenuEnhancer(){
+    if(!isDashboard() || !window.matchMedia('(max-width:760px)').matches) return;
+    if(document.getElementById('br-dashboard-menu-emphasis')) return;
+
+    var original=document.querySelector('.dash-mobile-menu-btn');
+    if(!original){ setTimeout(installDashboardMenuEnhancer,120); return; }
+
+    var style=document.createElement('style');
+    style.id='br-dashboard-menu-emphasis-style';
+    style.textContent='@media(max-width:760px){'+
+      '.dash-mobile-menu-btn{opacity:0!important;pointer-events:none!important;}'+
+      '#br-dashboard-menu-emphasis{position:fixed!important;top:8px!important;left:12px!important;width:54px!important;height:54px!important;z-index:3500!important;display:flex!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.14)!important;border:1.5px solid rgba(255,255,255,.42)!important;border-radius:14px!important;color:#fff!important;box-shadow:0 5px 16px rgba(0,0,0,.22)!important;-webkit-tap-highlight-color:transparent!important;touch-action:manipulation!important;}'+
+      '#br-dashboard-menu-emphasis i{font-size:36px!important;line-height:1!important;color:#fff!important;}'+
+      '#br-dashboard-menu-emphasis:active{transform:scale(.96)!important;background:rgba(255,255,255,.22)!important;}'+
+    '}';
+    document.head.appendChild(style);
+
+    var btn=document.createElement('button');
+    btn.id='br-dashboard-menu-emphasis';
+    btn.type='button';
+    btn.setAttribute('aria-label','Abrir navegación');
+    btn.innerHTML='<i class="ti ti-menu-2"></i>';
+    btn.addEventListener('click',function(){
+      var target=document.querySelector('.dash-mobile-menu-btn');
+      if(target) target.click();
+    });
+    document.body.appendChild(btn);
+  }
+
+  function installMobileEnhancements(){
+    installMobileHeader();
+    installDashboardMenuEnhancer();
+  }
+
   var s=document.createElement('script');
   s.src=CORE;
   s.async=false;
   s.onload=function(){
-    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){setTimeout(installMobileHeader,0);},{once:true});
-    else setTimeout(installMobileHeader,0);
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',function(){setTimeout(installMobileEnhancements,0);},{once:true});
+    else setTimeout(installMobileEnhancements,0);
   };
   s.onerror=function(){console.error('BrainRecycle: no se pudo cargar el runtime estable');};
   document.head.appendChild(s);
