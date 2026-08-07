@@ -15,18 +15,18 @@
     return /Plant Dashboard\.dc\.html$/i.test(decodedPath());
   }
 
-  /* Corrige dos reglas móviles de la Home que limitaban TODO el widget Jotform a 72/76 px.
-     Eso dejaba bien el launcher cerrado, pero recortaba también el panel del agente al abrirse. */
-  function releaseJotformMobileConstraints(){
+  /* Elimina de raíz las dos reglas históricas que recortaban el widget completo de Jotform
+     a 72/76px. No añadimos otra capa CSS: borramos las restricciones de los <style> renderizados. */
+  function purgeJotformCaps(){
     if(!window.matchMedia('(max-width:760px)').matches) return;
-    if(document.getElementById('br-jotform-mobile-release')) return;
-    var st=document.createElement('style');
-    st.id='br-jotform-mobile-release';
-    st.textContent='@media(max-width:760px){'+
-      '.jotform-agent-widget,.jf-agent-widget{max-width:none!important;max-height:none!important;}'+
-      'iframe[src*="jotform"],iframe[src*="jotfor.ms"],iframe[src*="jotfor"]{max-width:none!important;max-height:none!important;}'+
-    '}';
-    document.head.appendChild(st);
+    document.querySelectorAll('style').forEach(function(st){
+      var t=st.textContent||'';
+      if(t.indexOf('jotform-agent-widget')===-1 && t.indexOf('jf-agent-widget')===-1 && t.indexOf('iframe[src*="jotform"]')===-1) return;
+      var n=t
+        .replace(/\.jotform-agent-widget\s*,\s*\.jf-agent-widget\s*\{\s*max-width\s*:\s*76px\s*!important\s*;\s*max-height\s*:\s*76px\s*!important\s*;?\s*\}/gi,'')
+        .replace(/iframe\[src\*="jotform"\]\s*,\s*\.jotform-agent-widget\s*,\s*\.jf-agent-widget\s*\{\s*max-width\s*:\s*72px\s*!important\s*;\s*max-height\s*:\s*72px\s*!important\s*;?\s*\}/gi,'');
+      if(n!==t) st.textContent=n;
+    });
   }
 
   function installMobileHeader(){
@@ -70,9 +70,13 @@
   }
 
   function runFixes(){
-    releaseJotformMobileConstraints();
+    purgeJotformCaps();
     if(isHome())installMobileHeader();
     if(isDashboard())emphasizeDashboardMenu();
+    /* Los estilos del template se insertan al renderizar; tres pasadas cortas son suficientes
+       y no observan las mutaciones internas del agente. */
+    setTimeout(purgeJotformCaps,100);
+    setTimeout(purgeJotformCaps,500);
   }
 
   var s=document.createElement('script');
