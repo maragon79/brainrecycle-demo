@@ -1,4 +1,4 @@
-/* BrainRecycle bootstrap: stable Home header + isolated Dashboard menu emphasis. */
+/* BrainRecycle bootstrap: stable Home header + persistent mobile fixes. */
 (function(){
   var CORE='https://cdn.jsdelivr.net/gh/maragon79/brainrecycle-demo@cd3ec7226160456d01e04dd531928d62b2ecc818/support.js';
 
@@ -11,6 +11,23 @@
   }
   function isDashboard(){
     return /Plant Dashboard\.dc\.html$/i.test(decodedPath());
+  }
+
+  function installPersistentMobileCSS(){
+    if(!window.matchMedia('(max-width:760px)').matches) return;
+    if(document.getElementById('br-persistent-mobile-fixes')) return;
+    var st=document.createElement('style');
+    st.id='br-persistent-mobile-fixes';
+    st.textContent='@media(max-width:760px){'+
+      /* Dashboard: selector exacto del <label> real; persiste aunque el runtime lo rerenderice. */
+      'html body x-dc .dash-mobile-menu-btn{display:flex!important;width:58px!important;height:58px!important;min-width:58px!important;flex:0 0 58px!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.16)!important;border:2px solid rgba(255,255,255,.48)!important;border-radius:14px!important;box-shadow:0 5px 16px rgba(0,0,0,.22)!important;color:#fff!important;padding:0!important;cursor:pointer!important;}'+
+      'html body x-dc .dash-mobile-menu-btn i{font-size:38px!important;line-height:1!important;color:#fff!important;}'+
+      'html body x-dc > div.dash-shell > main.dash-main > header{height:76px!important;min-height:76px!important;padding:0 12px!important;}'+
+      /* Jotform: quitar SOLO los topes 72/76 px heredados de la Home; el widget conserva su tamaño nativo. */
+      'html body .jotform-agent-widget,html body .jf-agent-widget{max-width:none!important;max-height:none!important;}'+
+      'html body iframe[src*="jotform"],html body iframe[src*="jotfor"]{max-width:none!important;max-height:none!important;}'+
+    '}';
+    document.head.appendChild(st);
   }
 
   function installMobileHeader(){
@@ -50,24 +67,9 @@
     actions.appendChild(lang);actions.appendChild(menu);nav.appendChild(a);nav.appendChild(actions);document.body.appendChild(nav);
   }
 
-  function emphasizeDashboardMenu(){
-    if(!isDashboard() || !window.matchMedia('(max-width:760px)').matches) return true;
-    var b=document.querySelector('.dash-mobile-menu-btn');
-    if(!b)return false;
-    if(b.dataset.brEmphasized==='1')return true;
-    b.dataset.brEmphasized='1';
-    b.style.cssText += ';display:flex!important;width:60px!important;height:60px!important;min-width:60px!important;flex:0 0 60px!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.18)!important;border:2px solid rgba(255,255,255,.55)!important;border-radius:14px!important;box-shadow:0 5px 16px rgba(0,0,0,.24)!important;padding:0!important;color:#fff!important;opacity:1!important;pointer-events:auto!important';
-    var i=b.querySelector('i');if(i)i.style.cssText += ';font-size:40px!important;line-height:1!important;color:#fff!important;opacity:1!important';
-    var h=b.closest('header');if(h)h.style.cssText += ';height:76px!important;min-height:76px!important;padding:0 12px!important;grid-template-columns:60px 1fr auto!important;align-items:center!important';
-    return true;
-  }
-
   function runAfterCore(){
+    installPersistentMobileCSS();
     if(isHome()) installMobileHeader();
-    if(isDashboard()){
-      var tries=0;
-      var t=setInterval(function(){tries++;if(emphasizeDashboardMenu()||tries>25)clearInterval(t);},120);
-    }
   }
 
   var s=document.createElement('script');
