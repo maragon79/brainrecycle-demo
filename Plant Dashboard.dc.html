@@ -8,6 +8,44 @@
   <style id="brainrecycle-critical-tokens">
     :root{--color-deep:#2c483d;--color-black:#16241d;--color-forest:#3f685b;--color-primary-hover:#365c50;--color-primary-subtle:#e7f0dd;--color-sage:#cce6b1;--color-white:#fff;--surface-background:#f3f5f1;--surface-raised:#fff;--surface-dark:#243b32;--text-primary:#1b2721;--text-secondary:#48564f;--text-muted:#7b8981;--text-link:#3f685b;--text-link-hover:#2c483d;--border-subtle:#e7eae5;--border-default:#d3d9d1;--color-neutral-300:#c2cbc4;--color-success:#3f7d4e;--color-success-surface:#e6f2e8;--color-error:#c0453c;--color-error-surface:#f8e8e6;--color-warning:#b8801f;--color-warning-surface:#f7eed8;--color-info:#3d6fa5;--color-info-surface:#e6eef7;--font-display:'Space Grotesk',system-ui,-apple-system,sans-serif;--font-body:'Roboto',system-ui,-apple-system,sans-serif;--font-mono:'Roboto Mono',ui-monospace,SFMono-Regular,Menlo,monospace;--radius-xs:6px;--radius-sm:10px;--radius-md:14px;--radius-lg:20px;}
   </style>
+
+<style id="br-v510-only-sidebar-demo-fix">
+.br-demo-toggle-native,.br-video-radio{position:absolute!important;opacity:0!important;pointer-events:none!important}
+.br-video-native-backdrop{position:absolute;inset:0;z-index:0;cursor:pointer}
+.br-video-dialog-native{position:relative;z-index:1}
+.br-video-lang-native label{flex:1;min-height:40px;border-radius:7px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.br-video-native-players .br-video-en{display:none}
+#brDemoLangEs:checked ~ .br-video-lang-native label[for="brDemoLangEs"],#brDemoLangEn:checked ~ .br-video-lang-native label[for="brDemoLangEn"]{background:var(--color-sage)!important;color:var(--color-deep)!important}
+#brDemoLangEn:checked ~ .br-video-native-players .br-video-es{display:none!important}
+#brDemoLangEn:checked ~ .br-video-native-players .br-video-en{display:block!important}
+@media(max-width:760px){
+  /* One and only mobile sidebar state: unchecked = closed, checked = open. */
+  html body x-dc .dash-shell>.dash-sidebar,
+  html body x-dc .dash-shell>.dash-sidebar.is-open,
+  html body.br-drawer-open x-dc .dash-shell>.dash-sidebar{
+    position:fixed!important;left:0!important;top:0!important;bottom:0!important;
+    width:min(88vw,360px)!important;min-width:0!important;height:100dvh!important;
+    z-index:4000!important;transform:translateX(-105%)!important;visibility:hidden!important;pointer-events:none!important;
+    transition:transform .22s ease,visibility 0s linear .22s!important;overflow-y:auto!important;overflow-x:hidden!important;
+  }
+  html body x-dc .dash-shell>#brDashToggle:checked~.dash-sidebar,
+  html body.br-drawer-open x-dc .dash-shell>#brDashToggle:checked~.dash-sidebar.is-open{
+    transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition:transform .22s ease!important;
+  }
+  html body x-dc .dash-shell>.br-css-backdrop{display:none!important}
+  html body x-dc .dash-shell>#brDashToggle:checked~.br-css-backdrop{display:block!important;position:fixed!important;inset:0!important;z-index:3900!important;background:rgba(7,17,12,.58)!important;backdrop-filter:blur(2px)!important}
+  html body x-dc .dash-shell>.dash-main{width:100%!important;max-width:100%!important;margin:0!important;transform:none!important;left:auto!important;right:auto!important}
+  .dash-mobile-backdrop,.br-static-backdrop{display:none!important}
+  .dash-mobile-menu-btn{display:flex!important;cursor:pointer!important}
+  /* Native demo checkbox controls the existing modal; no onclick required. */
+  html body x-dc .dash-shell .br-video-modal-native{display:none!important}
+  html body x-dc .dash-shell>#brDemoToggle:checked~.dash-main .br-video-modal-native{display:flex!important}
+  .br-demo-video-btn{cursor:pointer!important}
+}
+@media(min-width:761px){
+  .br-demo-toggle-native{display:none!important}
+}
+</style>
 </head>
 <body>
 <x-dc>
@@ -160,60 +198,35 @@ button{font:inherit}
 }
 </style>
 
-<style id="brainrecycle-mobile-v59-native">
-/* V5.9: one mobile navigation mechanism only. No JS required. */
-.br-drawer-close{color:#fff;text-decoration:none;width:42px;height:42px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px}
-.br-video-backdrop{position:absolute;inset:0;display:block}
-.br-video-lang a{flex:1;min-height:40px;border-radius:7px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;font-weight:700;text-decoration:none;display:flex;align-items:center;justify-content:center}
-.br-video-lang a.is-active{background:var(--color-sage);color:var(--color-deep)}
-.br-video-close{display:flex;align-items:center;justify-content:center;text-decoration:none}
-.br-demo-video-btn{text-decoration:none}
-.br-video-modal:target{display:flex!important}
-@media (max-width:900px){
-  html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important}
-  .dash-shell{display:block!important;width:100%!important;max-width:100%!important;min-height:100dvh!important;height:auto!important;overflow:visible!important}
-  .dash-main{display:flex!important;flex-direction:column!important;width:100%!important;max-width:100%!important;min-width:0!important;margin:0!important;transform:none!important;height:auto!important;min-height:100dvh!important;overflow:visible!important}
-  .dash-main>header{display:grid!important;grid-template-columns:46px minmax(0,1fr) 46px!important;width:100%!important;max-width:100%!important}
-  .dash-mobile-menu-btn{display:flex!important;width:42px!important;height:42px!important;align-items:center!important;justify-content:center!important;border:1px solid rgba(255,255,255,.18)!important;border-radius:8px!important;color:#fff!important;text-decoration:none!important;background:rgba(255,255,255,.06)!important;padding:0!important}
 
-  /* Sidebar is completely outside document flow on mobile. */
-  #brMobileDrawer.dash-sidebar{
-    position:fixed!important;top:0!important;left:0!important;bottom:0!important;z-index:5000!important;
-    width:min(86vw,360px)!important;min-width:0!important;max-width:360px!important;height:100dvh!important;
-    margin:0!important;overflow-y:auto!important;overflow-x:hidden!important;
-    transform:translate3d(-110%,0,0)!important;visibility:hidden!important;pointer-events:none!important;
-    transition:transform .2s ease,visibility 0s linear .2s!important;box-shadow:18px 0 50px rgba(0,0,0,.36)!important;
-  }
-  #brMobileDrawer.dash-sidebar:target{
-    transform:translate3d(0,0,0)!important;visibility:visible!important;pointer-events:auto!important;
-    transition:transform .2s ease!important;
-  }
-  #brMobileDrawer:target + .br-static-backdrop{display:block!important}
-  .br-static-backdrop{position:fixed!important;inset:0!important;z-index:4990!important;background:rgba(7,17,12,.62)!important;backdrop-filter:blur(2px)!important;text-decoration:none!important}
-  #brMobileDrawer:not(:target) + .br-static-backdrop{display:none!important}
-  #brMobileDrawer .dash-mobile-drawer-head{display:flex!important;position:sticky!important;top:0!important;z-index:2!important;background:var(--surface-dark)!important}
-
-  /* Neutralise the legacy runtime drawer so it can never open the sidebar by itself on mobile. */
-  body.br-drawer-open #brMobileDrawer.dash-sidebar:not(:target),
-  #brMobileDrawer.dash-sidebar.is-open:not(:target){transform:translate3d(-110%,0,0)!important;visibility:hidden!important;pointer-events:none!important}
-  body.br-drawer-open .br-static-backdrop{display:none!important}
-  body.br-drawer-open #brMobileDrawer:target + .br-static-backdrop{display:block!important}
-
-  .dash-demo-strip{min-height:36px!important;height:auto!important;padding:5px 10px!important}
-  .dash-demo-strip p{font-size:11px!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important}
-  .br-demo-video-btn{display:inline-flex!important}
-
-  .br-video-modal{padding:10px!important;z-index:9000!important}
-  .br-video-modal:target{display:flex!important}
-  .br-video-dialog{z-index:1!important;width:min(100%,720px)!important;max-height:90dvh!important}
-  .br-video-player{width:100%!important;max-height:68dvh!important}
+<style id="brainrecycle-dashboard-v58-css-drawer">
+.br-dash-toggle,.br-css-backdrop{display:none}
+@media(max-width:760px){
+  .dash-shell{display:block!important;position:relative!important;overflow:hidden!important}
+  .br-dash-toggle{position:absolute!important;opacity:0!important;pointer-events:none!important}
+  .dash-sidebar{position:fixed!important;left:0!important;top:0!important;bottom:0!important;width:min(88vw,360px)!important;min-width:0!important;height:100dvh!important;z-index:4000!important;transform:translateX(-105%)!important;visibility:hidden!important;pointer-events:none!important;transition:transform .22s ease,visibility 0s linear .22s!important;overflow-y:auto!important;overflow-x:hidden!important;box-shadow:18px 0 48px rgba(0,0,0,.35)!important}
+  #brDashToggle:checked ~ .dash-sidebar{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important;transition:transform .22s ease!important}
+  .br-css-backdrop{position:fixed!important;inset:0!important;z-index:3900!important;background:rgba(7,17,12,.58)!important;backdrop-filter:blur(2px)!important}
+  #brDashToggle:checked ~ .br-css-backdrop{display:block!important}
+  .dash-main{display:flex!important;position:relative!important;width:100%!important;max-width:100%!important;height:100dvh!important;margin:0!important;transform:none!important;left:auto!important;right:auto!important}
+  .dash-mobile-menu-btn{display:flex!important;cursor:pointer!important}
+  .br-dash-close{width:42px!important;height:42px!important;display:flex!important;align-items:center!important;justify-content:center!important;background:rgba(255,255,255,.06)!important;border:1px solid rgba(255,255,255,.12)!important;border-radius:8px!important;color:#fff!important;cursor:pointer!important}
+  .dash-mobile-drawer-head{display:flex!important}
+  .dash-sidebar>nav button{font-size:16px!important}
+  /* Demo box is useful inside drawer but must not dominate */
+  .dash-sidebar>div:nth-of-type(3){padding:10px 8px!important}
+  /* Compact demo strip */
+  .dash-demo-strip{min-height:34px!important;padding:4px 9px!important}
+  .dash-demo-strip p{font-size:10.5px!important}
 }
 </style>
 </helmet>
 <div class="dash-shell" style="height:100vh;width:100%;display:flex;overflow:hidden;background:var(--surface-background)">
+<input type="checkbox" id="brDashToggle" class="br-dash-toggle" aria-hidden="true">
+<input type="checkbox" id="brDemoToggle" class="br-demo-toggle-native" aria-hidden="true">
 
-<aside id="brMobileDrawer" class="dash-sidebar {{ mobileSidebarClass }}" style="width:240px;min-width:240px;height:100%;background:var(--surface-dark);display:flex;flex-direction:column;flex-shrink:0">
-<div class="dash-mobile-drawer-head"><img src="assets/logo-light.png" alt="BrainRecycle"><a href="#" class="br-drawer-close" aria-label="Cerrar navegación"><i class="ti ti-x"></i></a></div>
+<aside class="dash-sidebar {{ mobileSidebarClass }}" style="width:240px;min-width:240px;height:100%;background:var(--surface-dark);display:flex;flex-direction:column;flex-shrink:0">
+<div class="dash-mobile-drawer-head"><img src="assets/logo-light.png" alt="BrainRecycle"><label for="brDashToggle" class="br-dash-close" aria-label="Cerrar navegación"><i class="ti ti-x"></i></label></div>
 
 <div style="padding:16px;border-bottom:1px solid rgba(255,255,255,0.08);position:relative">
 <button onClick="{{ togglePlantMenu }}" style="width:100%;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-xs);padding:10px 12px;cursor:pointer;text-align:left" style-hover="background:rgba(255,255,255,0.12)">
@@ -276,13 +289,13 @@ button{font:inherit}
 </button>
 </div>
 </aside>
-<a href="#" class="br-static-backdrop" aria-label="Cerrar menú"></a>
+<label for="brDashToggle" class="br-css-backdrop" aria-label="Cerrar menú"></label>
 
 <sc-if value="{{ mobileNavOpen }}" hint-placeholder-val="{{ false }}"><button class="dash-mobile-backdrop" onClick="{{ toggleMobileNav }}" aria-label="Cerrar menú"></button></sc-if>
 <main class="dash-main" style="flex:1;height:100%;display:flex;flex-direction:column;min-width:0;overflow:hidden">
 
 <header style="height:56px;flex-shrink:0;background:var(--color-deep);display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:24px">
-<a href="#brMobileDrawer" class="dash-mobile-menu-btn" aria-label="Abrir navegación"><i class="ti ti-menu-2"></i></a>
+<label for="brDashToggle" class="dash-mobile-menu-btn" aria-label="Abrir navegación"><i class="ti ti-menu-2"></i></label>
 <div style="display:flex;align-items:center;gap:28px;min-width:0">
 <a href="Brain Recycle Home.dc.html" style="display:flex;align-items:center;flex-shrink:0">
 <img src="assets/logo-light.png" alt="brainrecycle" style="height:20px;width:auto;display:block">
@@ -302,7 +315,7 @@ button{font:inherit}
 <div class="dash-demo-strip" style="flex-shrink:0;background:var(--color-warning-surface);border-bottom:1px solid var(--color-warning);display:flex;align-items:center;gap:10px;padding:7px 18px">
 <i class="ti ti-flask" style="font-size:15px;color:var(--color-warning);flex-shrink:0"></i>
 <p style="font-size:12px;color:var(--text-primary);line-height:1.3;margin:0;flex:1"><span style="font-weight:700">Entorno de prueba · Datos ficticios</span><span class="demo-long"> · Información únicamente ilustrativa.</span></p>
-<a href="#brDemoVideoModal" class="br-demo-video-btn"><i class="ti ti-player-play-filled"></i><span class="demo-label-long">Ver demostración</span><span class="sm" style="display:none">Demo</span></a>
+<label for="brDemoToggle" class="br-demo-video-btn" role="button" aria-label="Ver demostración"><i class="ti ti-player-play-filled"></i><span class="demo-label-long">Ver demostración</span><span class="sm" style="display:none">Demo</span></label>
 </div>
 
 <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;min-width:0">
@@ -843,20 +856,17 @@ button{font:inherit}
 </div>
 
 </x-dc>
-<div id="brDemoVideoModal" class="br-video-modal" role="dialog" aria-modal="true" aria-label="Demostración BrainRecycle en español">
-  <a href="#" class="br-video-backdrop" aria-label="Cerrar demostración"></a>
-  <div class="br-video-dialog">
-    <div class="br-video-head"><strong>Cómo funciona BrainRecycle</strong><a class="br-video-close" href="#" aria-label="Cerrar">×</a></div>
-    <div class="br-video-lang"><a class="is-active" href="#brDemoVideoModal">🇪🇸 Español</a><a href="#brDemoVideoModalEn">🇬🇧 English</a></div>
-    <video class="br-video-player" controls playsinline preload="metadata" src="assets/BrainRecycle_demo_profesional_ES_DEFINITIVO.mp4"></video>
-  </div>
-</div>
-<div id="brDemoVideoModalEn" class="br-video-modal" role="dialog" aria-modal="true" aria-label="BrainRecycle demonstration in English">
-  <a href="#" class="br-video-backdrop" aria-label="Close demonstration"></a>
-  <div class="br-video-dialog">
-    <div class="br-video-head"><strong>How BrainRecycle works</strong><a class="br-video-close" href="#" aria-label="Close">×</a></div>
-    <div class="br-video-lang"><a href="#brDemoVideoModal">🇪🇸 Español</a><a class="is-active" href="#brDemoVideoModalEn">🇬🇧 English</a></div>
-    <video class="br-video-player" controls playsinline preload="metadata" src="assets/BrainRecycle_demo_profesional_EN_LOGO_REAL.mp4"></video>
+<div id="brDemoVideoModal" class="br-video-modal br-video-modal-native" role="dialog" aria-modal="true" aria-label="Demostración BrainRecycle">
+  <label for="brDemoToggle" class="br-video-native-backdrop" aria-label="Cerrar demostración"></label>
+  <div class="br-video-dialog br-video-dialog-native">
+    <div class="br-video-head"><strong>Cómo funciona BrainRecycle</strong><label for="brDemoToggle" class="br-video-close" role="button" aria-label="Cerrar">×</label></div>
+    <input class="br-video-radio" type="radio" name="brDemoLang" id="brDemoLangEs" checked>
+    <input class="br-video-radio" type="radio" name="brDemoLang" id="brDemoLangEn">
+    <div class="br-video-lang br-video-lang-native"><label for="brDemoLangEs">🇪🇸 Español</label><label for="brDemoLangEn">🇬🇧 English</label></div>
+    <div class="br-video-native-players">
+      <video class="br-video-player br-video-es" controls playsinline preload="metadata"><source src="assets/BrainRecycle_demo_profesional_ES_DEFINITIVO.mp4" type="video/mp4"></video>
+      <video class="br-video-player br-video-en" controls playsinline preload="metadata"><source src="assets/BrainRecycle_demo_profesional_EN_LOGO_REAL.mp4" type="video/mp4"></video>
+    </div>
   </div>
 </div>
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440,&quot;height&quot;:900},&quot;initialSection&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;panel&quot;,&quot;options&quot;:[&quot;panel&quot;,&quot;casos&quot;,&quot;trazabilidad&quot;,&quot;compliance&quot;,&quot;certificados&quot;,&quot;organizacion&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Comportamiento&quot;},&quot;alertsEmpty&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Comportamiento&quot;}}">
@@ -1307,15 +1317,13 @@ class Component extends DCLogic {
 
 <script id="brainrecycle-native-mobile-v57">
 (function(){
-  function mobile(){return window.matchMedia('(max-width:760px)').matches;}
-  window.brToggleDashDrawer=function(e){ if(e){e.preventDefault();e.stopPropagation();} if(!mobile()) return; location.hash='brMobileDrawer'; };
-  window.brCloseDashDrawer=function(e){ if(e){e.preventDefault();e.stopPropagation();} if(location.hash==='#brMobileDrawer') history.replaceState(null,'',location.pathname+location.search); document.body.classList.remove('br-drawer-open'); };
-  document.addEventListener('click',function(e){ if(!mobile()) return; var navBtn=e.target.closest && e.target.closest('.dash-sidebar nav button'); if(navBtn) setTimeout(window.brCloseDashDrawer,0); },true);
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){window.brCloseDashDrawer();window.brCloseDemoVideo&&window.brCloseDemoVideo();} });
-  var srcs={es:'assets/BrainRecycle_demo_profesional_ES_DEFINITIVO.mp4',en:'assets/BrainRecycle_demo_profesional_EN_LOGO_REAL.mp4'};
-  window.brSetDemoVideo=function(lang){ var v=document.getElementById('brDemoVideoPlayer'),so=document.getElementById('brDemoVideoSource'); if(!v||!so)return; var next=srcs[lang]||srcs.es; if(so.getAttribute('src')!==next){so.setAttribute('src',next);v.load();} var es=document.getElementById('brVideoEs'),en=document.getElementById('brVideoEn'); if(es)es.classList.toggle('is-active',lang==='es'); if(en)en.classList.toggle('is-active',lang==='en'); };
-  window.brOpenDemoVideo=function(lang){ var m=document.getElementById('brDemoVideoModal'); if(!m)return; window.brSetDemoVideo(lang||'es');m.classList.add('is-open');document.documentElement.style.overflow='hidden';document.body.style.overflow='hidden'; };
-  window.brCloseDemoVideo=function(){ var m=document.getElementById('brDemoVideoModal'),v=document.getElementById('brDemoVideoPlayer'); if(m)m.classList.remove('is-open'); if(v)v.pause();document.documentElement.style.overflow='';document.body.style.overflow=''; };
+  function q(id){return document.getElementById(id)}
+  window.brToggleDashDrawer=function(e){if(e){e.preventDefault();e.stopPropagation()}var c=q('brDashToggle');if(c)c.checked=!c.checked};
+  window.brCloseDashDrawer=function(e){if(e){e.preventDefault();e.stopPropagation()}var c=q('brDashToggle');if(c)c.checked=false};
+  window.brOpenDemoVideo=function(){var c=q('brDemoToggle');if(c)c.checked=true};
+  window.brCloseDemoVideo=function(){var c=q('brDemoToggle');if(c)c.checked=false};
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){window.brCloseDashDrawer();window.brCloseDemoVideo()}});
+  document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.dash-sidebar nav button');if(b){var c=q('brDashToggle');if(c)c.checked=false}},true);
 })();
 </script>
 

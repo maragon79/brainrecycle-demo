@@ -1,0 +1,6 @@
+V5.10 — base V5.8 MOBILE ESTABLE.
+Alcance deliberadamente limitado a tres correcciones:
+1) Sidebar móvil del dashboard: un único checkbox HTML/CSS, cerrada por defecto, drawer superpuesto y contenido al 100%.
+2) Demo: apertura/cierre por checkbox HTML/CSS y selector ES/EN por radios CSS; no depende de onclick.
+3) Idioma público: selector fuera del menú móvil y cambio ES↔EN reversible mediante recarga controlada tras guardar br_lang.
+No se han modificado logos, tablas, tarjetas, footer ni reglas responsive ya presentes en V5.8.
