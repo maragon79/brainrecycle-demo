@@ -1,0 +1,5 @@
+BrainRecycle GitHub Pages V5.4 — Responsive mobile
+- Home y casos de uso: hero, grids, márgenes y tipografía adaptativa.
+- Dashboard: navegación lateral transformada en barra horizontal móvil; contenido apilado; tablas con scroll controlado.
+- Login: ancho y padding adaptativos.
+- Mantiene estructura ds/ compatible con GitHub Pages.
