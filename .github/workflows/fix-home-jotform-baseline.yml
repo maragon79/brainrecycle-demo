@@ -1,0 +1,36 @@
+name: Fix Home Jotform sizing from 21:34 baseline
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-home-jotform-baseline.yml'
+permissions:
+  contents: write
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Remove only the two Home Jotform size caps
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('Brain Recycle Home.dc.html')
+          s = p.read_text(encoding='utf-8')
+          a = '.jotform-agent-widget,.jf-agent-widget{max-width:76px!important;max-height:76px!important}'
+          b = 'iframe[src*="jotform"],.jotform-agent-widget,.jf-agent-widget{max-width:72px!important;max-height:72px!important}'
+          ca, cb = s.count(a), s.count(b)
+          if ca != 1 or cb != 1:
+              raise SystemExit(f'Expected exactly one occurrence of each rule; found 76px={ca}, 72px={cb}')
+          s = s.replace(a, '')
+          s = s.replace(b, '')
+          p.write_text(s, encoding='utf-8')
+      - name: Commit only Home change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add 'Brain Recycle Home.dc.html'
+          git diff --cached --check
+          git commit -m 'Fix Home AI agent sizing from 21:34 baseline'
+          git push
