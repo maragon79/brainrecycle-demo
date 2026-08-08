@@ -3,6 +3,7 @@
   if(!window.matchMedia || !window.matchMedia('(max-width:760px)').matches) return;
 
   function lang(){try{return localStorage.getItem('br_lang')||'es';}catch(e){return'es';}}
+  function pageHeader(){return document.querySelector('x-dc header')||document.querySelector('header');}
   function dashboardTrigger(){
     return document.querySelector('label[for="brDashToggle"].dash-mobile-menu-btn')||document.querySelector('label[for="brDashToggle"]');
   }
@@ -26,29 +27,34 @@
     return false;
   }
 
-  function scrollCandidates(){
-    var out=[];
-    function add(el){if(el&&out.indexOf(el)<0)out.push(el);}
-    add(document.scrollingElement);add(document.documentElement);add(document.body);
-    var q=document.querySelectorAll('main,.dash-main,[style*="overflow-y:auto"],[style*="overflow:auto"]');
-    for(var i=0;i<q.length;i++)add(q[i]);
-    return out;
-  }
   function currentScroll(){
-    var y=Math.max(window.pageYOffset||0,document.documentElement.scrollTop||0,document.body.scrollTop||0),a=scrollCandidates();
-    for(var i=0;i<a.length;i++){if(typeof a[i].scrollTop==='number')y=Math.max(y,a[i].scrollTop);}
+    var y=Math.max(window.pageYOffset||0,document.documentElement.scrollTop||0,document.body.scrollTop||0);
+    var all=document.querySelectorAll('body *');
+    for(var i=0;i<all.length;i++){
+      if(typeof all[i].scrollTop==='number'&&all[i].scrollTop>y)y=all[i].scrollTop;
+    }
     return y;
   }
-  function goTop(){
-    try{window.scrollTo({top:0,left:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}
-    var a=scrollCandidates();
-    for(var i=0;i<a.length;i++){
-      try{a[i].scrollTo({top:0,left:0,behavior:'smooth'});}catch(e){try{a[i].scrollTop=0;}catch(x){}}
+
+  /* iOS can scroll an inner container even when window.pageYOffset is 0.
+     The floating button must therefore reset the actual page AND every vertical
+     scroll container before opening the original hamburger menu. */
+  function forceTrueTop(){
+    var h=pageHeader();
+    if(h&&h.scrollIntoView){
+      try{h.scrollIntoView({behavior:'auto',block:'start',inline:'nearest'});}catch(e){try{h.scrollIntoView(true);}catch(x){}}
     }
-  }
-  function hardTop(){
     try{window.scrollTo(0,0);}catch(e){}
-    var a=scrollCandidates();for(var i=0;i<a.length;i++){try{a[i].scrollTop=0;}catch(e){}}
+    try{if(document.scrollingElement)document.scrollingElement.scrollTop=0;}catch(e){}
+    try{document.documentElement.scrollTop=0;}catch(e){}
+    try{document.body.scrollTop=0;}catch(e){}
+
+    var all=document.querySelectorAll('body *');
+    for(var i=0;i<all.length;i++){
+      try{
+        if(typeof all[i].scrollTop==='number'&&all[i].scrollTop!==0)all[i].scrollTop=0;
+      }catch(e){}
+    }
   }
 
   function boot(){
@@ -70,16 +76,27 @@
     window.addEventListener('resize',update,{passive:true});
 
     btn.addEventListener('click',function(ev){
-      ev.preventDefault();ev.stopPropagation();if(busy)return;busy=true;btn.classList.remove('br-show');
-      goTop();
-      setTimeout(function(){
-        hardTop();
-        requestAnimationFrame(function(){
+      ev.preventDefault();ev.stopPropagation();if(busy)return;
+      busy=true;btn.classList.remove('br-show');
+
+      /* First move to the real beginning of the page. Repeat after layout frames
+         because Safari may restore an inner scroller during the same tap. */
+      forceTrueTop();
+      requestAnimationFrame(function(){
+        forceTrueTop();
+        setTimeout(function(){
+          forceTrueTop();
           var t=document.getElementById('brDashToggle')?dashboardTrigger():publicTrigger();
           fire(t);
-          setTimeout(function(){busy=false;update();},220);
-        });
-      },520);
+          /* One final reset guarantees that opening the drawer cannot leave the
+             document at the previous lower scroll position. */
+          setTimeout(function(){
+            forceTrueTop();
+            busy=false;
+            update();
+          },120);
+        },80);
+      });
     });
 
     setTimeout(update,50);setTimeout(update,500);setTimeout(update,1200);
