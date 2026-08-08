@@ -38,7 +38,7 @@
     }
 
     if(!document.getElementById('br-floating-menu-loader')){
-      var fm=document.createElement('script');fm.id='br-floating-menu-loader';fm.src='./floating-menu.js?v=20260808-0218';fm.defer=true;document.head.appendChild(fm);
+      var fm=document.createElement('script');fm.id='br-floating-menu-loader';fm.src='./floating-menu.js?v=20260808-0222';fm.defer=true;document.head.appendChild(fm);
     }
   }catch(e){}
 })();
