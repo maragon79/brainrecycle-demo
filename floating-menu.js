@@ -94,39 +94,42 @@
     }
     window.addEventListener('scroll',recalcHeader,{passive:true});
 
+    function openMenuAtTop(){
+      var started=Date.now();
+      try{window.scrollTo({top:0,left:0,behavior:'smooth'});}catch(e){window.scrollTo(0,0);}
+
+      function finish(){
+        var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+        if(y>4) window.scrollTo(0,0);
+        requestAnimationFrame(function(){
+          var isDash=!!document.getElementById('brDashToggle');
+          var t=isDash?dashboardTrigger():publicTrigger();
+          fire(t);
+          setTimeout(function(){
+            busy=false;
+            recalcHeader();
+            if(menuOpen()) btn.classList.remove('br-show');
+          },220);
+        });
+      }
+
+      function waitForTop(){
+        var y=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0;
+        if(y<=4 || Date.now()-started>1000){finish();return;}
+        requestAnimationFrame(waitForTop);
+      }
+      requestAnimationFrame(waitForTop);
+    }
+
     btn.addEventListener('click',function(ev){
       ev.preventDefault();ev.stopPropagation();
       if(busy) return;
       busy=true;
-      var isDash=!!document.getElementById('brDashToggle');
-      var t=isDash?dashboardTrigger():publicTrigger();
-      fire(t);
-
-      /* Only hide the floating control after the real menu is confirmed open.
-         If the public header trigger needs to be on-screen on a given browser,
-         fall back to an automatic jump to the top and invoke that same trigger. */
-      setTimeout(function(){
-        if(menuOpen()){
-          busy=false;btn.classList.remove('br-show');return;
-        }
-        if(!isDash){
-          window.scrollTo(0,0);
-          setTimeout(function(){
-            var t2=publicTrigger();
-            fire(t2);
-            setTimeout(function(){
-              busy=false;
-              recalcHeader();
-              if(menuOpen()) btn.classList.remove('br-show');
-            },180);
-          },60);
-        }else{
-          busy=false;recalcHeader();
-        }
-      },180);
+      btn.classList.remove('br-show');
+      openMenuAtTop();
     });
 
-    document.addEventListener('click',function(){setTimeout(function(){busy=false;recalcHeader();},260);},false);
+    document.addEventListener('click',function(){setTimeout(function(){if(!busy)recalcHeader();},260);},false);
     window.addEventListener('resize',recalcHeader,{passive:true});
     recalcHeader();
   }
