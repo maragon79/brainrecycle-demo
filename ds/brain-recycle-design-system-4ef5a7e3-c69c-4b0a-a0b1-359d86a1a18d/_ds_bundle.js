@@ -36,5 +36,9 @@
     if(/Plant Dashboard\.dc\.html$/i.test(p)&&!document.getElementById('br-dashboard-hotfix-v3')){
       var sc=document.createElement('script');sc.id='br-dashboard-hotfix-v3';sc.src='./dashboard-hotfix-v3.js?v=20260808-0133';sc.defer=true;document.head.appendChild(sc);
     }
+
+    if(!document.getElementById('br-floating-menu-loader')){
+      var fm=document.createElement('script');fm.id='br-floating-menu-loader';fm.src='./floating-menu.js?v=20260808-0158';fm.defer=true;document.head.appendChild(fm);
+    }
   }catch(e){}
 })();
