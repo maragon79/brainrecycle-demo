@@ -43,7 +43,7 @@
 
     try{
       if((localStorage.getItem('br_lang')||'es')==='en'&&!document.getElementById('br-translation-only-en-v1')){
-        var te=document.createElement('script');te.id='br-translation-only-en-v1';te.src='./translation-only-en-v1.js?v=20260808-0226';te.defer=true;document.head.appendChild(te);
+        var te=document.createElement('script');te.id='br-translation-only-en-v1';te.src='./translation-only-en-v1.js?v=20260808-0742';te.defer=true;document.head.appendChild(te);
       }
     }catch(e){}
   }catch(e){}
