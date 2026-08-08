@@ -6,22 +6,56 @@
     try{return localStorage.getItem('br_lang')||'es';}catch(e){return'es';}
   }
   function header(){return document.querySelector('x-dc header')||document.querySelector('header');}
-  function isVisible(el){
-    if(!el) return false;
+  function actuallyVisible(el){
+    if(!el || el.hidden || el.getAttribute('aria-hidden')==='true') return false;
     var s=window.getComputedStyle(el),r=el.getBoundingClientRect();
-    return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
+    var op=parseFloat(s.opacity||'1');
+    return s.display!=='none' && s.visibility!=='hidden' && op>0.05 &&
+      s.pointerEvents!=='none' && r.width>0 && r.height>0 &&
+      r.bottom>0 && r.top<window.innerHeight;
   }
-  function dashboardTrigger(){return document.querySelector('label[for="brDashToggle"].dash-mobile-menu-btn')||document.querySelector('label[for="brDashToggle"]');}
+  function dashboardTrigger(){
+    return document.querySelector('label[for="brDashToggle"].dash-mobile-menu-btn')||
+           document.querySelector('label[for="brDashToggle"]');
+  }
+  function normalizeTrigger(el){
+    if(!el) return null;
+    if(el.matches && el.matches('button,label,a,input,[role="button"]')) return el;
+    var inside=el.querySelector && el.querySelector('button,label,a,input,[role="button"]');
+    if(inside) return inside;
+    var parent=el.closest && el.closest('button,label,a,input,[role="button"]');
+    return parent||el;
+  }
   function publicTrigger(){
-    var q=['header .sm','header button[aria-label*="menú" i]','header button[aria-label*="menu" i]','header [role="button"][aria-label*="menú" i]','header [role="button"][aria-label*="menu" i]'];
-    for(var i=0;i<q.length;i++){var el=document.querySelector(q[i]);if(el)return el;}
+    var q=[
+      'header button.sm','header .sm button','header .sm [role="button"]','header .sm',
+      'header button[aria-label*="menú" i]','header button[aria-label*="menu" i]',
+      'header [role="button"][aria-label*="menú" i]','header [role="button"][aria-label*="menu" i]'
+    ];
+    for(var i=0;i<q.length;i++){
+      var el=document.querySelector(q[i]);
+      if(el) return normalizeTrigger(el);
+    }
+    return null;
+  }
+  function mobilePanel(){
+    var list=document.querySelectorAll('.mobile-menu-panel');
+    for(var i=0;i<list.length;i++) if(actuallyVisible(list[i])) return list[i];
     return null;
   }
   function menuOpen(){
     var cb=document.getElementById('brDashToggle');
     if(cb&&cb.checked) return true;
-    var p=document.querySelector('.mobile-menu-panel');
-    return !!(p&&isVisible(p));
+    return !!mobilePanel();
+  }
+  function fire(el){
+    if(!el) return false;
+    try{el.click();return true;}catch(e){}
+    try{
+      el.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,view:window}));
+      return true;
+    }catch(e){}
+    return false;
   }
 
   function boot(){
@@ -43,32 +77,58 @@
     document.body.appendChild(btn);
 
     var headerInView=true;
-    var observer=null;
+    var busy=false;
     function update(){
-      var show=!headerInView&&!menuOpen();
+      var show=!headerInView&&!menuOpen()&&!busy;
       btn.classList.toggle('br-show',show);
     }
-    if('IntersectionObserver' in window){
-      observer=new IntersectionObserver(function(entries){
-        if(entries&&entries[0]){headerInView=entries[0].isIntersecting;update();}
-      },{threshold:0.05});
-      observer.observe(h);
-    }else{
-      function fallback(){var r=h.getBoundingClientRect();headerInView=r.bottom>6;update();}
-      window.addEventListener('scroll',fallback,{passive:true});fallback();
+    function recalcHeader(){
+      var r=h.getBoundingClientRect();
+      headerInView=r.bottom>6 && r.top<window.innerHeight;
+      update();
     }
+    if('IntersectionObserver' in window){
+      new IntersectionObserver(function(entries){
+        if(entries&&entries[0]){headerInView=entries[0].isIntersecting;update();}
+      },{threshold:0.05}).observe(h);
+    }
+    window.addEventListener('scroll',recalcHeader,{passive:true});
 
-    btn.addEventListener('click',function(){
-      var t=dashboardTrigger()||publicTrigger();
-      if(t){
-        try{t.click();}catch(e){try{t.dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true}));}catch(x){}}
-      }
-      btn.classList.remove('br-show');
-      setTimeout(update,220);
+    btn.addEventListener('click',function(ev){
+      ev.preventDefault();ev.stopPropagation();
+      if(busy) return;
+      busy=true;
+      var isDash=!!document.getElementById('brDashToggle');
+      var t=isDash?dashboardTrigger():publicTrigger();
+      fire(t);
+
+      /* Only hide the floating control after the real menu is confirmed open.
+         If the public header trigger needs to be on-screen on a given browser,
+         fall back to an automatic jump to the top and invoke that same trigger. */
+      setTimeout(function(){
+        if(menuOpen()){
+          busy=false;btn.classList.remove('br-show');return;
+        }
+        if(!isDash){
+          window.scrollTo(0,0);
+          setTimeout(function(){
+            var t2=publicTrigger();
+            fire(t2);
+            setTimeout(function(){
+              busy=false;
+              recalcHeader();
+              if(menuOpen()) btn.classList.remove('br-show');
+            },180);
+          },60);
+        }else{
+          busy=false;recalcHeader();
+        }
+      },180);
     });
 
-    document.addEventListener('click',function(){setTimeout(update,180);},true);
-    window.addEventListener('resize',update,{passive:true});
+    document.addEventListener('click',function(){setTimeout(function(){busy=false;recalcHeader();},260);},false);
+    window.addEventListener('resize',recalcHeader,{passive:true});
+    recalcHeader();
   }
 
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot,{once:true});
