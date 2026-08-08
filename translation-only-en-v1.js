@@ -25,7 +25,7 @@
     'ESIR y registros de residuos':'eSIR and waste records',
     'Plataforma administrativa, al margen de la operación':'Administrative platform, separate from operations',
     'IoT y sensores':'IoT and sensors',
-    'SCADA de planta, sin memoria histórica explotable':'Plant SCADA, without usable historical history',
+    'SCADA de planta, sin memoria histórica explotable':'Plant SCADA, without usable historical data',
 
     'INSPECCIÓN':'INSPECTION',
     'INSPECCIONAR · MANTENER':'INSPECT · MAINTAIN',
