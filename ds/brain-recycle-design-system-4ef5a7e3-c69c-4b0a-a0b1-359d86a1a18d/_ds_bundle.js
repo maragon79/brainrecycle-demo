@@ -41,9 +41,13 @@
       var fm=document.createElement('script');fm.id='br-floating-menu-loader';fm.src='./floating-menu.js?v=20260808-0222';fm.defer=true;document.head.appendChild(fm);
     }
 
+    if(/Brain Recycle Servicios\.dc\.html$/i.test(p)&&!document.getElementById('br-mobile-table-readability-loader')){
+      var mt=document.createElement('script');mt.id='br-mobile-table-readability-loader';mt.src='./mobile-table-readability-v1.js?v=20260808-0753';mt.defer=true;document.head.appendChild(mt);
+    }
+
     try{
       if((localStorage.getItem('br_lang')||'es')==='en'&&!document.getElementById('br-translation-only-en-v1')){
-        var te=document.createElement('script');te.id='br-translation-only-en-v1';te.src='./translation-only-en-v1.js?v=20260808-0742';te.defer=true;document.head.appendChild(te);
+        var te=document.createElement('script');te.id='br-translation-only-en-v1';te.src='./translation-only-en-v1.js?v=20260808-0753';te.defer=true;document.head.appendChild(te);
       }
     }catch(e){}
   }catch(e){}
